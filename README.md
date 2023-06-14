@@ -20,7 +20,7 @@
 |      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |                     |
 |      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |                     |
 |      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |                     |
-|      #6      |                   |                   |                 |                    |                     |
+|      #6      |  James Donnelly   |jdonnelly@sfsu.edu |    linkyap      |   yapubbles#5699   |                     |
 
 
 4. All the team members must sign the team contract found [here](https://forms.gle/PoTXjTmPGGKKZjsT6). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a term environment. 
@@ -29,7 +29,7 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                    :---:                      |                                 :---:                                  |
-|   Replace this text with your project's name  |              Replace this text with your application's URL or IP       |                                                        
+|  Jewelry Shopping Site                        |              Replace this text with your application's URL or IP       |                                                        
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
