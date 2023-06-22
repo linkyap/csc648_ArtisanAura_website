@@ -16,9 +16,9 @@
 | Student      | Student Full Name |Student SFSU Email | GitHub Username | Discord Username   |        Role         |
 |    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |        :---:        | 
 |      #1      |   Cassia Reddig   | creddig@sfsu.edu  |  creddig1       |     cassia#4516    |        Lead         |
-|      #2      |   Tamer Senan     |  tsenan@sfsu.edu  |    tsenan0      |     tam-e#2265     |                     |
-|      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |                     |
-|      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |                     |
+|      #2      |   Tamer Senan     |  tsenan@sfsu.edu  |    tsenan0      |     tam-e#2265     |   Front End Lead    |
+|      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |    Github Master    |
+|      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |    Back End Lead    |
 |      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |                     |
 |      #6      |  James Donnelly   |jdonnelly@sfsu.edu |    linkyap      |   yapubbles#5699   |                     |
 
