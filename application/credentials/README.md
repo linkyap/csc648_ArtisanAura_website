@@ -31,7 +31,7 @@ To access DataBase:
 
 Option 1:
 1. Connect to VM via SSH, then to your MySQL instance with the `mysql` command
-2. Enter command: `mysql -h 34.72.218.74 \ -u root -p`
+2. Enter command: `mysql -h 34.72.218.74 -u root -p`
 3. Enter password: `jnrscZTyvbdC1YG/`
 
 Option 2: Connect with MySQL Workbench:
