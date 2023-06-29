@@ -53,3 +53,10 @@ SSH Key:
 
 1. id_rsa.pub and id_rsa files located in credential folder
 2. ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCrAlLgZGSZBYaqoo/pv3kpNZq+1HhAxffHp36nOOYeCit8He1Smn1Ajzo/gPHPqFVgY/k/NjGUU18Fw1DfsiOJRZx7cqrjshcSOqLDXXpYnd8slNLhexVyk+tluGXkVaNDWr6byyBk+yoL7ldQ7QbrwbExSC1yq+Gytj9mj4WHttw2i8U3z2IE8lh4tZROQEz07JdLG7xrH2QrIXrFRGx9ABliPOJYGyE/YD+HlnjHF0PFpFlNKpXUUz3Qe0mIYTPriAT/ttGGZl7Jsh0V3YMyzMrOTL7eKLKbs0F76vu39fgFhxvarRcqLRt3DPwbl6BYjDnOYtZxuOH2h/Ix5woi3tNpKJ1kURt0yJiiVhuCnhBy420MizHfuJBOegbPbHW/xdwpssrbn60GXoHnytaq+2nIzYplnfmAQDeWOwGJsO7h8wpXRdVjKSJxrGDf2bH+cjfXTEXixoCv3QWqAWeiqAqsWBvkku1vnKes2getNZUKqTD/X3qnmwBjfMPp4c07sIQoSw+lq2uOTxa5RpEsvHR2EiimLXON5VFz2pYCdlJ1x1b1+wGRqUjZJHlFpUNOo3k3g0sJjy5zMPLwiKNiycb/ofz7n3gxDEGIQZJsCpsnCm2Dnw1l+1bvBl7ruKzvDJEPmk6da7xMwz8SGXPrArX0ebJhzJRSik8lug8CAQ== talogin
+
+Google Compute Engine:
+1. https://console.cloud.google.com/compute/instances?authuser=1&project=csc-648-848-team-05
+
+Cloud SQL Instance on Google VM:
+1. https://console.cloud.google.com/sql/instances/artisan-aura-mysql-instance/overview?authuser=1&project=csc-648-848-team-05
+
