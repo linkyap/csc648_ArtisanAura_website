@@ -16,10 +16,10 @@
 | Student      | Student Full Name |Student SFSU Email | GitHub Username | Discord Username   |        Role         |
 |    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |        :---:        | 
 |      #1      |   Cassia Reddig   | creddig@sfsu.edu  |  creddig1       |     cassia#4516    |        Lead         |
-|      #2      |   Tamer Senan     |  tsenan@sfsu.edu  |    tsenan0      |     tam-e#2265     |                     |
-|      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |                     |
-|      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |                     |
-|      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |                     |
+|      #2      |   Tamer Senan     |  tsenan@sfsu.edu  |    tsenan0      |     tam-e#2265     |   Back End Lead     |
+|      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |     M2 Editor       |
+|      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |    Github Master    |
+|      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |  Front End Lead     |
 |      #6      |  James Donnelly   |jdonnelly@sfsu.edu |    linkyap      |   yapubbles#5699   |                     |
 
 
@@ -29,7 +29,7 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                    :---:                      |                                 :---:                                  |
-|  Jewelry Shopping Site                        |              Replace this text with your application's URL or IP       |                                                        
+|  Jewelry Shopping Site: Artisan Aura          |                          http://35.247.87.15                           |                                                        
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
