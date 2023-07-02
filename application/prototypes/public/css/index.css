@@ -78,3 +78,9 @@ nav .search-bar button {
     text-decoration: none;
     margin: 0 10px;
 }
+
+.my-icon img {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 10px;
+}
