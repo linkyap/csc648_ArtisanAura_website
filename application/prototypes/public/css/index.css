@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: whitesmoke;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+nav .search-bar input[type="text"] {
+    padding: 5px;
+    margin: 10px 0;
+    width: 70%;
+}
+
+nav .search-bar button {
+    padding: 5px 10px;
+}
+
+.container {
+    margin: 20px;
+    padding: 20px;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+
+.post-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post-card {
+    width: 25%;
+    margin-bottom: 20px;
+}
+
+.post-thumbnail img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.thumbnail-title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.botm-footer {
+    background-color: whitesmoke;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.botm-footer a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+}
