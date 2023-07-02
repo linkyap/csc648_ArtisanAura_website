@@ -3,34 +3,65 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    background-color: #fafafa; 
 }
 
 .header {
-    background-color: whitesmoke;
+    background-color: whitesmoke; 
     padding: 10px;
     text-align: center;
+    border-bottom: 1px solid #ebebeb;
 }
 
-nav ul {
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar ul {
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: space-around;
+    list-style-type: none; 
+    flex: 1;
 }
 
 nav ul li a {
     color: black;
     text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
 }
 
-nav .search-bar input[type="text"] {
-    padding: 5px;
-    margin: 10px 0;
+.search-bar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-bar form{
+    display: flex;
+    align-items: center;
     width: 70%;
+    justify-content: space-between;
 }
 
-nav .search-bar button {
+.search-bar input[type="text"] {
+    padding: 5px;
+    margin: 0;
+    width: 87%;
+    border-radius: 15px;
+}
+
+.search-bar button {
     padding: 5px 10px;
+    background-color: green;
+    border-radius: 15px;
+    border: none;
+    width: 10%;
 }
 
 .container {
@@ -71,6 +102,7 @@ nav .search-bar button {
     position: fixed;
     bottom: 0;
     width: 100%;
+    border-top: 1px solid red;
 }
 
 .botm-footer a {
@@ -82,5 +114,12 @@ nav .search-bar button {
 .my-icon img {
     width: 150px; 
     height: 150px; 
-    border-radius: 10px;
+    border-radius: 20px;
+    justify-content: center;
+}
+.my-icon{
+    margin: 0 10px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
