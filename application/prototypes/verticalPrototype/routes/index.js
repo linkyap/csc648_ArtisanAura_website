@@ -5,8 +5,8 @@ var router = express.Router();
 
 // home page aka index
 router.get('/', async function (req, res, next) {
-  try {       //vvvfor now
-    res.render('layout', { title:'Home page'});
+  try {       //vvv
+    res.render('index', { title:'Home page'});
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");

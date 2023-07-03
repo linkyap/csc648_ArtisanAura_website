@@ -18,7 +18,7 @@ const hbs = handlebars.create({
     extname: ".hbs",
     defaultLayout: "layout",//for now
     helpers: {
-      nonEmptyObject: function(obj){
+      neo: function(obj){ //when not a empty object = neo
         return obj && obj.constructor === Object && Object.keys(obj).length > 0;
       }
     }
@@ -29,9 +29,9 @@ app.set('view engine', 'hbs');
 
 app.set("views", path.join(__dirname, "views"));
 
-app.get('/', (req, res) => {
-    res.render('layouts/layout'); // Render the "layout" view directly
-});
+// app.get('/', (req, res) => {
+//     res.render('layouts/layout'); // Render the "layout" view directly
+// });
 
 
 app.use(logger("dev"));
@@ -49,9 +49,9 @@ app.use((req,res,next) => {
 
 
 
-app.get('/', (req, res) => {
-    res.render('layout');
-});
+// app.get('/', (req, res) => {
+//     res.render('layout');
+// });
 
 const PORT = process.env.PORT || 3000;
 
