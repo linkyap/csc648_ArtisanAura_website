@@ -99,8 +99,8 @@ nav ul li a {
     color: black;
     text-align: center;
     padding: 20px;
-    position: fixed;
-    bottom: 0;
+    /* position: fixed;
+    bottom: 0; */
     width: 100%;
     border-top: 1px solid red;
 }
