@@ -1,0 +1,17 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: 
+    - 'install'
+  - name: 'gcr.io/cloud-builders/npm'
+    args: 
+    - 'run'
+    - 'build'
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args: 
+    - |
+      gcloud source repos clone https://github.com/sfsu-joseo/csc648-848-01-sw-engineering-summer-2023-T05.git --project=csc-648-848-team-05
+      cd csc648-848-01-sw-engineering-summer-2023-T05
+      git checkout master
+      gcloud app deploy --quiet
