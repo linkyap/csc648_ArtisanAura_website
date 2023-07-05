@@ -13,4 +13,9 @@ router.get('/', async function (req, res, next) {
   }
 });;
 
+router.get('/sign-in',function(req,res){
+  res.render('partials/sign-in');
+});
+
+
 module.exports = router;
