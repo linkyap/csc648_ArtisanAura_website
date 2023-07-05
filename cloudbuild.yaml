@@ -16,3 +16,6 @@ steps:
       git checkout master
       cd .\application\prototypes\thrownAwayPrototype/
       gcloud app deploy --quiet
+
+options: 
+  logging: CLOUD_LOGGING_ONLY
