@@ -6,16 +6,13 @@ steps:
   - name: 'node'
     entrypoint: 'npm'
     args: ['run', 'build']
+  
+  - name: 'gcr.io/cloud-builders/git'
+    args: ['clone', 'https://github.com/sfsu-joseo/csc648-848-01-sw-engineering-summer-2023-T05.git', '.']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args: 
-    - |
-      gcloud source repos clone https://github.com/sfsu-joseo/csc648-848-01-sw-engineering-summer-2023-T05.git --project=csc-648-848-team-05
-      cd csc648-848-01-sw-engineering-summer-2023-T05
-      git checkout master
-      cd .\application\prototypes\thrownAwayPrototype/
-      gcloud app deploy --quiet
+    args: ['app', 'deploy']
+    dir: 'thrownAwayPrototype'
 
 options: 
   logging: CLOUD_LOGGING_ONLY
