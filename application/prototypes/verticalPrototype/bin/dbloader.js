@@ -6,7 +6,7 @@ const connectionConfig = {
   user: 'root',
   password: 'jnrscZTyvbdC1YG/',
   database: 'TestingDB',
-  privateKey: '../application/credentials/id_rsa',//maybe add ../ infrom if doesnt work 
+  privateKey: '../application/credentials/id_rsa',//maybe add ../ infrom if doesnt work basd
 };
 
 async function main() {
