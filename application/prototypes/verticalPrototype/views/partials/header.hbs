@@ -9,7 +9,11 @@
                     index page which for right now is layout since partial not yet made--}} alt="ArtisanAura Icon"></a>
         </div>
         <ul>
-            <li><a id="sign-in" target="_self" href="/sign-in">Sign In</a></li>
+            {{!-- {{#ifLoggedIn}}
+            {{>usersropdown}}
+            {{else}} --}}
+            <li><a id="login" target="_self" href="/login">Sign In</a></li>
+            {{!-- {{/else}} --}}
         </ul>
     </nav>
     <div class="search-bar">

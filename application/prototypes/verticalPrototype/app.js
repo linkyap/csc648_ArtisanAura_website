@@ -8,6 +8,9 @@ const handlebars = require("express-handlebars");
 
 const flash = require('express-flash');
 
+const sessions = require('express-session')
+const mysqlStore = require('express-mysql-session')(sessions);
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
@@ -28,6 +31,10 @@ const hbs = handlebars.create({
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
+const sessionStore= new mysqlStore({/* default options */}, 
+require('./conf/database'));
+
+
 app.set("views", path.join(__dirname, "views"));
 
 // app.get('/', (req, res) => {
@@ -42,18 +49,32 @@ app.use(cookieParser("csc648T05"));
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
+
+app.use(sessions({
+  secret: "csc648T05",
+  resave: false,
+  saveUninitialized: true,
+  store: sessionStore,
+  cookie: {
+    httpOnly: true,
+    secure: false
+  }
+}));
+app.use(flash());
+app.use(function(req, res, next){
+  console.log(req.session);
+  if(req.session.user){
+    res.locals.isLoggedIn = true;//
+    res.locals.user = req.session.user;
+  }
+  next();
+})
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 app.use((req,res,next) => {
     next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));
 })
-
-
-
-// app.get('/', (req, res) => {
-//     res.render('layout');
-// });
 
 const PORT = process.env.PORT || 8080;
 

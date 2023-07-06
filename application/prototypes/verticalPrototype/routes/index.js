@@ -13,8 +13,11 @@ router.get('/', async function (req, res, next) {
   }
 });;
 
-router.get('/sign-in',function(req,res){
-  res.render('partials/sign-in');
+router.get('/login',function(req,res,next){
+  res.render('login');
+});
+router.get("/registration", function(req,res){
+  res.render('registration');
 });
 
 
