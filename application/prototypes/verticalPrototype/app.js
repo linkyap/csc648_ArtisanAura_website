@@ -28,6 +28,8 @@ const hbs = handlebars.create({
     }
 });
 
+
+
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
@@ -60,12 +62,14 @@ app.use(sessions({
     secure: false
   }
 }));
+
+
 app.use(flash());
 app.use(function(req, res, next){
   console.log(req.session);
-  if(req.session.user){
+  if(req.session.account){
     res.locals.isLoggedIn = true;//
-    res.locals.user = req.session.user;
+    res.locals.account = req.session.account;
   }
   next();
 })

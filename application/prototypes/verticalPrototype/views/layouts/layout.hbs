@@ -18,16 +18,17 @@
 
     {{#each js}}
     <script defer src="/public/js/{{this}}"></script>
-    {{!--no js yet but preparing for it --}}
+    {{!--for js specific to page --}}
     {{/each}}
 
 </head>
 
 <body>
 
-    {{!-- {{#if (neo messages)}}
+    {{#if (neo messages)}} 
+    {{!-- not empty objects^^neo --}}
     {{> flashmessage this}}
-    {{/if}} --}}
+    {{/if}}
     {{> header}}
     {{{body}}}
     {{> footer}}

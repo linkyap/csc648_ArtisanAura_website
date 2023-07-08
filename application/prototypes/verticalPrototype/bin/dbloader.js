@@ -5,7 +5,7 @@ const connectionConfig = {
   host: '34.72.218.74',
   user: 'root',
   password: 'jnrscZTyvbdC1YG/',
-  database: 'TestingDB',
+  database: 'artisanAura',
   privateKey: '../application/credentials/id_rsa',//maybe add ../ infrom if doesnt work basd
 };
 

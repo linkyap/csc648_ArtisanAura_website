@@ -6,34 +6,34 @@ var db = require('../conf/database')
 
 router.post('/registration',
   async function (req, res, next) {
-    var { username, email, password } = req.body;
-    //check username unique
+    var { name, email, password } = req.body;
+    //check email unique
 
     try {
 
 
-      //check email unique
+      
 
 
       var hashedPassword = await bcrypt.hash(password, 5);
 
       //insert
       var [resultObject, fields] = await db.execute(
-        `INSERT INTO users
-        (username,email,passwork)
+        `INSERT INTO account
+        (name,email,password)
         value
         (?,?,?);`,
-        [username, email, hashedPassword]
+        [name, email, hashedPassword]
       );
 
       //respond  
       if (resultObject && resultObject.affectedRows == 1) {
-        req.flash("success", `${username}'s account has been created`);
+        req.flash("success", `${name}'s account has been created`);
         return req.session.save(function (err) {
           return res.redirect('/login');
         })
       } else {
-        req.flash("error", `${username}'s account could not be created. 
+        req.flash("error", `${name}'s account could not be created. 
       Please try again later`
         );
         return req.session.save(function (err) {
@@ -50,44 +50,55 @@ router.post('/registration',
 
 
 
-// router.post('/login', async function (req, res, next) {
-//   const { username, password } = req.body;
+  router.post('/login', async function (req, res, next) {
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return res.redirect('/login');
+    } else {
+      var [rows, fields] = await db.execute(
+        `select id,name,password,email from account where email=?;`,
+        [email]
+      );
+      var account = rows[0];
+      if (!account) {
+        req.flash("error", `Log in failed: Invalid email/password`);
+        return req.session.save(function (err) {
+          res.redirect('/login');
+        });
+  
+      } else {
+  
+        var passwordsMatch = await bcrypt.compare(password, account.password);
+        if (passwordsMatch) {
+          req.session.account = {
+            id: account.id,
+            email: account.email,
+            name: account.name
+          };
+          req.flash("success", `You are now logged in!`);
+          return req.session.save(function (err) {
+            res.redirect('/');
+          });
+        } else {
+          req.flash("error", `Log in failed: Invalid username/password`);
+          return req.session.save(function (err) {
+            res.redirect('/login');
+          });
+        }
+      }
+    }
+  });
 
-//   if (!username || !password) {
-//     return res.redirect('/login');
-//   } else {
-//     var [rows, fields] = await db.execute(
-//       `select id,username,password,email from users where username=?;`,
-//       [username]
-//     );
-//     var user = rows[0];
-//     if (!user) {
-//       req.flash("error", `Log in failed: Invalid username/password`);
-//       req.session.save(function (err) {
-//         return res.redirect('/login');
-//       })
-
-//     } else {
-
-//       var passwordsMatch = await bcrypt.compare(password, user.password);
-//       if (passwordsMatch) {
-//         req.session.user = {
-//           userId: user.id,
-//           email: user.email,
-//           username: user.username
-//         };
-//         req.flash("success", `You are now logged in!`);
-//         req.session.save(function (err) {
-//           return res.redirect('/');
-//         })
-//       } else {
-//         req.flash("error", `Log in failed: Invalid username/password`);
-//         req.session.save(function (err) {
-//           return res.redirect('/login');
-//         })
-//       }
-//     }
-//   }
-// });
+  
+  router.post('/logout', function (req, res, next) {
+    req.session.destroy(function (err) {
+  
+      if (err) {
+        next(error);
+      }
+      return res.redirect('/');
+    })
+  });
 
 module.exports = router;
