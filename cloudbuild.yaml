@@ -11,7 +11,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'artisanaura-service'
+      - 'artisanaura-sservice'
       - '--image'
       - 'gcr.io/csc-648-848-team-05/artisanaura'
       - '--platform'
@@ -25,4 +25,4 @@ steps:
 
 options:
   logging: CLOUD_LOGGING_ONLY
-  
+
