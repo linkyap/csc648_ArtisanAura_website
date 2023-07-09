@@ -1,16 +1,13 @@
 steps:
-- name: 'gcr.io/cloud-builders/npm'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    npm install --prefix application/prototypes/verticalPrototype
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    gcloud app deploy --project=qwertyuiopoiuytre234567 --quiet
+- name: 'node'
+  entrypoint: 'npm'
+  args: ['install']
   dir: 'application/prototypes/verticalPrototype'
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'app'
+  args: ['deploy']
+  dir: 'application/prototypes/verticalPrototype'
+
 options:
   logging: CLOUD_LOGGING_ONLY
