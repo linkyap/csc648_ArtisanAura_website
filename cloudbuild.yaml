@@ -3,9 +3,15 @@ steps:
   entrypoint: 'npm'
   args: ['install']
   dir: 'application/prototypes/verticalPrototype'
+
 - name: 'node'
   entrypoint: 'npm'
   args: ['start']
+  dir: 'application/prototypes/verticalPrototype'
+
+- name: 'deploy-application'
+  entrypoint: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
   dir: 'application/prototypes/verticalPrototype'
 
 options:
