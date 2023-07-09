@@ -2,6 +2,7 @@ steps:
 - name: 'node'
   entrypoint: 'npm'
   args: ['install']
+  dir: 'application/prototypes/verticalPrototype'
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
