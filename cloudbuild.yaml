@@ -5,12 +5,6 @@ steps:
   - '-c'
   - |
     npm install --prefix application/prototypes/verticalPrototype
-- name: 'gcr.io/cloud-builders/npm'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    npm start --prefix application/prototypes/verticalPrototype
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'bash'
   args:
