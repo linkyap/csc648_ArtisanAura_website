@@ -5,9 +5,8 @@ steps:
   dir: 'application/prototypes/verticalPrototype'
 
 - name: 'deploy-application'
-  entrypoint: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy', 'application/prototypes/verticalPrototype']
-
+  entrypoint: 'gcr.io/csc-648-848-team-05'
+  args: ['deploy']
 
 options:
   logging: CLOUD_LOGGING_ONLY
