@@ -3,7 +3,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/csc-648-848-team-05/artisanAura'
+      - 'gcr.io/csc-648-848-team-05/artisanaura'
       - './application/prototypes/verticalPrototype'
     dir: 'application/prototypes/verticalPrototype'
 
@@ -13,7 +13,7 @@ steps:
       - 'deploy'
       - 'artisanAura-service'
       - '--image'
-      - 'gcr.io/csc-648-848-team-05/artisanAura'
+      - 'gcr.io/csc-648-848-team-05/artisanaura'
       - '--platform'
       - 'managed'
       - '--region'
