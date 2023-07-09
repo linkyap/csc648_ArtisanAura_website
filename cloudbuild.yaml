@@ -11,7 +11,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'artisanAura-service'
+      - 'artisanaura-service'
       - '--image'
       - 'gcr.io/csc-648-848-team-05/artisanaura'
       - '--platform'
