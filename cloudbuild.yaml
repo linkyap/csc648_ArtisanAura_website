@@ -6,11 +6,18 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
-      - 'app'
+      - 'run'
       - 'deploy'
+      - 'my-service'
+      - '--image'
+      - 'gcr.io/cloudrun/placeholder'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-central1'
+      - '--allow-unauthenticated'
     dir: 'application/prototypes/verticalPrototype'
     env:
       - 'SSH_PRIVATE_KEY=$(cat application/credentials/id_rsa.pub)'
-
 options:
   logging: CLOUD_LOGGING_ONLY
