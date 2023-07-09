@@ -10,7 +10,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud app deploy --project=csc-648-848-team-05 --version=v1.0.0 --quiet
+    gcloud app deploy --project=csc-648-848-team-05 --quiet
 
 options:
   logging: CLOUD_LOGGING_ONLY
