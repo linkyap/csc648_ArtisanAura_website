@@ -1,5 +1,5 @@
 steps:
-- name: 'install-dependencies'
+- name: 'node'
   entrypoint: 'npm'
   args: ['install']
   dir: 'application/prototypes/verticalPrototype'

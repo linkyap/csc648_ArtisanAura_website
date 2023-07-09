@@ -1,6 +1,6 @@
 runtime: nodejs14
 
-entrypoint: node app.js
+entrypoint: npm start
 
 handlers:
   - url: /.*
