@@ -1,15 +1,16 @@
 steps:
-- name: 'node'
+- name: 'install dependencies'
   entrypoint: 'npm'
   args: ['install']
   dir: 'application/prototypes/verticalPrototype'
 
-  - name: 'node'
+- name: 'start application'
   entrypoint: 'npm'
   args: ['start']
   dir: 'application/prototypes/verticalPrototype'
 
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: 'deploy application'
+  entrypoint: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
   dir: 'application/prototypes/verticalPrototype'
 
