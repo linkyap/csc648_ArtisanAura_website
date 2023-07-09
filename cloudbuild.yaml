@@ -1,14 +1,14 @@
 steps:
-- name: 'node'
-  entrypoint: 'npm'
-  args: ['install']
-  dir: 'application/prototypes/verticalPrototype'
+  - name: 'node'
+    entrypoint: 'npm'
+    args: ['install']
+    dir: 'application/prototypes/verticalPrototype'
 
-- name: 'gcr.io/cloud-builders/your-builder'
+  - name: 'gcr.io/cloud-builders/your-builder'
     args:
       - 'deploy'
     env:
-      - 'SSH_PRIVATE_KEY=$(cat application//credentials/id_rsa.pub)'
+      - 'SSH_PRIVATE_KEY=$(cat application/credentials/id_rsa.pub)'
 
 options:
   logging: CLOUD_LOGGING_ONLY
