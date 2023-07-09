@@ -1,0 +1,14 @@
+<div class="dropdown-menu-nobs">
+    <div class="nav-user"> Hi, {{account.name}} <i class="fa fa-user" aria-hidden="true"></i>
+    </div>
+    <div class="dropdown-menu-items">
+        <a class="proifle" href="/users/profile/{{account.id}}">
+            Profile
+        </a>
+        <form action="/users/logout" method="post">
+            <input type="hidden" value="{{csrf}}">
+            <button class="nav-items" id="logout" type="submit">Log out <i class="fa fa-sign-in"
+                    aria-hidden="true"></i></button>
+        </form>
+    </div>
+</div>
