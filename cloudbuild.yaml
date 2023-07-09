@@ -11,5 +11,6 @@ steps:
     args: ['app', 'deploy']
     dir: 'application/prototypes/thrownAwayPrototype'
 
-options: 
+options:
   logging: CLOUD_LOGGING_ONLY
+  

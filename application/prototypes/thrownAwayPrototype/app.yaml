@@ -1,0 +1,15 @@
+runtime: nodejs14
+
+instance_class: F2
+
+# env_variables:
+#   BUCKET_NAME: "my-app-assets"
+
+handlers:
+  # - url: /images
+  #   static_dir: static/images
+
+  - url: /.*
+    secure: always
+    redirect_http_response_code: 301
+    script: auto
