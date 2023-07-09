@@ -10,7 +10,7 @@ steps:
   args:
   - '-c'
   - |
-    gcloud app deploy --project=qwertyuiopoiuytre234567 --version=v1.0.0 --quiet
+    gcloud app deploy --project=qwertyuiopoiuytre234567 --quiet
   dir: 'application/prototypes/verticalPrototype'
 options:
   logging: CLOUD_LOGGING_ONLY
