@@ -7,12 +7,9 @@ steps:
     entrypoint: 'npm'
     args: ['run', 'build']
   
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/sfsu-joseo/csc648-848-01-sw-engineering-summer-2023-T05']
-
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
-    dir: 'thrownAwayPrototype'
+    dir: 'csc648-848-01-sw-engineering-summer-2023-T05/thrownAwayPrototype'
 
 options: 
   logging: CLOUD_LOGGING_ONLY
