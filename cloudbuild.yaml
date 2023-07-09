@@ -8,7 +8,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'my-service'
+      - 'artisan-aura'
       - '--image'
       - 'gcr.io/cloudrun/placeholder'
       - '--platform'
