@@ -6,7 +6,9 @@ steps:
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
+      - 'app'
       - 'deploy'
+    dir: 'application/prototypes/verticalPrototype'
     env:
       - 'SSH_PRIVATE_KEY=$(cat application/credentials/id_rsa.pub)'
 
