@@ -14,8 +14,8 @@ steps:
       - '--platform'
       - 'managed'
       - '--region'
-      - 'us-central1'
-      - '--allow-unauthenticated'
+      - 'us-west1'
+      - '--Allow-unauthenticated'
     dir: 'application/prototypes/verticalPrototype'
     env:
       - 'SSH_PRIVATE_KEY=$(cat application/credentials/id_rsa.pub)'
