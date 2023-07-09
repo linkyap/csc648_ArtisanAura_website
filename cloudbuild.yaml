@@ -17,12 +17,12 @@ steps:
       - 'us-west1'
       - '--allow-unauthenticated'
     dir: 'application/prototypes/verticalPrototype'
-    env:
-      - 'SSH_PRIVATE_KEY=$(cat application/credentials/id_rsa.pub)'
 
   - name: 'node'
     entrypoint: 'npm'
-    args: ['start']
+    args:
+      - 'start'
+      - '&'
     dir: 'application/prototypes/verticalPrototype'
 
 options:
