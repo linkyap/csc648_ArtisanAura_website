@@ -1,12 +1,6 @@
 steps:
-  - name: 'node'
-    entrypoint: 'npm'
+  - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
-  
-  - name: 'node'
-    entrypoint: 'npm'
-    args: ['npm', 'start']
-
   
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
@@ -14,4 +8,3 @@ steps:
 
 options: 
   logging: CLOUD_LOGGING_ONLY
-
