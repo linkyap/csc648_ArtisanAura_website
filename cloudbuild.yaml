@@ -4,7 +4,7 @@ steps:
       - 'build'
       - '-t'
       - 'gcr.io/csc-648-848-team-05/artisanaura'
-      - 'application/prototypes/verticalPrototype'
+      - '.'
     dir: 'application/prototypes/verticalPrototype'
 
   - name: 'gcr.io/cloud-builders/gcloud'
