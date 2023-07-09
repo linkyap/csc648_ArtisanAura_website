@@ -19,5 +19,11 @@ steps:
     dir: 'application/prototypes/verticalPrototype'
     env:
       - 'SSH_PRIVATE_KEY=$(cat application/credentials/id_rsa.pub)'
+
+  - name: 'gcr.io/cloud-builders/node'
+    entrypoint: 'npm'
+    args: ['start']
+    dir: 'application/prototypes/verticalPrototype'
+    
 options:
   logging: CLOUD_LOGGING_ONLY
