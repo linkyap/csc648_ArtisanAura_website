@@ -13,6 +13,7 @@ const mysqlStore = require('express-mysql-session')(sessions);
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
+const searchRouter = require("./routes/search");
 
 const app = express();
 
@@ -75,6 +76,8 @@ app.use(function(req, res, next){
 })
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/search", searchRouter);
+
 
 app.use((req,res,next) => {
     next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));

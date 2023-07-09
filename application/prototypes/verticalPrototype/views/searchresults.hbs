@@ -1,0 +1,15 @@
+
+<main class="main-content">
+  {{#if results}}
+    {{#each results}}
+      <div id="product">
+        <h2 id="name">{{name}}</h2>
+        <img id="image" src="../public/images/{{image}}" width="200" height="150" alt="Image"/>
+        <p id="description">{{description}}</p>
+        {{!-- <h2 id="price">${{price}}</h2> --}}
+      </div>
+    {{/each}}
+  {{else}}
+    <h2 id="not-found">Item not found!</h2>
+  {{/if}}
+</main>
