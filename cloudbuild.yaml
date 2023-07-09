@@ -17,13 +17,5 @@ steps:
       - 'us-west1'
       - '--allow-unauthenticated'
     dir: 'application/prototypes/verticalPrototype'
-
-  - name: 'node'
-    entrypoint: 'npm'
-    args:
-      - 'start'
-      - '&'
-    dir: 'application/prototypes/verticalPrototype'
-
 options:
   logging: CLOUD_LOGGING_ONLY
