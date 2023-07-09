@@ -17,7 +17,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--region'
-      - 'us-west1'
+      - 'us-west2'
       - '--allow-unauthenticated'
     dir: 'application/prototypes/verticalPrototype'
     env:
