@@ -1,5 +1,7 @@
 runtime: nodejs14
 
+entrypoint: node app.js
+
 handlers:
   - url: /.*
     script: auto

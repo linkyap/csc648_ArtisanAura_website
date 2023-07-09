@@ -5,12 +5,12 @@ steps:
   
   - name: 'node'
     entrypoint: 'npm'
-    args: ['run', 'build']
+    args: ['npm', 'start']
 
   
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
-    dir: 'application/prototypes/verticalPrototype'
+    dir: 'verticalPrototype'
 
 options: 
   logging: CLOUD_LOGGING_ONLY
