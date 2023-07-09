@@ -1,12 +1,11 @@
 steps:
 - name: 'node'
-    entrypoint: 'npm'
-    args: ['install']
+  entrypoint: 'npm'
+  args: ['install']
 
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy']
-    dir: 'application/prototypes/verticalPrototype'
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
+  dir: 'application/prototypes/verticalPrototype'
 
 options:
   logging: CLOUD_LOGGING_ONLY
