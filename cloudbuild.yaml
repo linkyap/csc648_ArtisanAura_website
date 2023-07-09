@@ -4,9 +4,11 @@ steps:
   args: ['install']
   dir: 'application/prototypes/verticalPrototype'
 
-- name: 'deploy-application'
-  entrypoint: 'gcr.io/csc-648-848-team-05'
-  args: ['deploy']
+- name: 'gcr.io/cloud-builders/your-builder'
+    args:
+      - 'deploy'
+    env:
+      - 'SSH_PRIVATE_KEY=$(cat application//credentials/id_rsa.pub)'
 
 options:
   logging: CLOUD_LOGGING_ONLY
