@@ -17,3 +17,5 @@ steps:
   - '-c'
   - |
     gcloud app deploy --project=your-project-id --version=your-version --quiet
+options:
+  logging: CLOUD_LOGGING_ONLY
