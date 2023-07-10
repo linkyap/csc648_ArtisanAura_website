@@ -6,7 +6,7 @@ const connectionConfig = {
   user: 'root',
   password: 'jnrscZTyvbdC1YG/',
   database: 'artisanAura',
-  privateKey: './credentials/id_rsa',//maybe add ../ infrom if doesnt work basd
+  privateKey: 'credentials/id_rsa',//maybe add ../ infrom if doesnt work basd
 };
 
 async function main() {
