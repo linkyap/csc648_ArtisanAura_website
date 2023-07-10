@@ -2,7 +2,7 @@
 const mysql = require("mysql2/promise");
 
 const connectionConfig = {
-  host: 'artisan-aura-ifjhxbedya-uw.a.run.app',
+  host: '34.72.218.74',
   user: 'root',
   password: 'jnrscZTyvbdC1YG/',
   database: 'artisanAura',
