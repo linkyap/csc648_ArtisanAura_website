@@ -1,15 +1,18 @@
 
 <main class="main-content">
-  {{#if results}}
-    {{#each results}}
-      <div id="product">
-        <h2 id="name">{{name}}</h2>
-        <img id="image" src="../public/images/{{image}}" width="200" height="150" alt="Image"/>
-        <p id="description">{{description}}</p>
-        {{!-- <h2 id="price">${{price}}</h2> --}}
-      </div>
-    {{/each}}
-  {{else}}
-    <h2 id="not-found">Item not found!</h2>
-  {{/if}}
-</main>
+    {{#if results}}
+      {{#each results}}
+        <a href="nowhere.com" class="item-link">
+          <div class="item">
+            <h2 class="name">{{name}}</h2>
+            <img class="image" src="../public/images/{{image}}" width="200" height="150" alt="Image"/>
+            <p class="description">{{description}}</p>
+            <h2 class="price">${{price}}</h2>
+          </div>
+        </a>
+      {{/each}}
+    {{else}}
+      <h2 id="not-found">No Product Found!</h2>
+    {{/if}}
+  </main>
+   <link rel="stylesheet" href="/public/css/searchresults.css">
