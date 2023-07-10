@@ -25,6 +25,6 @@ async function main() {
       connection.end();
     }
   }
-}
+} 
 
 main();
