@@ -6,8 +6,8 @@ steps:
       - 'gcr.io/csc-648-848-team-05/artisanauraa'
       - '.'
     dir: 'application/prototypes/verticalPrototype'
-    
- - name: 'gcr.io/cloud-builders/docker'
+
+  - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
       - 'gcr.io/csc-648-848-team-05/artisanauraa'
@@ -31,4 +31,3 @@ steps:
 
 options:
   logging: CLOUD_LOGGING_ONLY
-
