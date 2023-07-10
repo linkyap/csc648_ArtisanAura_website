@@ -1,4 +1,12 @@
-FROM gcr.io/cloud-run/node:18
+FROM ubuntu:20.04
+
+# Install Node.js and npm
+RUN apt-get update \
+    && apt-get install -y curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container
 WORKDIR /workspace/application/prototypes/verticalPrototype
@@ -13,7 +21,7 @@ RUN npm install
 COPY . .
 
 # Expose the port on which the application listens (if needed)
-EXPOSE 8080
+ EXPOSE 8080
 
 # Set the command to run the Node.js application
 CMD [ "npm", "start" ]

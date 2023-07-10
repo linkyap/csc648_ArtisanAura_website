@@ -1,11 +1,19 @@
 steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/csc-648-848-team-05/artisanauraa'
+      - '.'
+    dir: 'application/prototypes/verticalPrototype'
+
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
       - 'deploy'
       - 'artisan-aura'
       - '--image'
-      - 'gcr.io/csc-648-848-team-05/artisanaura'
+      - 'gcr.io/csc-648-848-team-05/artisanauraa'
       - '--platform'
       - 'managed'
       - '--region'
