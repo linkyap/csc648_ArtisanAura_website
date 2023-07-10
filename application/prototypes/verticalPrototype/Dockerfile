@@ -1,4 +1,4 @@
-FROM node:18
+FROM gcr.io/cloud-run/node:18
 
 # Set the working directory in the container
 WORKDIR /workspace/application/prototypes/verticalPrototype
@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # Expose the port on which the application listens (if needed)
- EXPOSE 8080
+EXPOSE 8080
 
 # Set the command to run the Node.js application
 CMD [ "npm", "start" ]
