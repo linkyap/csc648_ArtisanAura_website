@@ -105,7 +105,7 @@ nav ul li a {
     /* position: fixed;
     bottom: 0; */
     width: 100%;
-    border-top: 1px solid red;
+    border-top: 1px solid whitesmoke;
     margin-top: auto;
 }
 
@@ -136,4 +136,8 @@ nav ul li a {
 
 .fa{
     color: whitesmoke;
+}
+
+.fa-facebook, .fa-instagram, .fa-twitter{
+    color: #485b90;
 }
