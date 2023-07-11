@@ -10,10 +10,10 @@ body {
 }
 
 .header {
-    background-color: whitesmoke; 
+    background-color: #daebed; 
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #fff;
 }
 
 .nav-bar {
@@ -61,7 +61,7 @@ nav ul li a {
 
 .search-bar button {
     padding: 5px 10px;
-    background-color: green;
+    background-color: teal;
     border-radius: 15px;
     border: none;
     width: 10%;
@@ -98,7 +98,7 @@ nav ul li a {
 }
 
 .botm-footer {
-    background-color: whitesmoke;
+    background-color: #daebed;
     color: black;
     text-align: center;
     padding: 20px;
@@ -132,4 +132,8 @@ nav ul li a {
 #responsive-banner {
     width: 100%;
     height: auto;
+}
+
+.fa{
+    color: whitesmoke;
 }
