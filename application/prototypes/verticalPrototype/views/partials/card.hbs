@@ -1,8 +1,8 @@
-<div id="product-{{id}}" class="card">
-    <img class="card-image" src="{{thumbnail}}" alt="Missing Image">
+<div id="product-{{this.id}}" class="card">
+    <img class="card-image" src="{{this.thumbnail}}" alt="Missing Image">
     <div class="card-body">
-        <p class="card-title"> {{title}}</p>
-        <p class="card-text">{{price}}</p>
-        <a href="/product/{{id}}" class="anchor-buttons">Product Details</a>
+        <p class="card-title"> {{this.title}}</p>
+        <p class="card-text">{{this.price}}</p>
+        <a href="/product/{{this.id}}" class="anchor-buttons">Product Details</a>
     </div>
 </div>
