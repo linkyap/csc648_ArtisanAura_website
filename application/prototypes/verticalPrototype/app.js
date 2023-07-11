@@ -14,7 +14,7 @@ const mysqlStore = require('express-mysql-session')(sessions);
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/search");
-const productRouter = require("./routes/product");
+// const productRouter = require("./routes/product");
 
 const app = express();
 
@@ -78,7 +78,7 @@ app.use(function(req, res, next){
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/search", searchRouter);
-app.use("/product", productRouter);
+// app.use("/product", productRouter);
 
 
 
