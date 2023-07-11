@@ -2,7 +2,7 @@
 <main class="main-content">
     {{#if results}}
       {{#each results}}
-        <a href="nowhere.com" target="_self" class="item-link">
+        <a href="{{this.id}}" target="_self" class="item-link">
           <div class="item">
             <h2 class="title">{{this.title}}</h2>
             <img class="image" src="../public/images/{{this.thumbnail}}" width="200" height="150" alt="Image"/>
