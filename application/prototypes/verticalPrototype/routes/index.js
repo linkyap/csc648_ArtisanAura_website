@@ -6,7 +6,7 @@ var router = express.Router();
 // home page aka index
 router.get('/', async function (req, res, next) {
   try {       //vvv
-    res.render('index', { title:'Home', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+    res.render('index', { title:'Home', css:["newsletter.css","quiz.css"], js:["quiz.js"], limitReached:false});
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -27,15 +27,7 @@ router.get('/product',function(req,res,next){
 });
 router.get('/product/:id', function(req,res,next){
   res.render('ComingSoon');
-})
-
-let limitSql = await db.execute(`SELECT COUNT(*) FROM product`);
-if(limitSql > 5){
-    res.send({limitNotReached: false});
-}
-else{
-  res.send({limitNotReached: true});
-}
+});
 
 
 module.exports = router;
