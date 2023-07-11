@@ -1,7 +1,7 @@
 
 <main class="main-content">
     {{#if results}}
-      {{#each results}}
+ https://artisan-aura-ifjhxbedya-uw.a.run.app/public/images/search-result-banner.jpeg     {{#each results}}
         <a href="/{{this.id}}" target="_self" class="item-link">
           <div class="item">
             <h2 class="title">{{this.title}}</h2>
@@ -12,11 +12,12 @@
         </a>
       {{/each}}
     {{else}}
-      <!-- <h2 id="not-found">No Product Found!</h2> -->
+      <div class="container">
+      <h2 id="not-found">No Product Found!</h2>
       <div class="banner">
                 <img id="responsive-banner" src="/public/images/search-result-banner.jpeg" alt="ArtisanAura Jewelry">
             </div>
-      <div style="text-align: center; padding: 10px">
+      <div style="text-align: center;">
     <h2>We couldn't find any matches for your search.</h2>
     <p>Here are some tips to help you find what you're looking for:</p>
     <ul style="list-style-type: none;">
@@ -29,7 +30,7 @@
     <p>Or, reach out to our Customer Service for personalized help:</p>
     <a href="mailto:artisanaurajewelry@gmail.com">Email Customer Service</a>
 </div>
-
+</div>
     {{/if}}
   </main>
    <link rel="stylesheet" href="/public/css/searchresults.css">
