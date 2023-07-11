@@ -1,0 +1,61 @@
+
+/* Styles for the main content */
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+  /* Styles for item links */
+.item-link {
+    display: block;
+    width: 300px;
+    margin: 10px;
+    text-decoration: none;
+    color: #333;
+}
+  
+.item-link:hover {
+    background-color: #f5f5f5;
+}
+  
+  /* Styles for item container */
+.item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+  
+  /* Styles for item name */
+.name {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+  
+  /* Styles for item image */
+.image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+  
+  /* Styles for item description */
+.description {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+  
+  /* Styles for item price */
+.price {
+    font-size: 16px;
+    font-weight: bold;
+}
+  
+  /* Styles for "Item not found" message */
+#not-found {
+    font-size: 18px;
+    color: red;
+    text-align: center;
+}
+  
