@@ -13,7 +13,7 @@ router.get('/search', async (req, res) => {
 
       if (results.length > 0) {
         // If items are found, render the searchresults template with the results
-        res.render('searchresults', { results });
+        res.render('searchresults', { results: results, searchTerm:searchTerm });
       } else {
         // If no items are found, render the searchresults template with a "Item not found!" message
         res.render('searchresults', { notFound: true });

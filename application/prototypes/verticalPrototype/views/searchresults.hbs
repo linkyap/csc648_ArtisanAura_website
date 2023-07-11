@@ -4,10 +4,10 @@
       {{#each results}}
         <a href="nowhere.com" class="item-link">
           <div class="item">
-            <h2 class="name">{{name}}</h2>
-            <img class="image" src="../public/images/{{image}}" width="200" height="150" alt="Image"/>
-            <p class="description">{{description}}</p>
-            <h2 class="price">${{price}}</h2>
+            <h2 class="title">{{this.title}}</h2>
+            <img class="image" src="../public/images/{{this.thumbnail}}" width="200" height="150" alt="Image"/>
+            <p class="description">{{this.description}}</p>
+            <h2 class="price">${{this.price}}</h2>
           </div>
         </a>
       {{/each}}
