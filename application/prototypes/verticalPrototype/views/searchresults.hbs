@@ -1,7 +1,8 @@
 
 <main class="main-content">
     {{#if results}}
- https://artisan-aura-ifjhxbedya-uw.a.run.app/public/images/search-result-banner.jpeg     {{#each results}}
+    {{!-- https://artisan-aura-ifjhxbedya-uw.a.run.app/public/images/search-result-banner.jpeg      --}}
+      {{#each results}}
         <a href="/{{this.id}}" target="_self" class="item-link">
           <div class="item">
             <h2 class="title">{{this.title}}</h2>
