@@ -123,3 +123,8 @@ nav ul li a {
     display: flex;
     justify-content: center;
 }
+
+#responsive-banner {
+    width: 100%;
+    height: auto;
+}
