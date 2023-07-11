@@ -22,6 +22,9 @@ router.get("/registration", function(req,res,next){
 router.get('/ComingSoon',function(req,res,next){
   res.render('ComingSoon');
 });
+router.get('/product',function(req,res,next){
+  res.render('product');
+});
 
 
 module.exports = router;
