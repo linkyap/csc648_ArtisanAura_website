@@ -1,12 +1,10 @@
-"use strict";
-const mysql = require("mysql2/promise");
+const mysql = require('mysql2/promise');
 
 const connectionConfig = {
-  host: '34.72.218.74',
+  host: '/cloudsql/csc-648-848-team-05:us-central1:artisan-aura-mysql-instance',
   user: 'root',
   password: 'jnrscZTyvbdC1YG/',
   database: 'artisanAura',
-  privateKey: '../application/credentials/id_rsa',//maybe add ../ infrom if doesnt work basd
 };
 
 async function main() {
@@ -19,14 +17,14 @@ async function main() {
     console.log('Result:', rows);
     console.log('disconnecting from db');
     connection.end();
-    console.log('Cdisconnected');
+    console.log('Disconnected');
   } catch (error) {
     console.error('Error:', error);
     if (connection) {
-      console.log('error,connection closing');
+      console.log('Error, closing connection');
       connection.end();
     }
   }
-}
+} 
 
 main();
