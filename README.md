@@ -29,7 +29,11 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                    :---:                      |                                 :---:                                  |
+<<<<<<< HEAD
 |  Jewelry Shopping Site: Artisan Aura          |        https://artisan-aura-ifjhxbedya-uw.a.run.app/                   |                                                        
+=======
+|  Jewelry Shopping Site: Artisan Aura          |                          [http://35.247.87.15](https://artisan-aura-ifjhxbedya-uw.a.run.app/)                           |                                                        
+>>>>>>> 46e3a54a9f673718052f80ac49d1aaf2a08c2e39
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
