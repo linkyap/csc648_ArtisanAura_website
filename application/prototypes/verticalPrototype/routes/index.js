@@ -29,5 +29,13 @@ router.get('/product/:id', function(req,res,next){
   res.render('ComingSoon');
 })
 
+let limitSql = await db.execute(`SELECT COUNT(*) FROM product`);
+if(limitSql > 5){
+    res.send({limitNotReached: false});
+}
+else{
+  res.send({limitNotReached: true});
+}
+
 
 module.exports = router;
