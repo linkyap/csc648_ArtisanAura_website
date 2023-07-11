@@ -1,18 +1,33 @@
 steps:
-  - name: 'node'
-    entrypoint: 'npm'
-    args: ['install']
-  
-  - name: 'node'
-    entrypoint: 'npm'
-    args: ['run', 'build']
-  
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/sfsu-joseo/csc648-848-01-sw-engineering-summer-2023-T05']
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/csc-648-848-team-05/artisanauraa'
+      - '.'
+    dir: 'application/prototypes/verticalPrototype'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/csc-648-848-team-05/artisanauraa'
+    dir: 'application/prototypes/verticalPrototype'
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy']
-    dir: 'thrownAwayPrototype'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'artisan-aura'
+      - '--image'
+      - 'gcr.io/csc-648-848-team-05/artisanauraa'
+      - '--platform'
+      - 'managed'
+      - '--region'
+      - 'us-west1'
+      - '--allow-unauthenticated'
+    dir: 'application/prototypes/verticalPrototype'
+    env:
+      - 'PROJECT_ID=csc-648-848-team-05'
 
-options: 
+options:
   logging: CLOUD_LOGGING_ONLY
