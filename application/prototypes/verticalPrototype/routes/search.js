@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../conf/database');
 
-router.get('/search', async (req, res) => {
+router.get('/search', async (req, res, next) => {
   const searchTerm = req.query.q; // Get the search query from the request
 
   try {
