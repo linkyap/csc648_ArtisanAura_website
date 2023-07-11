@@ -12,7 +12,24 @@
         </a>
       {{/each}}
     {{else}}
-      <h2 id="not-found">No Product Found!</h2>
+      <!-- <h2 id="not-found">No Product Found!</h2> -->
+      <div class="banner">
+                <img id="responsive-banner" src="/public/images/search-results-banner.jpg" alt="ArtisanAura Jewelry">
+            </div>
+      <div style="text-align: center;">
+    <h2>We couldn't find any matches for your search.</h2>
+    <p>Here are some tips to help you find what you're looking for:</p>
+    <ul style="list-style-type: none;">
+        <li>• Check your spelling and try again.</li>
+        <li>• Try using fewer words or more general terms.</li>
+        <li>• Use different words that mean the same thing.</li>
+    </ul>
+    <p>Still can't find what you're looking for? Explore our top collections:</p>
+    <a href="/ComingSoon">Browse our Product Collections</a>
+    <p>Or, reach out to our Customer Service for personalized help:</p>
+    <a href="mailto:artisanaurajewelry@gmail.com">Email Customer Service</a>
+</div>
+
     {{/if}}
   </main>
    <link rel="stylesheet" href="/public/css/searchresults.css">
