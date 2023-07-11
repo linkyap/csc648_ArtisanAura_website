@@ -1,29 +1,34 @@
-<html lang = "en">
-<head>
-<h1>	</h1>
-<h2> Add a product </h2>
+<body>
+    <h1> </h1>
+    <h2> Add a product </h2>
 
-<form>
-<label for="name"> Jewelry Type</label>
-<input type="text" name="name" required placeholder= "type" />
+    <form class="form" method="POST" action="/product/createProduct" enctype="application/x-www-form-urlencoded">
+        <div class="input-group">Jewelry Title</label>
+            <input class="input-text" type="text" name="title" id="title" placeholder="Title">
+        </div>
+        
+        <div class="input-group">
+            <label for="description">Description</label>
+            <input class="input-text" type="text" name="description" id="description" placeholder="Description">
+        </div>
 
-<label for="name"> Description</label>
-<input type="text" name="name" required placeholder= "Description" />
+        <div class="input-group">
+            <label for="material">Material</label>
+            <input class="input-text" type="text" name="material" id="material" placeholder="Material">
+        </div>
 
-<label for="name"> Material</label>
-<input type="text" name="name" required placeholder= "Material" />
-<br />
-<input type= "submit" />
+        <div class="input-group">
+            <label for="price">Price</label>
+            <input class="input-text" type="text" name="price" id="price" placeholder="Price">
+        </div>
+        
+        <label for="img">Choose images</label>
+        <input class="input-text" type="file" name="uploadImg" id="uploadImg" />
 
+        <br>
+        <input type="submit" value="Submit"/>
 
+    </form>
 
-
-
-
-
-
-<br />
-<br />
-<br />
-
-</div>
+    </div>
+</body>
