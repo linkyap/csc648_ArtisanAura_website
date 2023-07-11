@@ -16,8 +16,11 @@ router.get('/', async function (req, res, next) {
 router.get('/login',function(req,res,next){
   res.render('login');
 });
-router.get("/registration", function(req,res){
+router.get("/registration", function(req,res,next){
   res.render('registration');
+});
+router.get('/ComingSoon',function(req,res,next){
+  res.render('ComingSoon');
 });
 
 
