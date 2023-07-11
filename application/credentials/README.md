@@ -22,7 +22,8 @@ technology stack or if their step-by-step descriptions are not clear enough. You
 
 To access SSH:
 
-1. Add SSH key (id_rsa.pub) to your local user ~/.ssh folder 
+Option 1: Connect as user TA Login
+1. Add SSH key (id_rsa.pub file from /credentials folder) to your local user ~/.ssh folder
 2. Open Terminal
 3. Enter command: `ssh talogin@35.247.87.15`
 4. Successful connection will display as `talogin@artisan-aura`
@@ -42,7 +43,7 @@ Option 2: Connect with MySQL Workbench:
 4. SSH Hostname: 35.247.87.15
 4. SSH Username: talogin
 6. SSH Password: G0G4t3rs!
-7. SSH Key File: ~/.ssh/id_rsa
+7. SSH Key File: ~/.ssh/id_rsa (download id_rsa file from /credentials folder)
 8. MySQL Hostname: 34.72.218.74
 9. MySQL Server Port: 3306
 10. Username: root
