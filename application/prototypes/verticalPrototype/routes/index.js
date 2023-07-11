@@ -25,6 +25,9 @@ router.get('/ComingSoon',function(req,res,next){
 router.get('/product',function(req,res,next){
   res.render('product');
 });
+router.get('/product/:id', function(req,res,next){
+  res.render('ComingSoon');
+})
 
 
 module.exports = router;

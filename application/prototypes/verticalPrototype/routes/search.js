@@ -16,7 +16,7 @@ router.get('/search', async (req, res, next) => {
         res.render('searchresults', { results: results, searchTerm:searchTerm });
       } else {
         // If no items are found, render the searchresults template with a "Item not found!" message
-        const products = await db.execute(`SELECT * FROM product LIMIT 4`)
+        const products = await db.execute(`SELECT * FROM product LIMIT 4`);
         
         res.render('searchresults', { notFound: true , results: products});
       }
