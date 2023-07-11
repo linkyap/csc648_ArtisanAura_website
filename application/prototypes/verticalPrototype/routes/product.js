@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
 
 var uploader = multer({storage: storage});
 
-router.post('/createProduct', uploader.single("uploadImg"), (req, res, next) => {
+router.post('/createProduct', uploader.single("uploadImage"), (req, res, next) => {
     let fileUploaded = req.file.path;
     let fileAsThumbnail = `thumbnail-${req.file.filename}`;
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbnail;
@@ -29,12 +29,12 @@ router.post('/createProduct', uploader.single("uploadImg"), (req, res, next) => 
         .resize(200)
         .toFile(destinationOfThumbnail)
         .then(async () => {
-            let image = fileUploaded;
-            let thumbnail = destinationOfThumbnail
+            // let image = fileUploaded;
+            // let thumbnail = destinationOfThumbnail
             let sql = 
             `INSERT INTO product 
-            (title, description, material, price, image, thumbnail) VALUE (?,?,?,?,?,?);`;
-            return await db.execute(sql, [title, description, material, price, image, thumbnail]);
+            (title, type, material, description, price, size, image, thumbnail, created_At) VALUE (?,?,?,?,?,?,?,?,now());`;
+            return await db.execute(sql, [title, type, material, description, price, size, fileUploaded, destinationOfThumbnail]);
         })
 });
 module.exports = router;
