@@ -106,13 +106,14 @@ nav ul li a {
     bottom: 0; */
     width: 100%;
     border-top: 1px solid red;
+    margin-top: auto;
 }
 
 .botm-footer a {
     color: black;
     text-decoration: none;
     margin: 0 10px;
-    margin-top: auto;
+   
 }
 
 .my-icon img {
