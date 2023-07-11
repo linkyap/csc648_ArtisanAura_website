@@ -28,10 +28,6 @@
         </div>
 {{>newsletter}}
 {{>quiz}}
-{{#if limitReached}}
-    <p>Limit reached {{limitReached}} </p>
-{{else}}
-    <p>Limit not reached {{limitReached}}</p>
-    {{>addProduct}}
-{{/if}}
+{{>addProduct}}
+
 </main>
