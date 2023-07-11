@@ -22,11 +22,10 @@ router.get('/ComingSoon',function(req,res,next){
   res.render('ComingSoon', { title:'Home', css:["newsletter.css"]});
 });
 router.get('/product',function(req,res,next){
-  res.render('product');
+  res.render('addProduct');
 });
 router.get('/product/:id', function(req,res,next){
   res.render('ComingSoon');
 });
-
 
 module.exports = router;

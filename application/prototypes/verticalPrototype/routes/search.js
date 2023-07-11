@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../conf/database');
 
-router.get('/', async (req, res, next) => {
+router.get('/search', async (req, res, next) => {
   const searchTerm = req.query.q; // Get the search query from the request
 
   try {
@@ -16,7 +16,7 @@ router.get('/', async (req, res, next) => {
         res.render('searchresults', { results: results, searchTerm:searchTerm });
       } else {
         // If no items are found, render the searchresults template with a "Item not found!" message
-        res.render('searchresults', { notFound: true , results: products});
+        res.render('searchresults', { notFound: true });
       }
     } else {
       // If the search term is empty, render the searchresults template with an empty results array

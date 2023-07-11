@@ -12,9 +12,6 @@ router.post('/registration',
     try {
 
 
-      
-
-
       var hashedPassword = await bcrypt.hash(password, 5);
 
       //insert
