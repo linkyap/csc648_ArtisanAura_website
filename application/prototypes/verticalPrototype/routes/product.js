@@ -34,10 +34,5 @@ router.post('/createProduct', uploader.single("uploadImage"), async (req, res, n
             await db.execute(sql, [title, material, description, price, fileUploaded, destinationOfThumbnail]);
             res.redirect('/');
         });
-    let limitSql = await db.execute(`SELECT COUNT(*) FROM product`);
-    console.log("limit sql = ", limitSql);
-    if (limitSql >= 5) {
-        res.render('index', {limitReached:true});
-    }
 });
 module.exports = router;
