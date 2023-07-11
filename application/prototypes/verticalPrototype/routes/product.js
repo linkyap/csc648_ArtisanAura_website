@@ -33,8 +33,8 @@ router.post('/createProduct', uploader.single("uploadImage"), (req, res, next) =
             // let thumbnail = destinationOfThumbnail
             let sql = 
             `INSERT INTO product 
-            (title, type, material, description, price, size, image, thumbnail, created_At) VALUE (?,?,?,?,?,?,?,?,now());`;
-            return await db.execute(sql, [title, type, material, description, price, size, fileUploaded, destinationOfThumbnail]);
+            (title, material, description, price, image, thumbnail) VALUE (?,?,?,?,?,?);`;
+            return await db.execute(sql, [title, material, description, price, fileUploaded, destinationOfThumbnail]);
         })
 });
 module.exports = router;
