@@ -22,12 +22,14 @@ router.post('/createProduct', uploader.single("uploadImg"), (req, res, next) => 
     let fileUploaded = req.file.path;
     let fileAsThumbnail = `thumbnail-${req.file.filename}`;
     let destinationOfThumbnail = req.file.destination + "/" + fileAsThumbnail;
-    let {title, description, material, price, image, thumbnail} = req.body;
+    let {title, description, material, price, thumbnail} = req.body;
     
     sharp(fileUploaded)
         .resize(200)
         .toFile(destinationOfThumbnail)
         .then(async () => {
+            let image = fileUploaded;
+            let thumbnail = destinationOfThumbnail
             let sql = 
             `INSERT INTO product 
             (title, description, material, price, image, thumbnail) VALUE (?,?,?,?,?,?);`;
