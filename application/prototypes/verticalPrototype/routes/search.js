@@ -8,7 +8,7 @@ router.get('/search', async (req, res) => {
   try {
     if (searchTerm) {
       const [results, fields] = await db.execute(
-        `SELECT * FROM product WHERE name LIKE '%${searchTerm}%' OR type LIKE '%${searchTerm}%' OR material LIKE '%${searchTerm}%' OR description LIKE '%${searchTerm}%'`
+        `SELECT * FROM product WHERE title LIKE '%${searchTerm}%' OR type LIKE '%${searchTerm}%' OR material LIKE '%${searchTerm}%' OR description LIKE '%${searchTerm}%'`
       );
 
       if (results.length > 0) {
