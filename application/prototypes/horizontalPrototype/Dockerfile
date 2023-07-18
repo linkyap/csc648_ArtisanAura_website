@@ -9,7 +9,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory in the container
-WORKDIR /workspace/application/prototypes/horizantalPrototype
+WORKDIR /workspace/application/prototypes/horizontalPrototype
  
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./

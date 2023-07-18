@@ -25,6 +25,8 @@ steps:
       - '--region'
       - 'us-west1'
       - '--allow-unauthenticated'
+      - '--set-env-vars'
+      - 'GCS_KEYFILE=${_KEY_FILE_CONTENT}'
     dir: 'application/prototypes/horizontalPrototype'
     env:
       - 'PROJECT_ID=csc-648-848-team-05'
