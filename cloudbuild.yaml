@@ -5,13 +5,13 @@ steps:
       - '-t'
       - 'gcr.io/csc-648-848-team-05/artisanauraa'
       - '.'
-    dir: 'application/prototypes/verticalPrototype'
+    dir: 'application/prototypes/horizontalPrototype'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - 'gcr.io/csc-648-848-team-05/artisanauraa'
-    dir: 'application/prototypes/verticalPrototype'
+      - 'gcr.io/csc-648-848-team-05/artisanauraadev'
+    dir: 'application/prototypes/horizontalPrototype'
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -19,13 +19,13 @@ steps:
       - 'deploy'
       - 'artisan-aura'
       - '--image'
-      - 'gcr.io/csc-648-848-team-05/artisanauraa'
+      - 'gcr.io/csc-648-848-team-05/artisanauraadev'
       - '--platform'
       - 'managed'
       - '--region'
       - 'us-west1'
       - '--allow-unauthenticated'
-    dir: 'application/prototypes/verticalPrototype'
+    dir: 'application/prototypes/horizontalPrototype'
     env:
       - 'PROJECT_ID=csc-648-848-team-05'
 

@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.header {
+    background-color: #daebed; 
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-bar ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none; 
+    flex: 1;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+.search-bar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-bar form{
+    display: flex;
+    align-items: center;
+    width: 70%;
+    justify-content: space-between;
+}
+
+.search-bar input[type="text"] {
+    padding: 5px;
+    margin: 0;
+    width: 87%;
+    border-radius: 15px;
+}
+
+.search-bar button {
+    padding: 5px 10px;
+    background-color: teal;
+    border-radius: 15px;
+    border: none;
+    width: 10%;
+}
+
+.container {
+    margin: 20px;
+    padding: 20px;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+}
+
+.post-thumbnails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post-card {
+    width: 25%;
+    margin-bottom: 20px;
+}
+
+.post-thumbnail img {
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+.thumbnail-title {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.botm-footer {
+    background-color: #daebed;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    /* position: fixed;
+    bottom: 0; */
+    width: 100%;
+    border-top: 1px solid whitesmoke;
+    margin-top: auto;
+}
+
+.botm-footer a {
+    color: black;
+    text-decoration: none;
+    margin: 0 10px;
+   
+}
+
+.my-icon img {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 20px;
+    justify-content: center;
+}
+.my-icon{
+    margin: 0 10px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+#responsive-banner {
+    width: 100%;
+    height: auto;
+}
+
+.fa{
+    color: whitesmoke;
+}
+
+.fa-facebook, .fa-instagram, .fa-twitter{
+    color: #485b90;
+}
