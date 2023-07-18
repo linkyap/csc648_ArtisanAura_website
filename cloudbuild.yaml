@@ -3,7 +3,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/csc-648-848-team-05/artisanauraa'
+      - 'gcr.io/csc-648-848-team-05/artisanauraadev'
       - '.'
     dir: 'application/prototypes/horizontalPrototype'
 
@@ -17,7 +17,7 @@ steps:
     args:
       - 'run'
       - 'deploy'
-      - 'artisan-aura'
+      - 'artisanauradevweb'
       - '--image'
       - 'gcr.io/csc-648-848-team-05/artisanauraadev'
       - '--platform'

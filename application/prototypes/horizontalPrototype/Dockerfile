@@ -10,7 +10,7 @@ RUN apt-get update \
 
 # Set the working directory in the container
 WORKDIR /workspace/application/prototypes/horizantalPrototype
-
+ 
 # Copy the package.json and package-lock.json files to the container
 COPY package*.json ./
 
