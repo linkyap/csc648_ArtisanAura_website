@@ -16,11 +16,11 @@
 | Student      | Student Full Name |Student SFSU Email | GitHub Username | Discord Username   |        Role         |
 |    :---:     |   :---:           |       :---:       |     :---:       |        :---:       |        :---:        | 
 |      #1      |   Cassia Reddig   | creddig@sfsu.edu  |  creddig1       |     cassia#4516    |        Lead         |
-|      #2      |   Tamer Senan     |  tsenan@sfsu.edu  |    tsenan0      |     tam-e#2265     |   Back End Lead     |
-|      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |     M2 Editor       |
-|      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |    Github Master    |
-|      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |  Front End Lead     |
-|      #6      |  James Donnelly   |jdonnelly@sfsu.edu |    linkyap      |   yapubbles#5699   |                     |
+|      #2      |   Tamer Senan     |  tsenan@sfsu.edu  |    tsenan0      |     tam-e#2265     |    Github Master    |
+|      #3      | Daniel Moorhatch  |dmoorhatch@sfsu.edu|   dmoorhatch    |   daniel m#5201    |                     |
+|      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |     M3 Editor       |
+|      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |    Back End Lead    |
+|      #6      |  James Donnelly   |jdonnelly@sfsu.edu |    linkyap      |   yapubbles#5699   |   Front End Lead    |
 
 
 4. All the team members must sign the team contract found [here](https://forms.gle/PoTXjTmPGGKKZjsT6). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a term environment. 
@@ -29,7 +29,8 @@
 
 |             Name of the Project               |                            URL of the Project                          | 
 |                    :---:                      |                                 :---:                                  |
-|  Jewelry Shopping Site: Artisan Aura          |        https://artisan-aura-ifjhxbedya-uw.a.run.app/                   |                                                        
+|  Jewelry Shopping Site: Artisan Aura          |        https://artisan-aura-ifjhxbedya-uw.a.run.app/                   |
+|  Development Site                             |       https://artisanauradevweb-ifjhxbedya-uw.a.run.app/               | 
  
 
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
