@@ -47,7 +47,7 @@ const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
     projectId: 'csc-648-848-team-05',
-    keyFilename: 'googlestoreagekey',
+    keyFilename: 'googlestoreagekey.json',
 
 });
 
@@ -86,6 +86,7 @@ router.post('/createProduct', uploader.single("uploadImage"), async (req, res, n
                      contentType: req.file.mimetype,
                      },
             });
+        
 
             // Upload the thumbnail image to Google Cloud Storage
             const gcsThumbnailFileName = `thumbnails/${fileAsThumbnail}`;
