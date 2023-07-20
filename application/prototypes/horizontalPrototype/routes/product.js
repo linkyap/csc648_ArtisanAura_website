@@ -36,6 +36,10 @@
 // });
 // module.exports = router;
 
+
+
+
+
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
@@ -71,7 +75,7 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
     const thumbnailBuffer = await sharpImage.resize(200).toBuffer();
 
     // Upload the original image to Google Cloud Storage set up
-    const bucketName = 'artifacts.csc-648-848-team-05.appspot.com';
+    const bucketName = 'artisan-aura-photo-bucket';
     const bucket = storage.bucket(bucketName);
     
     // //make image name crypto
@@ -121,3 +125,4 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
     next(error);
   }
 });
+module.exports = router;
