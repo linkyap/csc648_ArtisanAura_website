@@ -12,20 +12,35 @@ router.get('/', async function (req, res, next) {
   }
 });
 
+// login page 
 router.get('/login',function(req,res,next){
   res.render('login');
 });
+
+// registration page 
 router.get("/registration", function(req,res,next){
   res.render('registration');
 });
+
+// coming soon page 
 router.get('/ComingSoon',function(req,res,next){
-  res.render('ComingSoon', { title:'Home', css:["newsletter.css"]});
+  res.render('ComingSoon', { title:'Coming Soon', css:["newsletter.css"]});
 });
-router.get('/product',function(req,res,next){
+
+// add product page 
+router.get('/addProduct',function(req,res,next){
   res.render('addProduct');
 });
+
+// single product page 
 router.get('/product/:id', function(req,res,next){
   res.render('ComingSoon');
 });
+
+// privacy policy page 
+router.get('/PrivacyPolicy',function(req,res,next){
+  res.render('PrivacyPolicy', { title:'ArtisanAura Privacy Policy'});
+});
+
 
 module.exports = router;
