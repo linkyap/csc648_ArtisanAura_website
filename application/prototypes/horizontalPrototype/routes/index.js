@@ -52,4 +52,9 @@ router.get('/termsService',function(req,res,next){
   res.render('termsService', { title:'Terms of Service and Privacy Policy'});
 });
 
+// about us page
+router.get('/AboutUs',function(req,res,next){
+  res.render('AboutUs', { title:'About ArtisanAura', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
+
 module.exports = router;

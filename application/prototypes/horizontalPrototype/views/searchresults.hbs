@@ -1,12 +1,11 @@
 
 <main class="main-content">
     {{#if results}}
-    {{!-- https://artisan-aura-ifjhxbedya-uw.a.run.app/public/images/search-result-banner.jpeg      --}}
       {{#each results}}
         <a href="/product/{{this.id}}" target="_self" class="item-link">
           <div class="item">
             <h2 class="title">{{this.title}}</h2>
-            <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" width="200" height="150" alt="product images comming soon"/>
+            <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" width="200" height="150" alt="product images coming soon"/>
             {{!-- <p class="description">{{this.description}}</p> --}}
             <h2 class="price">${{this.price}}</h2>
           </div>
@@ -16,7 +15,7 @@
       <div class="container">
       <h2>No Product Found!</h2>
       <div class="banner">
-                <img id="responsive-banner" src="/public/images/search-result-banner.jpeg" alt="ArtisanAura Jewelry">
+                <img id="responsive-banner" src="/public/images/Banner_Not_Found.jpg" alt="ArtisanAura Jewelry">
             </div>
       <div style="text-align: center;">
     <h2>We couldn't find any matches for your search.</h2>
