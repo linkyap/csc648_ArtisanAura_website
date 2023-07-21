@@ -47,4 +47,9 @@ router.get('/termsConditions',function(req,res,next){
   res.render('termsConditions', { title:'ArtisanAura Terms and Conditions'});
 });
 
+// terms of service and privacy for user registration page
+router.get('/termsService',function(req,res,next){
+  res.render('termsService', { title:'Terms of Service and Privacy Policy'});
+});
+
 module.exports = router;
