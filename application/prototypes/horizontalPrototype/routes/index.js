@@ -42,5 +42,9 @@ router.get('/PrivacyPolicy',function(req,res,next){
   res.render('PrivacyPolicy', { title:'ArtisanAura Privacy Policy'});
 });
 
+// terms and conditions page
+router.get('/termsConditions',function(req,res,next){
+  res.render('termsConditions', { title:'ArtisanAura Terms and Conditions'});
+});
 
 module.exports = router;
