@@ -1,19 +1,21 @@
+<link rel="stylesheet" href="/public/css/forms.css">
 <main class="main-content">
     <div class="container3">
         <h2>Login</h2>
         <form class="form" action="/users/login" method="POST" enctype="application/x-www-form-urlencoded">
             <div class="input-group">
+                <input class="input-text" type="text" name="email" id="email" required="">
                 <label for="email">Email</label>
-                <input class="input-text" type="text" name="email" id="email" placeholder="Email">
+                <div class="error"></div>
             </div>
-
 
             <div class="input-group">
+                <input class="input-text" type="password" name="password" id="password" required="">
                 <label for="password">Password</label>
-                <input class="input-text" type="password" name="password" id="password" placeholder="Password">
+                <div class="error"></div>
             </div>
 
-            <input type="submit" value="Log in">
+            <input class="submit" type="submit" value="Log in">
             <div id="registerLink">Need to create an account?</div>
             <a type="text" href="registration">Create an account</a>
         </form>
