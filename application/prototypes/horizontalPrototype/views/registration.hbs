@@ -5,7 +5,7 @@
         <form id="form" class="form" method="post" action="/users/registration" method="POST"
             enctype="application/x-www-form-urlencoded">
             <div class="input-group">
-                <input class="input-text" type="text" name="name" id="name" required="" >
+                <input class="input-text" type="text" name="name" id="name" required="" autocomplete="off">
                 <label for="name">Name</label>
                 <div class="error"></div>
             </div>
@@ -23,23 +23,24 @@
             </div>
 
             <div class="input-group">
-                <input class="input-text" type="email" name="email" id="email"required="">
+                <input class="input-text" type="email" name="email" id="email" required="" autocomplete="off">
                 <label for="email">Email</label>
                 <div class="error"></div>
             </div>
 
             <div class="checkbox">
-                <label for="ageOfConsent">Yes, I am 13+ years of age</label>
                 <input type="checkbox" name="ageOfConsent" id="ageOfConsent" required="">
+                <label for="ageOfConsent">Yes, I am 13+ years of age</label>
                 <div class="error"></div>
             </div>
 
             <div class="checkbox">
-                <label for="TOS">I have read and agree to the</label>
-                <a target="_blank" href="/termsService">
-                    Terms of Service & Privacy Policy
-                </a>
                 <input type="checkbox" name="TOS" id="TOS" required="">
+                <label for="TOS">I have read and agree to the
+                    <a target="_blank" href="/termsService">
+                        Terms of Service & Privacy Policy
+                    </a>
+                </label>
                 <div class="error"></div>
             </div>
 
