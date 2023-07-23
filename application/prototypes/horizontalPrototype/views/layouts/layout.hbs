@@ -25,15 +25,12 @@
 </head>
 
 <body>
-
-    {{#if (neo messages)}} 
-    {{!-- not empty objects^^neo --}}
+    {{> header}}
+    {{#if (neo messages)}}
     {{> flashmessage this}}
     {{/if}}
-    {{> header}}
     {{{body}}}
     {{> footer}}
-
 </body>
 
 

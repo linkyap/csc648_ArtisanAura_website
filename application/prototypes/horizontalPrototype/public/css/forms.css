@@ -88,15 +88,21 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.input-group.success input {
-    border-color: rgb(138, 200, 138);
+#flash-message {
+    position: relative;
+    margin: 10px auto;
+    width: 30%;
 }
-
-.input-group.error input {
-    border-color: rgb(252, 138, 138);
+#flash-message div {
+    text-align: center;
 }
-
-.input-group .error {
-    color:red;
-    font-size: 9px;
+.alert-error {
+    background-color: pink;
+    border: 2px solid pink;
+    border-radius: 6px;
+}
+.alert-success {
+    border: 2px solid rgb(191, 220, 191);
+    border-radius: 6px;
+    background-color: rgb(191, 220, 191);
 }
