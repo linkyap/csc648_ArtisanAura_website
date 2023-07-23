@@ -34,7 +34,7 @@ router.get('/addProduct',function(req,res,next){
 
 // single product page 
 router.get('/product/:id', function(req,res,next){
-  res.render('ComingSoon');
+  res.render('product/:id');
 });
 
 // privacy policy page 
