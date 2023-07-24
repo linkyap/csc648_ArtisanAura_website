@@ -57,7 +57,7 @@ router.get('/AboutUs',function(req,res,next){
   res.render('AboutUs', { title:'About ArtisanAura', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
 
-// about us page
+// shop page
 router.get('/Shop',function(req,res,next){
   res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
