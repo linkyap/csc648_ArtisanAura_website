@@ -45,6 +45,33 @@ nav ul li a {
     margin-top: 10px;
 }
 
+.dropdown-menu-nobs .nav-user {
+    font-size: 18px;
+}
+
+.dropdown-menu-items .profile {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.dropdown-menu-items .profile:visited{
+    color:black
+}
+
+.dropdown-menu-items .profile:hover{
+    text-decoration: underline;
+}
+.dropdown-menu-items button{
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    font-weight: normal;
+}
+.dropdown-menu-items button:hover{
+    text-decoration: underline;
+}
+
 .search-bar form{
     display: flex;
     align-items: center;

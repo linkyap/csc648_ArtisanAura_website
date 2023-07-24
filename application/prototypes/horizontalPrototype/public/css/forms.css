@@ -4,7 +4,7 @@
     left:50%;
     width: 400px;
     padding: 20px;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%, -35%);
     border: 1px solid rgb(135, 136, 136);
     border-radius: 10px;
     background-color: #daebed;
@@ -23,7 +23,7 @@
     width: 100%;
     border: transparent;
     border-radius: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-size: 16px;
     padding: 10px;
     outline: none;
@@ -88,10 +88,17 @@
     border-radius: 4px;
     cursor: pointer;
 }
+.password-req p {
+    top: -10px;
+    font-size: 13px;
+    text-align: center;
+    white-space: pre-line;
+}
 #flash-message {
     position: relative;
-    margin: 10px auto;
+    margin: -10px auto;
     width: 30%;
+    white-space: pre-line;
 }
 #flash-message div {
     text-align: center;

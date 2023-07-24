@@ -1,37 +1,35 @@
-<link rel="stylesheet" href="/public/css/forms.css">
 <main class="registration-content">
     <div class="container3">
         <h2>Registration Form</h2>
-        <form id="form" class="form" method="post" action="/users/registration" method="POST"
+        <div class="password-req">
+            <p>Make sure your password contains:
+                - at least 8 characters
+                - at least 1 uppercase letter
+                - at least 1 lowercase letter
+                - at least 1 number
+                - at least one special character
+            </p>
+        </div>
+        <form id="form" class="form" action="/users/registration" method="POST"
             enctype="application/x-www-form-urlencoded">
             <div class="input-group">
                 <input class="input-text" type="text" name="name" id="name" required="" autocomplete="off">
                 <label for="name">Name</label>
-                <div class="error"></div>
             </div>
 
             <div class="input-group">
                 <input class="input-text" type="text" name="email" id="email" required="" autocomplete="off">
                 <label for="email">Email</label>
-                <div class="error"></div>
             </div>
 
             <div class="input-group">
                 <input class="input-text" type="password" name="password" id="password" required="">
                 <label for="password">Password</label>
-                <div class="error"></div>
             </div>
 
             <div class="input-group">
                 <input class="input-text" type="password" name="confirm" id="confirm" required="">
                 <label for="confirm-password">Confirm Password</label>
-                <div class="error"></div>
-            </div>
-
-            <div class="checkbox">
-                <input type="checkbox" name="ageOfConsent" id="ageOfConsent" required="">
-                <label for="ageOfConsent">Yes, I am 13+ years of age</label>
-                <div class="error"></div>
             </div>
 
             <div class="checkbox">
@@ -41,11 +39,8 @@
                         Terms of Service & Privacy Policy
                     </a>
                 </label>
-                <div class="error"></div>
             </div>
-
             <input class="submit" type="submit" value="Create Account">
-            <div id="error"></div>
         </form>
     </div>
 </main>

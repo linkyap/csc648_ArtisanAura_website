@@ -13,7 +13,7 @@ router.post('/registration', (req, res, next) => {
     .then((emailDoesExist) => {
       if (emailDoesExist) {
         throw new UserError(
-          "Registration Failed: Email already exists",
+          "Email already exists",
           "/registration",
           200
         );
@@ -53,42 +53,38 @@ router.post('/registration', (req, res, next) => {
 
 router.post('/login', async function (req, res, next) {
   const { email, password } = req.body;
-
-  if (!email || !password) {
-    return res.redirect('/login');
-  } else {
-    var [rows, fields] = await db.execute(
-      `select id,name,password,email from account where email=?;`,
-      [email]
-    );
-    var account = rows[0];
-    if (!account) {
-      req.flash("error", `Log in failed: Invalid email/password`);
-      return req.session.save(function (err) {
-        res.redirect('/login');
+  User.authenticate(email, password)
+  .then((loggedUser) => {
+    if(loggedUser.id > 0){
+      req.session.account = {
+        id: loggedUser.id,
+        email: email,
+        name: loggedUser.name
+      };
+      req.flash('success', 'You are now logged in!');
+      req.session.save(err => {
+        res.redirect('/');
       });
-
-    } else {
-
-      var passwordsMatch = await bcrypt.compare(password, account.password);
-      if (passwordsMatch) {
-        req.session.account = {
-          id: account.id,
-          email: account.email,
-          name: account.name
-        };
-        req.flash("success", `You are now logged in!`);
-        return req.session.save(function (err) {
-          res.redirect('/');
-        });
-      } else {
-        req.flash("error", `Log in failed: Invalid username/password`);
-        return req.session.save(function (err) {
-          res.redirect('/login');
-        });
-      }
     }
-  }
+    else{
+      throw new UserError(
+        "Invalid email and/or password", 
+        "/login",
+        200);
+    }
+  })
+  .catch((err) => {
+    if(err instanceof UserError) {
+      req.flash('error', err.getMessage());
+      res.status(err.getStatus());
+      req.session.save(err => {
+        res.redirect('/login');
+      })
+    }
+    else{
+      next(err);
+    }
+  })
 });
 
 

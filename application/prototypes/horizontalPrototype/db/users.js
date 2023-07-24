@@ -30,9 +30,11 @@ User.emailExists = (email) => {
 };
 
 User.authenticate = (email, password) => {
-    return db.execute("SELECT password FROM account WHERE email=?;", [email])
+    let account;
+    return db.execute("SELECT * FROM account WHERE email=?;", [email])
     .then(([results, fields]) => {
         if(results && results.length == 1){
+            account = results[0];
             return bcrypt.compare(password, results[0].password);
         }
         else{
@@ -41,7 +43,7 @@ User.authenticate = (email, password) => {
     })
     .then((passwordsMatch) => {
         if(passwordsMatch){
-            return Promise.resolve(results[0].id);
+            return Promise.resolve(account);
         }
         else{
             return Promise.resolve(-1);

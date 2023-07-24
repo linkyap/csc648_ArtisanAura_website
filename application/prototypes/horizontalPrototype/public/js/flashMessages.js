@@ -8,7 +8,7 @@ function setFlashMessageFadeout(flashElement){
             }
             currentOpacity = currentOpacity - .05;
             flashElement.style.opacity = currentOpacity;
-        }, 50);
+        }, 100);
     }, 4000);
 }
 let flashElement = document.getElementById('flash-message');

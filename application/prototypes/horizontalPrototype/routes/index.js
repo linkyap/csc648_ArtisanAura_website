@@ -17,6 +17,11 @@ router.get('/login',function(req,res,next){
   res.render('login');
 });
 
+//profile page
+router.get('/users/profile/:id', function(req, res, next){
+  res.render('profile', {title:'Profile'});
+});
+
 // registration page 
 router.get("/registration", function(req,res,next){
   res.render('registration');
