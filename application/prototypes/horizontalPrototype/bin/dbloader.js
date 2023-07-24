@@ -1,10 +1,10 @@
 const mysql = require('mysql2/promise');
 
 const connectionConfig = {
-  host: 'localhost',
+  host: '/cloudsql/csc-648-848-team-05:us-central1:artisan-aura-mysql-instance',
   user: 'root',
-  password: '1234',
-  database: 'testing648',
+  password: 'jnrscZTyvbdC1YG/',
+  database: 'artisanAura',
 };
 
 async function main() {
