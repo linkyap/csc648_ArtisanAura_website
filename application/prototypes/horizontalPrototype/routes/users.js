@@ -23,7 +23,7 @@ router.post('/registration', (req, res, next) => {
       }
     })
     .then((createUser) => {
-      if (createUser) {
+      if (createUser < 0) {
         throw new UserError(
           "User could not be created",
           "/registration",

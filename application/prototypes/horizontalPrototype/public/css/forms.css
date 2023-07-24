@@ -76,6 +76,10 @@
 .create-account a:hover {
     text-decoration: underline;
 }
+.input-image input {
+    margin-top: 10px;
+    width: 100%;
+}
 .submit {
     padding:10px;
     margin-top: 10px;

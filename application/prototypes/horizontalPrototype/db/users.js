@@ -8,11 +8,20 @@ User.create = (username, email, password) => {
         return db.execute(
         "INSERT INTO account (name, email, password) VALUES (?,?,?);",
         [username, email, hashedPassword]
-    );
+        );
+    })
+    .then(([results, fields]) => {
+        if(results && results.affectedRows){
+            return db.execute(
+                "INSERT INTO user (account_id) VALUES (?);",
+                [results.insertId]
+            );
+        }
     })
     .then(([results, fields]) => {
         if (results && results.affectedRows){
-            return Promise.resolve(0);
+            console.log(results.insertId);
+            return Promise.resolve(results.insertId);
         }
         else{
             return Promise.resolve(-1);
