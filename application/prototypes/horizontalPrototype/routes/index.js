@@ -75,4 +75,9 @@ router.get('/Refund',function(req,res,next){
   res.render('Refund', { title:'Refund', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
 
+// Customer Service page
+router.get('/CustomerSupport',function(req,res,next){
+  res.render('CustomerSupport', { title:'Customer Support', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
+
 module.exports = router;
