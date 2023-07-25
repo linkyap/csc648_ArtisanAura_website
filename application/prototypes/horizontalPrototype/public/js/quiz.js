@@ -41,7 +41,7 @@ function nextQuestion() {
     } else { //quiz done
         document.getElementById("quiz-popup").style.display ="none";
         // this code will be changed to redirect the user based on their choices.
-        alert("Your path is "+userChoices.join(", "));
+        // alert("Your path is "+userChoices.join(", "));
     }
 }
 
@@ -59,6 +59,7 @@ function displayCurrentQuestion() {
     document.getElementById("quiz-options").innerHTML = choice;
     if(questionCount === quizQuestions.length-1) {
         document.getElementById("next").textContent = "Submit";
+        
     }
 }//questions and options ^^^
 
