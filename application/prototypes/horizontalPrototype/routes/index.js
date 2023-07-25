@@ -1,7 +1,7 @@
 var express = require('express');
 const path = require("path");
 var router = express.Router();
-
+var db = require('../conf/database');
 // home page aka index
 router.get('/', async function (req, res, next) {
   try {       //vvv
@@ -33,18 +33,15 @@ router.get('/ComingSoon',function(req,res,next){
 });
 
 // add product page 
-router.get('/addProduct',function(req,res,next){
+router.get('/addProduct', function(req,res,next){
   res.render('addProduct');
 });
 
-// single product page 
-router.get('/productsingle', function(req,res,next){
-  res.render('productsingle');
-});
-// custom page 
-router.get('/customproduct', function(req,res,next){
-  res.render('customproduct');
-});
+// // single product page 
+// router.get('/product/:id', function(req,res,next){
+//   res.render('productPage');
+// });
+
 // privacy policy page 
 router.get('/PrivacyPolicy',function(req,res,next){
   res.render('PrivacyPolicy', { title:'ArtisanAura Privacy Policy'});
@@ -65,10 +62,25 @@ router.get('/AboutUs',function(req,res,next){
   res.render('AboutUs', { title:'About ArtisanAura', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
 
+
+
 // shop page
-router.get('/Shop',function(req,res,next){
-  res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+router.get('/Shop', async function(req,res,next){
+    try {
+      var [products, fields] = await db.execute(
+        `SELECT * FROM product ORDER BY id DESC;`
+      );
+      if (products.length === 0) {
+        req.flash("error", `No products available`);
+      }
+      res.render('Shop', { title:'Shop ArtisanAura Jewelry',products:products, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
+    }catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+   }
 });
+
+
 // Guides page
 router.get('/Guides',function(req,res,next){
   res.render('Guides', { title:'Guides', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
@@ -76,6 +88,11 @@ router.get('/Guides',function(req,res,next){
 // Refund page
 router.get('/Refund',function(req,res,next){
   res.render('Refund', { title:'Refund', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
+
+// Customer Service page
+router.get('/CustomerSupport',function(req,res,next){
+  res.render('CustomerSupport', { title:'Customer Support', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
 
 module.exports = router;

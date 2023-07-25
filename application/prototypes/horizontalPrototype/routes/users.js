@@ -89,6 +89,7 @@ router.post('/login', async function (req, res, next) {
 
 
 router.post('/logout', function (req, res, next) {
+  req.flash('success', 'You are now logged out');
   req.session.destroy(function (err) {
     if (err) {
       next(error);
@@ -97,4 +98,17 @@ router.post('/logout', function (req, res, next) {
   })
 });
 
+router.post('/req-refund', (req, res, next) => {
+  req.flash('success', 'Refund confirmation sent to email');
+  req.session.save(err => {
+    res.redirect('/');
+  })
+});
+
+router.post('/order-status', (req, res, next) => {
+  req.flash('success', 'Order pending. Check again in 24 hours.');
+  req.session.save(err => {
+    res.redirect('/order-status');
+  })
+});
 module.exports = router;
