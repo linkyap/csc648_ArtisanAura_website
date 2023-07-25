@@ -92,9 +92,22 @@ router.get('/AboutUs', async function(req,res,next){
 // shop page
 router.get('/Shop', async function(req,res,next){
     try {
-      var [products, fields] = await db.execute(
-        `SELECT * FROM product ORDER BY id DESC;`
-      );
+      let filterPrice = req.query.price; // Get the filter price from the query parameters
+
+      let query = "SELECT * FROM product";
+      let queryParams = [];
+  
+      // If a filter price is provided, add a WHERE clause to the SQL query
+      if (filterPrice) {
+        query += " WHERE price <= ?";
+        queryParams.push(parseFloat(filterPrice));
+      }
+  
+      const [products, fields] = await db.execute(query, queryParams);
+
+      // var [products, fields] = await db.execute(
+      //   `SELECT * FROM product ORDER BY id DESC;`
+      // );
       if (products.length === 0) {
         req.flash("error", `No products available`);
       }
