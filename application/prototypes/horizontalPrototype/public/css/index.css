@@ -184,3 +184,16 @@ nav ul li a {
     font-size: 15px;
     /* user logo size */
 }
+
+
+.button {
+    display: inline-block;
+    background-color: #008080;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #004848;
+}
