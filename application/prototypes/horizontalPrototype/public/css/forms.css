@@ -107,6 +107,7 @@
     margin: -10px auto;
     width: 30%;
     white-space: pre-line;
+    z-index: 9999;
 }
 #flash-message div {
     text-align: center;
