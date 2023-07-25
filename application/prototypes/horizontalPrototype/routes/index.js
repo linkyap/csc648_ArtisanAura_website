@@ -131,7 +131,7 @@ router.post('/Newsletter', async function(req,res,next){
       "INSERT INTO newsletter (email) VALUES (?)",
       [email]
     );
-    if (input && result.affectedRows) {
+    if (input && input.affectedRows) {
       req.flash("success", "Youve been added to the mailing list");
       return req.session.save(function (error) {
         if (error) next(error);
