@@ -37,6 +37,14 @@ router.get('/addProduct', function(req,res,next){
   res.render('addProduct');
 });
 
+// Refund page
+router.get('/req-refund',function(req,res,next){
+  res.render('refundReq', { title:'Request Refund'});
+});
+// Refund page
+router.get('/order-status',function(req,res,next){
+  res.render('orderStatus', { title:'Order Status'});
+});
 // // single product page 
 // router.get('/product/:id', function(req,res,next){
 //   res.render('productPage');
