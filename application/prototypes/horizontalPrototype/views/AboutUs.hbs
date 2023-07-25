@@ -1,3 +1,36 @@
+<head>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        .profile-picture {
+            flex: 1 1 100%;
+            max-width: 33.33%;
+        }
+        .text-content {
+            flex: 1 1 100%;
+            max-width: 66.66%;
+        }
+        .video-content {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+        img, video {
+            width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .profile-picture, .text-content {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
 
 <main>
     <div class="container">
@@ -12,7 +45,28 @@
             <div>
             <h3>Artisan Spotlight</h3>
              <!-- artisan photo and bio -->  
-             <!-- artisan video -->
+            
+              <div class="container">
+                <div class="profile-picture">
+                    <img src="/public/images/Artisan-Spotlight.jpg" alt="Artisan Spotlight">
+                </div>
+                <div class="text-content">
+                    <h4>About Our Featured Artisan: Isabella Sterling</h4>
+                    <p>Isabella Sterling, the heart and soul behind many of ArtisanAura's captivating pieces, is a passionate artist who found her calling in the realm of jewelry crafting. Born and raised in the vibrant city of Seattle, Isabella’s creative journey began in her grandmother's attic, where she was fascinated by an old jewelry box filled with beautiful trinkets from the past. This early exposure sparked a love for intricate designs and the transformative power of jewelry that continues to inspire her craft today.</p>
+                    <p>With a degree in Fine Arts and a natural flair for sculpting, Isabella took the leap into the jewelry-making world, embracing it as a platform where her artistic abilities could truly shine. She thrives on the joy that her creations bring to those who wear them, believing that each piece of jewelry holds the power to express one's unique identity.</p>
+                    <p>Isabella specializes in crafting sustainable, artisanal jewelry, intertwining modern aesthetics with traditional techniques. From ethereal necklaces to bespoke bracelets and rings, her creations reflect a distinct blend of sophistication and charm. Drawing inspiration from nature, her designs often incorporate organic shapes and patterns, making each piece a symbolic memento that resonates deeply with the wearer.</p>
+                    <p>Her ultimate goal is to create not just jewelry, but wearable art that tells a story - whether it's a tale of the artist's inspiration, the wearer's individuality, or the beautiful blend of both. Through her work with ArtisanAura, Isabella Sterling continues to redefine what it means to wear, love, and live in jewelry.</p>
+                </div>
+
+                 <!-- artisan video -->
+                <div class="video-content">
+                    <video controls>
+                        <source src="#" type="video/mp4">
+                        Artisan Video
+                    </video>
+                </div>
+                </div>
+                
                 <div>
                     <h4>Artisan Featured Work</h4>
                     <p>Coming Soon!</p>
@@ -32,6 +86,7 @@
             </div>
 
     </div>
+
 
 {{>newsletter}}
 {{>quiz}}
