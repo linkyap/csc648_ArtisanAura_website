@@ -4,7 +4,7 @@ var multer = require('multer');
 var sharp = require('sharp');
 var crypto = require('crypto');
 var db = require('../conf/database');
-const getProduct = require('../helpers/products');
+const {getProductById} = require('../db/products');
 const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
@@ -14,7 +14,22 @@ const storage = new Storage({
 
 var uploader = multer();
 
-router.use('/:id', getProduct);
+router.get('/:id', async (req, res, next) => {
+  try{
+    let productId = req.params.id;
+    let results = await getProductById(productId);
+    if(results && results.length > 0){
+        res.render('productPage', {currentProduct: results[0]});
+    }
+    else{
+        req.flash("error", "Product not found");
+        res.redirect('/');
+    }
+}
+catch (error){
+    next(error);
+}
+});
 
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
   try {

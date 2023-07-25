@@ -1,10 +1,14 @@
+.registration-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container3{
-    position: absolute;
-    top:50%;
-    left:50%;
+    position: relative;
     width: 400px;
     padding: 20px;
-    transform: translate(-50%, -35%);
     border: 1px solid rgb(135, 136, 136);
     border-radius: 10px;
     background-color: #daebed;
@@ -103,6 +107,7 @@
     margin: -10px auto;
     width: 30%;
     white-space: pre-line;
+    z-index: 9999;
 }
 #flash-message div {
     text-align: center;
