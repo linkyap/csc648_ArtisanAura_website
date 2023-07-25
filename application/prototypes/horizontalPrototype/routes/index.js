@@ -33,14 +33,17 @@ router.get('/ComingSoon',function(req,res,next){
 });
 
 // add product page 
-router.get('/addProduct',function(req,res,next){
+router.get('/addProduct', function(req,res,next){
   res.render('addProduct');
 });
 
-// // single product page 
-// router.get('/product/:id', function(req,res,next){
-//   res.render('productPage');
-// });
+router.get('/order-status', function(req,res,next){
+  res.render('orderStatus');
+});
+
+router.get('/req-refund', function (req,res,next) {
+  res.render('refundReq');
+});
 
 // privacy policy page 
 router.get('/PrivacyPolicy',function(req,res,next){
