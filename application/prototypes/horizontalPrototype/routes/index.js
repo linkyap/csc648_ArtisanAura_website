@@ -37,13 +37,18 @@ router.get('/addProduct', function(req,res,next){
   res.render('addProduct');
 });
 
-router.get('/order-status', function(req,res,next){
-  res.render('orderStatus');
+// Refund page
+router.get('/req-refund',function(req,res,next){
+  res.render('refundReq', { title:'Request Refund'});
 });
-
-router.get('/req-refund', function (req,res,next) {
-  res.render('refundReq');
+// Refund page
+router.get('/order-status',function(req,res,next){
+  res.render('orderStatus', { title:'Order Status'});
 });
+// // single product page 
+// router.get('/product/:id', function(req,res,next){
+//   res.render('productPage');
+// });
 
 router.get('/cart', function (req,res,next){
   res.render('cart', {title: 'Shopping Cart'});
@@ -52,7 +57,14 @@ router.get('/cart', function (req,res,next){
 router.get('/PrivacyPolicy',function(req,res,next){
   res.render('PrivacyPolicy', { title:'ArtisanAura Privacy Policy'});
 });
-
+ // single product page 
+router.get('/productsingle', function(req,res,next){
+  res.render('productsingle');
+ });
+// custom product page 
+router.get('/customproduct', function(req,res,next){
+  res.render('customproduct');
+ });
 // terms and conditions page
 router.get('/termsConditions',function(req,res,next){
   res.render('termsConditions', { title:'ArtisanAura Terms and Conditions'});
@@ -64,22 +76,32 @@ router.get('/termsService',function(req,res,next){
 });
 
 // about us page
-router.get('/AboutUs',function(req,res,next){
-  res.render('AboutUs', { title:'About ArtisanAura', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+router.get('/AboutUs', async function(req,res,next){
+  try {
+    var [products, fields] = await db.execute(
+      `SELECT * FROM product ORDER BY id DESC;`
+    );
+    if (products.length === 0) {
+      req.flash("error", `No products available`);
+    }
+    res.render('AboutUs', { title:'About ArtisanAura Jewelry',products: products, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
+  }catch (err) {
+  console.error(err);
+  res.status(500).send("Server error");
+ }
 });
-
 
 
 // shop page
 router.get('/Shop', async function(req,res,next){
     try {
-      var [results, fields] = await db.execute(
+      var [products, fields] = await db.execute(
         `SELECT * FROM product ORDER BY id DESC;`
       );
-      if (results.length === 0) {
+      if (products.length === 0) {
         req.flash("error", `No products available`);
       }
-      res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
+      res.render('Shop', { title:'Shop ArtisanAura Jewelry',products: products, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
     }catch (err) {
     console.error(err);
     res.status(500).send("Server error");
