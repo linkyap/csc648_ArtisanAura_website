@@ -47,7 +47,7 @@ User.authenticate = (email, password) => {
             return bcrypt.compare(password, results[0].password);
         }
         else{
-            return Promise.reject(-1);
+            return Promise.resolve(0);
         }
     })
     .then((passwordsMatch) => {
@@ -55,7 +55,7 @@ User.authenticate = (email, password) => {
             return Promise.resolve(account);
         }
         else{
-            return Promise.resolve(-1);
+            return Promise.resolve(0);
         }
     })
     .catch((err) => Promise.reject(err));
