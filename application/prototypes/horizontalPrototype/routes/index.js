@@ -66,5 +66,9 @@ router.get('/AboutUs',function(req,res,next){
 router.get('/Shop',function(req,res,next){
   res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
+// Guides page
+router.get('/Guides',function(req,res,next){
+  res.render('Guides', { title:'Guides', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
 
 module.exports = router;

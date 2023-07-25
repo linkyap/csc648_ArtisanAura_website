@@ -5,6 +5,20 @@
     align-items: center;
 }
 
+.login-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addProduct-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container3{
     position: relative;
     width: 400px;
