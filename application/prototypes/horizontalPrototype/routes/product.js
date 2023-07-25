@@ -4,7 +4,7 @@ var multer = require('multer');
 var sharp = require('sharp');
 var crypto = require('crypto');
 var db = require('../conf/database');
-
+const getProduct = require('../helpers/products');
 const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
@@ -84,4 +84,5 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
   }
 });
 
+router.use('product/:id', getProduct);
 module.exports = router;

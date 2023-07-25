@@ -1,15 +1,15 @@
 <link rel="stylesheet" href="/public/css/product.css">
 <main class="product-page">
     <div class="product-images">
-        <h3 class="title">{{this.title}}</h3>
-        <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" alt="product images coming soon" />
+        <h3 class="title">{{currentProduct.title}}</h3>
+        <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{currentProduct.thumbnail}}" alt="product images coming soon" />
     </div>
 
     <div class="product-details">
-        <h3 class="price">${{this.price}}</h3>
+        <h3 class="price">${{currentProduct.price}}</h3>
         <div class="description">
             <label class="desc-header">Description</label>
-            <p class="description">{{this.description}}</p>
+            <p class="description">{{currentProduct.description}}</p>
         </div>
         <button class="add-item">Add to cart</button>
     </div>
