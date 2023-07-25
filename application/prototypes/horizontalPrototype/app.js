@@ -15,6 +15,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/search");
 const productRouter = require("./routes/product");
+const newsletterRouter = require("./routes/newsletter");
 
 const app = express();
 
@@ -79,7 +80,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/search", searchRouter);
 app.use("/product", productRouter);
-
+app.use("/newsletter", newsletterRouter);
 
 
 app.use((req,res,next) => {
