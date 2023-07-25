@@ -121,7 +121,7 @@ router.get('/CustomerSupport',function(req,res,next){
 });
 
 // Newsletter sign up
-router.get('/Newsletter', async function(req,res,next){
+router.post('/Newsletter', async function(req,res,next){
   var newsletter_Id = req.params.id;
   var email = req.body.email;
   console.log(`newsletter_Id: ${newsletter_Id}, email: ${email}`);
