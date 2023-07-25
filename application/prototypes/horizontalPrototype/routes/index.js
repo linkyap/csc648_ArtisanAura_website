@@ -37,13 +37,10 @@ router.get('/addProduct', function(req,res,next){
   res.render('addProduct');
 });
 
-router.get('/order-status', function(req,res,next){
-  res.render('orderStatus');
-});
-
-router.get('/req-refund', function (req,res,next) {
-  res.render('refundReq');
-});
+// // single product page 
+// router.get('/product/:id', function(req,res,next){
+//   res.render('productPage');
+// });
 
 // privacy policy page 
 router.get('/PrivacyPolicy',function(req,res,next){
