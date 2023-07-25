@@ -41,7 +41,7 @@ router.post('/add-custom-item', (req, res, next) => {
 router.post('/add-item', (req, res, next) => {
   req.flash('error', 'Failed to add to cart');
   req.session.save(err => {
-    res.render('productPage');
+    res.redirect('/product/:id');
   });
 });
 
