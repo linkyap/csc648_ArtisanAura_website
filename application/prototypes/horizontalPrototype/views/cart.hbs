@@ -1,23 +1,25 @@
 <link rel="stylesheet" href="/public/css/cart.css">
 <main class="main-content">
-    <div class="cart-items">
-        <p>Your shopping cart is empty!</p>
-    </div>
-    <div class="side">
-        <div class="side-content">
-            <p class="text">Subtotal:</p>
-            <p class="cost">$0.00</p>
+    <form class="cart-form" action="/users/cart" method="POST" enctype="application/x-www-form-urlencoded">
+        <div class="cart-items">
+            <p>Your shopping cart is empty!</p>
         </div>
-        <div class="side-content">
-            <p class="text">Tax:</p>
-            <p class="cost">$0.00</p>
+        <div class="side">
+            <div class="side-content">
+                <p class="text">Subtotal:</p>
+                <p class="cost">$0.00</p>
+            </div>
+            <div class="side-content">
+                <p class="text">Tax:</p>
+                <p class="cost">$0.00</p>
+            </div>
+            <div class="side-content">
+                <p class="text">Total:</p>
+                <p class="cost">$0.00</p>
+            </div>
+    
+            <input class="submit" type="submit" value="Checkout">
         </div>
-        <div class="side-content">
-            <p class="text">Total:</p>
-            <p class="cost">$0.00</p>
-        </div>
-
-        <input class="submit" type="submit" value="Checkout" />
-    </div>
+    </form>
     
 </main>

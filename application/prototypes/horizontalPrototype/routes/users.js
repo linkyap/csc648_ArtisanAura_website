@@ -111,4 +111,11 @@ router.post('/order-status', (req, res, next) => {
     res.redirect('/order-status');
   })
 });
+
+router.post('/cart', (req, res, next) => {
+  req.flash('error', 'Shopping cart is empty');
+  req.session.save(err => {
+    res.redirect('/cart');
+  })
+})
 module.exports = router;
