@@ -5,7 +5,12 @@
     <form class="form" method="POST" action="/product/createProduct" enctype="multipart/form-data">
         <div class="input-group">
             <input class="input-text" type="text" name="title" id="title" required="">
-            <label for="jewelry-title">Jewelry Title</label>
+            <label for="title">Title</label>
+        </div>
+
+        <div class="input-group">
+            <input class="input-text" type="text" name="type" id="type" required="">
+            <label for="type">Jewelry Type</label>
         </div>
 
         <div class="input-group">
@@ -18,10 +23,10 @@
             <label for="description">Description</label>
         </div>
 
-        <div class="input-group">
+        {{!-- <div class="input-group">
             <input class="input-text" type="text" name="size" id="size" required="">
             <label for="size">Size</label>
-        </div>
+        </div> --}}
         
         <div class="input-group">
             <input class="input-text" type="text" name="price" id="price" required="">
