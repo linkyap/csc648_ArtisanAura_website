@@ -139,3 +139,6 @@
     border-radius: 6px;
     background-color: rgb(191, 220, 191);
 }
+#service-messagebox {
+    resize: none;
+  }
