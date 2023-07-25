@@ -19,7 +19,7 @@ router.get('/:id', async (req, res, next) => {
     let productId = req.params.id;
     let results = await getProductById(productId);
     if(results && results.length > 0){
-        res.render('/productPage', {currentProduct: results[0]});
+        res.render('productPage', {currentProduct: results[0]});
     }
     else{
         req.flash("error", "Product not found");
