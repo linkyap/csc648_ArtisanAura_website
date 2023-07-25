@@ -5,30 +5,31 @@
 
 .nav-user {
     font-size: 35px;
-    font-weight: bold;
-    color: #333;
+    font-weight: lighter;
+    color: #323232;
     cursor: pointer;
     padding: 0 20px 0px 10%;
-
+    width: 120px;
 }
 
 .nav-user:hover {
     background-color: #d2faef;
     border-radius: 20px;
+    
 }
 
 .dropdown-menu-items {
     display: none;
     position: absolute;
     z-index: 1;
-    top: 83px;
+
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-46%);
     background-color: #Daebed;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    /*! box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
     padding: 10px;
     border-radius: 10px;
-    border: solid;
+    /*! border: solid; */
     border-width: 2px;
     padding: 0 40px;
     width: 100%;
@@ -58,6 +59,7 @@
     margin: 0;
     text-decoration: none;
     cursor: pointer;
+    /*! font-family: 'Avenir', 'Arial', sans-serif; */
 }
 
 .nav-items:hover {
@@ -72,5 +74,6 @@
 #logout {
     width: 100%;
     text-align: center;
-    color: #333;
+    color: #323232;
+    font-weight: light;
 }
