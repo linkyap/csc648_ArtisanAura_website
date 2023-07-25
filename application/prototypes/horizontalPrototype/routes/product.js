@@ -14,6 +14,8 @@ const storage = new Storage({
 
 var uploader = multer();
 
+router.use('/:id', getProduct);
+
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
   try {
     const { title, type, material, description, price } = req.body;
@@ -84,5 +86,4 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
   }
 });
 
-router.use('product/:id', getProduct);
 module.exports = router;
