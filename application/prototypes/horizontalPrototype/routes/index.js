@@ -135,7 +135,7 @@ router.post('/Newsletter', async function(req,res,next){
       req.flash("success", "Youve been added to the mailing list");
       return req.session.save(function (error) {
         if (error) next(error);
-        return res.redirect(`/posts/${postId}`);
+        return res.redirect(`/`);
       });
     } else {
       next(new Error("error occurred"));
