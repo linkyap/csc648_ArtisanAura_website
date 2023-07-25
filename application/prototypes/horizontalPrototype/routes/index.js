@@ -62,18 +62,20 @@ router.get('/AboutUs',function(req,res,next){
   res.render('AboutUs', { title:'About ArtisanAura', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
 
+
+
 // shop page
 router.get('/Shop', async function(req,res,next){
 
     try {
-      var [product, fields] = await db.execute(
+      var [results, fields] = await db.execute(
         `SELECT * FROM product ORDER BY id DESC;`
       );
      console.log('PRODUCT'+ product);
-      if (product.length === 0) {
+      if (results.length === 0) {
         req.flash("error", `No products available`);
       }
-  res.render('Shop', { title:'Shop ArtisanAura Jewelry',product:product, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
+  res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
     }catch (err) {
     console.error(err);
     res.status(500).send("Server error");
