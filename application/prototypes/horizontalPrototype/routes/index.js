@@ -70,13 +70,13 @@ router.get('/AboutUs',function(req,res,next){
 // shop page
 router.get('/Shop', async function(req,res,next){
     try {
-      var [results, fields] = await db.execute(
+      var [products, fields] = await db.execute(
         `SELECT * FROM product ORDER BY id DESC;`
       );
-      if (results.length === 0) {
+      if (products.length === 0) {
         req.flash("error", `No products available`);
       }
-      res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
+      res.render('Shop', { title:'Shop ArtisanAura Jewelry',products:products, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
     }catch (err) {
     console.error(err);
     res.status(500).send("Server error");
