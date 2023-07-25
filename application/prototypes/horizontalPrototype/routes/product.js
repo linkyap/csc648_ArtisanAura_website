@@ -31,6 +31,20 @@ catch (error){
 }
 });
 
+router.post('/add-custom-item', (req, res, next) => {
+  req.flash('error', 'Failed to add to cart');
+  req.session.save(err => {
+    res.redirect('/customproduct');
+  });
+});
+
+router.post('/add-item', (req, res, next) => {
+  req.flash('error', 'Failed to add to cart');
+  req.session.save(err => {
+    res.redirect('/product/:id');
+  });
+});
+
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
   try {
     const { title, type, material, description, price } = req.body;

@@ -87,7 +87,6 @@ router.post('/login', async function (req, res, next) {
   })
 });
 
-
 router.post('/logout', function (req, res, next) {
   req.flash('success', 'You are now logged out');
   req.session.destroy(function (err) {
@@ -117,5 +116,7 @@ router.post('/cart', (req, res, next) => {
   req.session.save(err => {
     res.redirect('/cart');
   })
-})
+});
+
+
 module.exports = router;
