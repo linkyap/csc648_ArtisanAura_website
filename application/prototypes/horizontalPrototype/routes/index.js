@@ -41,7 +41,7 @@ router.get('/addProduct', function(req,res,next){
 router.get('/req-refund',function(req,res,next){
   res.render('refundReq', { title:'Request Refund'});
 });
-// Refund page
+// Order page
 router.get('/order-status',function(req,res,next){
   res.render('orderStatus', { title:'Order Status'});
 });
@@ -119,5 +119,30 @@ router.get('/Refund',function(req,res,next){
 router.get('/CustomerSupport',function(req,res,next){
   res.render('CustomerSupport', { title:'Customer Support', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
+
+// Newsletter sign up
+router.get('/Newsletter', async function(req,res,next){
+  var newsletter_Id = req.params.id;
+  var email = req.body.email;
+  console.log(`newsletter_Id: ${newsletter_Id}, email: ${email}`);
+
+  try {
+    var [input, _] = await db.execute(
+      "INSERT INTO newsletter (email) VALUES (?)",
+      [email]
+    );
+    if (input && result.affectedRows) {
+      req.flash("success", "Youve been added to the mailing list");
+      return req.session.save(function (error) {
+        if (error) next(error);
+      });
+    } else {
+      next(new Error("error occurred"));
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 module.exports = router;
