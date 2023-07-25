@@ -45,6 +45,9 @@ router.get('/req-refund', function (req,res,next) {
   res.render('refundReq');
 });
 
+router.get('/cart', function (req,res,next){
+  res.render('cart', {title: 'Shopping Cart'});
+})
 // privacy policy page 
 router.get('/PrivacyPolicy',function(req,res,next){
   res.render('PrivacyPolicy', { title:'ArtisanAura Privacy Policy'});
