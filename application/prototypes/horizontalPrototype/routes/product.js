@@ -39,28 +39,10 @@ router.post('/add-custom-item', (req, res, next) => {
 });
 
 router.post('/add-item', (req, res, next) => {
-  var postId = req.params.id;
-  var comment = req.body.comment;
-  var userId = req.session.user.userId;
-  console.log(`postId: ${postId}, comment: ${comment}, userId: ${userId}`);
-
-  try {
-    var [result, _] = await db.execute(
-      "INSERT INTO comments (text, fk_authorId, fk_postId) VALUES (?, ?, ?)",
-      [comment, userId, postId]
-    );
-    if (result && result.affectedRows) {
-      req.flash("success", "Your comment has been added!");
-      return req.session.save(function (error) {
-        if (error) next(error);
-        return res.redirect(`/posts/${postId}`);
-      });
-    } else {
-      next(new Error("Comment could not be added"));
-    }
-  } catch (error) {
-    next(error);
-  }
+  req.flash('error', 'Failed to add to cart');
+  req.session.save(err => {
+    res.render('productPage');
+  });
 });
 
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
