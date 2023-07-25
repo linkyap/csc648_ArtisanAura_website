@@ -70,5 +70,9 @@ router.get('/Shop',function(req,res,next){
 router.get('/Guides',function(req,res,next){
   res.render('Guides', { title:'Guides', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
+// Refund page
+router.get('/Refund',function(req,res,next){
+  res.render('Refund', { title:'Refund', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
 
 module.exports = router;
