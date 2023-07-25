@@ -66,12 +66,34 @@ router.get('/AboutUs',function(req,res,next){
 });
 
 // shop page
-router.get('/Shop',function(req,res,next){
-  res.render('Shop', { title:'Shop ArtisanAura Jewelry', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+router.get('/Shop', async function(req,res,next){
+    try {
+      var [product, fields] = await db.execute(
+        `SELECT *
+        FROM product
+        ORDER BY id DESC;`
+      );
+      if (product.length === 0) {
+        req.flash("error", `No products available`);
+      }
+  res.render('Shop', { title:'Shop ArtisanAura Jewelry',product:product, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
+    }catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+   }
 });
 // Guides page
 router.get('/Guides',function(req,res,next){
   res.render('Guides', { title:'Guides', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
+// Refund page
+router.get('/Refund',function(req,res,next){
+  res.render('Refund', { title:'Refund', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
+});
+
+// Customer Service page
+router.get('/CustomerSupport',function(req,res,next){
+  res.render('CustomerSupport', { title:'Customer Support', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
 });
 
 module.exports = router;
