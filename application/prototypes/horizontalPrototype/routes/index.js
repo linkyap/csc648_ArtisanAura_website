@@ -46,7 +46,14 @@ router.get('/addProduct', function(req,res,next){
 router.get('/PrivacyPolicy',function(req,res,next){
   res.render('PrivacyPolicy', { title:'ArtisanAura Privacy Policy'});
 });
-
+ // single product page 
+router.get('/productsingle', function(req,res,next){
+  res.render('productsingle');
+ });
+// custom product page 
+router.get('/customproduct', function(req,res,next){
+  res.render('customproduct');
+ });
 // terms and conditions page
 router.get('/termsConditions',function(req,res,next){
   res.render('termsConditions', { title:'ArtisanAura Terms and Conditions'});
