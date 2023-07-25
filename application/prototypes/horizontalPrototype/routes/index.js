@@ -64,12 +64,12 @@ router.get('/AboutUs',function(req,res,next){
 
 // shop page
 router.get('/Shop', async function(req,res,next){
+
     try {
       var [product, fields] = await db.execute(
-        `SELECT *
-        FROM product
-        ORDER BY id DESC;`
+        `SELECT * FROM product ORDER BY id DESC;`
       );
+     console.log('PRODUCT'+ product);
       if (product.length === 0) {
         req.flash("error", `No products available`);
       }
@@ -79,6 +79,8 @@ router.get('/Shop', async function(req,res,next){
     res.status(500).send("Server error");
    }
 });
+
+
 // Guides page
 router.get('/Guides',function(req,res,next){
   res.render('Guides', { title:'Guides', css:["newsletter.css","quiz.css"], js:["quiz.js"]});
