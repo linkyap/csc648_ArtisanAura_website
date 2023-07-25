@@ -73,7 +73,7 @@ router.get('/termsService',function(req,res,next){
 });
 
 // about us page
-router.get('/AboutUs',function(req,res,next){
+router.get('/AboutUs', async function(req,res,next){
   try {
     var [products, fields] = await db.execute(
       `SELECT * FROM product ORDER BY id DESC;`
