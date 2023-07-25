@@ -35,3 +35,6 @@ router.post('/createProduct', uploader.single("uploadImage"), async (req, res, n
         });
 });
 module.exports = router;
+
+
+
