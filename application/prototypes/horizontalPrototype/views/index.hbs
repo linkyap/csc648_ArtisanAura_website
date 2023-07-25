@@ -1,5 +1,6 @@
 <head>
     <style>
+    /* button style */
     .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -14,6 +15,35 @@
     background-color: #e2e6ea;
 }
 
+/* product recommenations style*/
+  .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+        .column {
+            flex: 20%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+        .column img {
+            width: 100%;
+            
+        }
+        /* makes two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+        /* makes menu and grid stack on top of each other */
+        @media screen and (max-width: 600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
 </style>
 </head>
 
@@ -48,6 +78,32 @@
             <h3>Your Personalized Shopping Experience</h3>
             <p>ArtisanAura takes personalization to a new level. Our interactive charm and engraving feature allow you to add a personal touch to your selected pieces. You can also take our style quiz to discover jewelry curated to your individual style preferences. Uncover the unique, meaningful narratives behind our pieces as we provide in-depth content about their symbolic and cultural meanings.</p>
             </div>
+
+        <!-- product categories -->
+            <div>
+                <h3>Shop for Your Special Occasion</h3>
+                <div class="row"> 
+                <div class="column">
+                    <h4>Formal Event</h4>
+                    <img src="/public/images/Product_Formal.jpg" alt="Formal Event">
+                </div>
+                <div class="column">
+                    <h4>Engagement</h4>
+                    <img src="/public/images/Product_Engagement.jpg" alt="Engagement">
+                </div>
+                <div class="column">
+                    <h4>Holidays</h4>
+                    <img src="/public/images/Product_Holiday.jpg" alt="Holidays">
+                </div>
+                <div class="column">
+                    <h4>Casual</h4>
+                    <img src="/public/images/Product_Casual.jpg" alt="Casual">
+                </div>
+                </div>
+            </div>
+
+
+
 
             <div>
             <h3>Customize Your Own Jewelry</h3> 
