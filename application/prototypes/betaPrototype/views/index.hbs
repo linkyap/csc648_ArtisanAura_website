@@ -1,0 +1,124 @@
+<head>
+    <style>
+    /* button style */
+    .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #008080;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+/* .btn:hover {
+    background-color: #004848; 
+} */
+
+/* product recommenations style*/
+  .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+        .column {
+            flex: 20%;
+            max-width: 25%;
+            padding: 0 4px;
+        }
+        .column img {
+            width: 100%;
+            
+        }
+        /* makes two column-layout instead of four columns */
+        @media screen and (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+        /* makes menu and grid stack on top of each other */
+        @media screen and (max-width: 600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+        }
+</style>
+</head>
+
+<main>
+<!--
+    <div class="container">
+        <h2>PHOTOS/VIDEOS GO HERE FORMMATED FOR PHOTOS RIGHT NOW</h2>
+        <div id="postThumbnails" class="post-thumbnails">
+            <div class="post-card">
+                <div class="post-thumbnail">
+                    <a href="/link to image" target="_self">
+                        <img src="/path to image" alt="path to image" style="border-radius:15px">
+                        style adjustable, still need to adjust routes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ -->
+        <div class="container">
+            <h2>Welcome to ArtisanAura Jewelry</h2>
+            <div class="banner">
+                <img id="responsive-banner" src="/public/images/Banner_Home_Page.jpg" alt="ArtisanAura Jewelry">
+            </div>
+           
+            <h3>Revolutionizing Jewelry Shopping Experience</h3>
+            <p>Embrace the convergence of innovation, personalization, and sustainability with ArtisanAura, your go-to online platform for high-quality, distinctive artisan and locally crafted jewelry. From necklaces to bracelets, rings, and engagement rings, our eclectic collection showcases an array of handmade pieces that radiate individuality and creativity.</p>
+            
+
+            
+
+        <!-- product categories -->
+            <div>
+                <h3>Shop for Your Special Occasion</h3>
+                <div class="row"> 
+                <div class="column">
+                    <h4>Formal Event</h4>
+                   <a href="Shop"><img src="/public/images/Product_Formal.jpg" alt="Formal Event"></a>
+                </div>
+                <div class="column">
+                    <h4>Engagement</h4>
+                   <a href="Shop"><img src="/public/images/Product_Engagement.jpg" alt="Engagement"></a> 
+                </div>
+                <div class="column">
+                    <h4>Holidays</h4>
+                   <a href="Shop"><img src="/public/images/Product_Holiday.jpg" alt="Holidays"></a>
+                </div>
+                <div class="column">
+                    <h4>Casual</h4>
+                   <a href="Shop"><img src="/public/images/Product_Casual.jpg" alt="Casual"></a>
+                </div>
+                </div>
+            </div>
+
+
+
+            <div>
+            <h3>Your Personalized Shopping Experience</h3>
+            <p>ArtisanAura takes personalization to a new level. Our interactive charm and engraving feature allow you to add a personal touch to your selected pieces. You can also take our style quiz to discover jewelry curated to your individual style preferences. Uncover the unique, meaningful narratives behind our pieces as we provide in-depth content about their symbolic and cultural meanings.</p>
+            </div>
+
+
+            <div>
+            <h3>Customize Your Own Jewelry</h3> 
+            <!-- customize jewelry feature --> 
+            <a href="productsingle" class="btn">Customize Your Own</a>
+            </div>
+
+            <div>
+            <h3>Join the ArtisanAura Community</h3>
+            <p>By choosing ArtisanAura, you contribute to a more ethical, sustainable, and customer-oriented future in the online jewelry retail industry. Come join us in revolutionizing the way you discover and connect with unique, meaningful jewelry. Embark on this remarkable journey with us today!</p>
+            </div>
+
+        </div>
+{{>newsletter}}
+{{>quiz}}
+</main>

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/public/css/product.css">
+<main class="product-page">
+    {{this.id}}
+    <div class="product-images">
+        <h3 class="title">{{currentProduct.title}}</h3>
+        <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{currentProduct.image}}"
+            alt="product images coming soon" />
+    </div>
+    <div class="product-details">
+        <h3 class="price">${{currentProduct.price}}</h3>
+        <div class="description">
+            <label class="desc-header">Description</label>
+            <p class="description">{{currentProduct.description}}</p>
+        </div>
+        <form action="/product/add-item" method="POST" enctype="application/x-www-form-urlencoded">
+            <button class="add-item">Add to cart</button></a>
+        </form>
+    </div>
+</main>
