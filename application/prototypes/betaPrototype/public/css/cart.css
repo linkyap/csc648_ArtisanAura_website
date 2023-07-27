@@ -1,0 +1,38 @@
+.cart-form{
+    margin: 40px 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-items {
+    background-color: white;
+    border: 5px solid #daebed;
+    border-radius: 10px;
+    flex: 70%;
+    min-height: 210px;
+    margin-right: 50px;
+    padding:10px;
+}
+.side {
+    background-color: white;
+    border: 5px solid #daebed;
+    border-radius: 10px;
+    flex: 20%;
+    padding:10px;
+}
+.side-content {
+    display: flex;
+    flex-direction: row;
+}
+.text {
+    font-weight: bold;
+    flex: 50%;
+    justify-content: flex-start;
+}
+.cost {
+    flex: 50%;
+    justify-content: flex-end;
+    text-align: right;
+}

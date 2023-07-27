@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/public/css/profile.css">
+<script defer src="/public/js/profile.js"></script>
+<main class="main-content">
+    <div class="sidebar">
+        <button class="sidelinks" onclick="openLink(event,'accountDetails')" id="defaultOpen">Account Details</button>
+        <button class="sidelinks" onclick="openLink(event,'orderHistory')">Order History</button>
+        <button class="sidelinks" onclick="openLink(event,'customizations')">Customizations</button>
+    </div>
+
+    <div id="accountDetails" class="side-content">
+        <h3>Account Details</h3>
+        {{!-- <a href="profile/edit-details" class="edit-details">Edit</a> --}}
+        <h4>Name</h4>
+        <p>{{account.name}}</p>
+        <h4>Email</h4>
+        <p>{{account.email}}</p>
+        <h4>Address Book</h4>
+        <p>No addresses are currently saved.</p>
+    </div>
+
+    <div id="orderHistory" class="side-content">
+        <h3>Order History</h3>
+        <p>No orders have been placed.</p>
+    </div>
+
+    <div id="customizations" class="side-content">
+        <h3>Customizations</h3>
+        <p>No customizations have been saved.</p>
+    </div>
+
+</main>

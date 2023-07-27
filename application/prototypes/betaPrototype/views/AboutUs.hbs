@@ -1,0 +1,94 @@
+<head>
+<style>
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    padding: 10px;
+}
+
+.third {
+    flex: 33.33%;
+    max-width: 300px;
+}
+
+.two-thirds {
+    flex: 66.67%;
+    max-width: 500px;
+}
+
+@media (max-width: 600px) {
+    .column {
+        flex: 100%;
+    }
+}
+</style>  
+</head>
+
+
+<main>
+    <div class="container">
+            <h2>About ArtisanAura Jewelry</h2>
+            <div class="banner">
+                <img id="responsive-banner" src="/public/images/Banner_About.jpg" alt="About ArtisanAura Jewelry">
+            </div>
+           
+            <h3>Discover Unique Artisan-Crafted Treasures</h3>
+            <p>Browse through our diverse assortment of artisanal jewelry, thoughtfully crafted by local artisans, each piece telling a unique story. Our aim is to shine a spotlight on local craftsmanship, ensuring the artists receive the recognition they deserve while providing you with truly one-of-a-kind treasures.</p>
+
+           
+            <h3>Artisan Spotlight</h3>
+             <!-- artisan photo and bio -->  
+            
+            
+        <div class="row" style="margin: 50px;">
+    
+            <div class="column third" style="margin: 20px;">
+                <div>
+                    <img src="/public/images/Artisan_Spotlight.jpg" alt="Artisan Spotlight" style="max-width: 300px;">
+                </div>
+            </div>
+            
+            <div class="column two-thirds" style="margin: 20px;">
+                <div>
+                    <h4>About Our Featured Artisan: Isabella Sterling</h4>
+                    <p>Isabella Sterling, the heart and soul behind many of ArtisanAura's captivating pieces, is a passionate artist who found her calling in the realm of jewelry crafting. Born and raised in the vibrant city of Seattle, Isabella’s creative journey began in her grandmother's attic, where she was fascinated by an old jewelry box filled with beautiful trinkets from the past. This early exposure sparked a love for intricate designs and the transformative power of jewelry that continues to inspire her craft today.</p>
+                    <p>With a degree in Fine Arts and a natural flair for sculpting, Isabella took the leap into the jewelry-making world, embracing it as a platform where her artistic abilities could truly shine. She thrives on the joy that her creations bring to those who wear them, believing that each piece of jewelry holds the power to express one's unique identity.</p>
+                    <p>Isabella specializes in crafting sustainable, artisanal jewelry, intertwining modern aesthetics with traditional techniques. From ethereal necklaces to bespoke bracelets and rings, her creations reflect a distinct blend of sophistication and charm. Drawing inspiration from nature, her designs often incorporate organic shapes and patterns, making each piece a symbolic memento that resonates deeply with the wearer.</p>
+                    <p>Her ultimate goal is to create not just jewelry, but wearable art that tells a story - whether it's a tale of the artist's inspiration, the wearer's individuality, or the beautiful blend of both. Through her work with ArtisanAura, Isabella Sterling continues to redefine what it means to wear, love, and live in jewelry.</p>
+                </div> 
+
+            </div>
+
+        </div>
+
+            <div>
+                <h4>Artisan Featured Work</h4>
+                <!-- artisan product grid --> 
+                 {{>productspage}}
+                </div>
+            
+
+           <!-- <div>
+            <h3>Your Personalized Shopping Experience</h3>
+            <p>ArtisanAura takes personalization to a new level. Our interactive charm and engraving feature allow you to add a personal touch to your selected pieces. You can also take our style quiz to discover jewelry curated to your individual style preferences. Uncover the unique, meaningful narratives behind our pieces as we provide in-depth content about their symbolic and cultural meanings.</p>
+            </div>
+
+            <div>
+            <h3>Explore Products</h3>
+             {{>productspage}}
+            </div> -->
+
+
+    </div>
+                
+               
+
+    </div>
+   
+
+{{>newsletter}}
+{{>quiz}}
+</main>
