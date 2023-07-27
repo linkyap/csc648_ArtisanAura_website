@@ -1,77 +1,14 @@
 <div class="container2">
     <section id="newsletter" class="newsletter">
         <h3>Join the ArtisanAura Community</h3>
-        <div id="message-section">
-        </div>
-       <form id="subscribe-form" method="POST" action="/newsletter/subscribe" >
+       <form method="POST" action="/Newsletter" enctype="application/x-www-form-urlencoded">
             <input type="email" name="email" placeholder="Enter Email" required>
             <button type="submit">Subscribe</button>
         </form>
-        
+        <p id="newletter-message"></p>
     </section>
 
     <button id="quiz-button"><h3>Discover Your Unique Style with Our Quiz</h3></button>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const subscribeForm = document.getElementById("subscribe-form");
-    const messageSection = document.getElementById("message-section");
-
-    subscribeForm.addEventListener("submit", async function (event) {
-      event.preventDefault();
-      const emailInput = subscribeForm.querySelector('input[name="email"]');
-      const email = emailInput.value.trim();
-
-      try {
-        const response = await fetch("/newsletter/subscribe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        });
-
-        const data = await response.json();
-
-        // Display the success or error message on top of the subscribe section
-        const messageParagraph = document.createElement("p");
-        messageParagraph.textContent = data.message || data.error;
-        
-        // Add class based on the type of message
-        if (data.error) {
-          messageParagraph.classList.add("error-message");
-        } else {
-          messageParagraph.classList.add("success-message");
-          // Clear the input field after successful subscription
-          emailInput.value = "";
-        }
-
-        messageSection.innerHTML = "";
-        messageSection.appendChild(messageParagraph);
-      } catch (error) {
-        console.error("Error:", error);
-        // Display the error message on top of the subscribe section
-        const errorMessage = document.createElement("p");
-        errorMessage.textContent = "An error occurred while subscribing.";
-        errorMessage.classList.add("error-message");
-        messageSection.innerHTML = "";
-        messageSection.appendChild(errorMessage);
-      }
-    });
-  });
-</script>
-
-<style>
-  /* Style for success message */
-  .success-message {
-    color: green;
-  }
-
-  /* Style for error message */
-  .error-message {
-    color: red;
-  }
-</style>
 
 
