@@ -5,13 +5,13 @@ steps:
       - '-t'
       - 'gcr.io/csc-648-848-team-05/artisan-aura'
       - '.'
-    dir: 'application/prototypes/betaPrototype'
+    dir: 'application/prototypes/horizontalPrototype'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
       - 'gcr.io/csc-648-848-team-05/artisan-aura'
-    dir: 'application/prototypes/betaPrototype'
+    dir: 'application/prototypes/horizontalPrototype'
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -27,7 +27,7 @@ steps:
       - '--allow-unauthenticated'
       - '--set-env-vars'
       - 'GCS_KEYFILE=${_KEY_FILE_CONTENT}'
-    dir: 'application/prototypes/betaPrototype'
+    dir: 'application/prototypes/horizontalPrototype'
     env:
       - 'PROJECT_ID=csc-648-848-team-05'
 
