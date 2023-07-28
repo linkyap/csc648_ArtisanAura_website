@@ -87,7 +87,7 @@ nav ul li a {
 
 .search-bar input[type="text"] {
     padding: 5px;
-    margin: 0;
+    margin: 5px;
     width: 87%;
     border-radius: 15px;
 }
