@@ -41,6 +41,6 @@
     cursor: pointer;
 }
 
-.button:hover {
+.newsletter button:hover {
     background-color: #004848;
 }

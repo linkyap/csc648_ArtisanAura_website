@@ -26,6 +26,10 @@
     border-radius: 5px;
     background-color: #fff;
 }
+
+.item:hover {
+  background-color: #daebed;
+}
   
   /* Styles for item name */
 .title {

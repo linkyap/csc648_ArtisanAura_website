@@ -35,6 +35,11 @@ h1, h2, h3, h4, h5, h6 {
     flex: 1;
 }
 
+.nav-bar a:hover {
+    color: teal;
+    text-decoration: underline;
+}
+
 nav ul li a {
     color: #323232;
     text-decoration: none;
@@ -87,7 +92,7 @@ nav ul li a {
 
 .search-bar input[type="text"] {
     padding: 5px;
-    margin: 5px;
+    margin: 0px 5px;
     width: 87%;
     border-radius: 15px;
 }
@@ -98,6 +103,10 @@ nav ul li a {
     border-radius: 15px;
     border: none;
     width: 10%;
+}
+
+.search-bar button:hover {
+    background-color: #004848;
 }
 
 .container {
@@ -151,6 +160,13 @@ nav ul li a {
    
 }
 
+.botm-footer a:hover {
+    color: teal;
+    text-decoration: underline;
+    margin: 0 10px;
+   
+}
+
 .my-icon img {
     width: 150px; 
     height: 150px; 
@@ -197,4 +213,8 @@ nav ul li a {
 
 .button:hover {
     background-color: #004848;
+}
+
+.btn:hover {
+    background-color: #004848; 
 }
