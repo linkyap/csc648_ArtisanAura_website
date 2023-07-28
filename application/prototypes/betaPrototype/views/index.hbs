@@ -28,8 +28,11 @@
         }
         .column img {
             width: 100%;
-            
         }
+        .column:hover {
+            background-color: #daebed;
+        }
+
         /* makes two column-layout instead of four columns */
         @media screen and (max-width: 800px) {
             .column {
@@ -80,22 +83,22 @@
             <div>
                 <h3>Shop for Your Special Occasion</h3>
                 <div class="row"> 
-                <div class="column">
+                <a href="Shop" class="column">
                     <h4>Formal Event</h4>
-                   <a href="Shop"><img src="/public/images/Product_Formal.jpg" alt="Formal Event"></a>
-                </div>
-                <div class="column">
+                  <img src="/public/images/Product_Formal.jpg" alt="Formal Event">
+                </a>
+                <a href="Shop" class="column">
                     <h4>Engagement</h4>
-                   <a href="Shop"><img src="/public/images/Product_Engagement.jpg" alt="Engagement"></a> 
-                </div>
-                <div class="column">
+                   <a href="Shop"><img src="/public/images/Product_Engagement.jpg" alt="Engagement"> 
+                </a>
+                <a href="Shop" class="column">
                     <h4>Holidays</h4>
-                   <a href="Shop"><img src="/public/images/Product_Holiday.jpg" alt="Holidays"></a>
-                </div>
-                <div class="column">
+                   <a href="Shop"><img src="/public/images/Product_Holiday.jpg" alt="Holidays">
+                </a>
+                <a href="Shop" class="column">
                     <h4>Casual</h4>
-                   <a href="Shop"><img src="/public/images/Product_Casual.jpg" alt="Casual"></a>
-                </div>
+                   <img src="/public/images/Product_Casual.jpg" alt="Casual">
+                </a>
                 </div>
             </div>
 
