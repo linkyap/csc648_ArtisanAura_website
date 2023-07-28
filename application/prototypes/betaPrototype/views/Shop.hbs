@@ -1,91 +1,34 @@
-<head>
-   <!-- <style>
-    /* product recommenations style*/
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            padding: 0 4px;
-        }
-        .column {
-            flex: 20%;
-            max-width: 25%;
-            padding: 0 4px;
-        }
-        .column img {
-            width: 100%;
-            
-        }
-        /* makes two column-layout instead of four columns */
-        @media screen and (max-width: 800px) {
-            .column {
-                flex: 50%;
-                max-width: 50%;
-            }
-        }
-        /* makes menu and grid stack on top of each other */
-        @media screen and (max-width: 600px) {
-            .column {
-                flex: 100%;
-                max-width: 100%;
-            }
-        }
-    </style> -->
-</head>
 
 <main>
-    <div class="container">
-            <h2>Shop ArtisanAura Jewelry</h2>
-            <div class="banner">
-                <img id="responsive-banner" src="/public/images/Banner_Shop.jpg" alt="Shop ArtisanAura Jewelry">
-            </div>
-
-            <h3>Shop With Confidence</h3>
-            <p>Our commitment to transparency and ethical sourcing sets us apart in the jewelry retail industry. We give you access to comprehensive information about our supply chains, so you can make conscious, informed purchases. Our vibrant community of users shares honest reviews, guiding your buying decisions while helping us improve your shopping experience.</p>
-            
-            
-            <!-- product categories 
-            <div>
-                <h3>Shop for Your Special Occasion</h3>
-                <div class="row"> 
-                <div class="column">
-                    <h4>Formal Event</h4>
-                    <img src="/public/images/Product_Formal.jpg" alt="Formal Event">
-                </div>
-                <div class="column">
-                    <h4>Engagement</h4>
-                    <img src="/public/images/Product_Engagement.jpg" alt="Engagement">
-                </div>
-                <div class="column">
-                    <h4>Holidays</h4>
-                    <img src="/public/images/Product_Holiday.jpg" alt="Holidays">
-                </div>
-                <div class="column">
-                    <h4>Casual</h4>
-                    <img src="/public/images/Product_Casual.jpg" alt="Casual">
-                </div>
-                </div>
-            </div> -->
-
-            <!-- product grid -->   
-            <div>
-            <h3>Explore Products</h3>
-             <div>
-                <!-- Product filter form -->
+    <div style="margin: 0 150px 50px;">    
+        <h1>Shop All Jewelry</h1>
+        <p>Discover Your Unique Style. Explore Artisan Jewelry. Find Your Special Gift.</p>
+    </div>
+    
+    <div style="margin: 0 150px 50px;">
+          <!-- Product filter form -->   
+        <div>
                 <form action="/shop" method="GET">
                     <label for="price">Price Filter(ex:2000 price 1-2000 will display):</label>
                     <input type="number" name="price" id="price" min="0" step="0.01">
                     <button type="submit">Apply</button>
                 </form>
-            </div>
+        </div>
+    </div>
+    
+    <div>
+            
+        <!-- product grid -->   
+        <div>
             {{>productspage}}
-            </div> 
-           
-           <!-- quiz -->
-            <div>
-            <h3>Discover Your Unique Style with Our Quiz</h3>
-            <p>Experience personalized shopping with our unique style quiz. Tailored to your preferences, this quick, engaging quiz uncovers your distinct taste, leading you to curated jewelry selections from our handcrafted collection. Start your simplified, rewarding shopping journey with the ArtisanAura style quiz today. Let your style shine through your jewelry choices.</p>
-            </div>
+        </div>
 
+    </div>
+    
+    <!-- quiz -->
+    <div style="margin: 50px 150px;">
+            <h3>Discover Your Unique Style with Our Quiz</h3>
+            <p style="text-align: justify;">Experience personalized shopping with our unique style quiz. Tailored to your preferences, this quick, engaging quiz uncovers your distinct taste, leading you to curated jewelry selections from our handcrafted collection. Start your simplified, rewarding shopping journey with the ArtisanAura style quiz today. Let your style shine through your jewelry choices.</p>
     </div>
 
 {{>newsletter}}
