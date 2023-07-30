@@ -1,5 +1,14 @@
 
 <main class="main-content">
+    
+     {{#if errors}}
+      <ul>
+        {{#each errors}}
+          <li>{{this.msg}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
+    
     {{#if results}}
       {{#each results}}
         <a href="/product/{{this.id}}" target="_self" class="item-link">
