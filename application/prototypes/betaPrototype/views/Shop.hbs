@@ -16,7 +16,7 @@
                 </form>
         </div> -->
         <div>
-            <form action="/shop" method="GET">
+            <form action="/shop" method="GET" id="filter-form">
 
             <label for="type">Jewelry Type:</label>
             <select id="type" name="type">
@@ -67,7 +67,7 @@
 
     <div>    
         <!-- product grid -->   
-        <div>
+        <div class="products-container">
             {{>productspage}}
         </div>
     </div>
@@ -83,3 +83,5 @@
 {{>newsletter}}
 {{>quiz}}
 </main>
+
+<script src="/helpers/shop.js"></script>

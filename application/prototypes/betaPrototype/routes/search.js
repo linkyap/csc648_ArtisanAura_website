@@ -5,7 +5,9 @@ const router = express.Router();
 const db = require('../conf/database');
 //in search route hence / refers to index of this router which is search
 router.get('/', 
-  [check('q').not().isEmpty().withMessage('Search term is required').isLength({ max: 60 }).withMessage('Search term must be less than 60 characters'),
+  [check('q').not().isEmpty().withMessage('Search term is required')
+  .isLength({ max: 60 })
+  .withMessage('Search term must be less than 60 characters'),
   ],
   async (req, res, next) => {
     const errors = validationResult(req);

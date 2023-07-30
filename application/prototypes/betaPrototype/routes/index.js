@@ -90,32 +90,58 @@ router.get('/AboutUs', async function(req,res,next){
 
 
 // shop page
-router.get('/Shop', async function(req,res,next){
-    try {
-      let filterPrice = req.query.price; // Get the filter price from the query parameters
-
+router.get('/Shop', async function(req, res, next){
+  try {
+      //for filtering
+      let filterPrice = req.query.price;
+      let filterType = req.query.type;
+      let filterMaterial = req.query.material;
+      let filterGemstone = req.query.gemstone;
+      let sortPrice = req.query.sort_price;
+        // all product data
       let query = "SELECT * FROM product";
       let queryParams = [];
-  
-      // If a filter price is provided, add a WHERE clause to the SQL query
-      if (filterPrice) {
-        query += " WHERE price <= ?";
-        queryParams.push(parseFloat(filterPrice));
+            // conditions for each filter
+      if (filterPrice || filterType || filterMaterial || filterGemstone) {
+          query += " WHERE ";
+          let conditions = [];
+
+          if(filterPrice) {
+              conditions.push("price <= ?");
+              queryParams.push(parseFloat(filterPrice));
+          }
+          if(filterType) {
+              conditions.push("type = ?");
+              queryParams.push(filterType);
+          }
+          if(filterMaterial) {
+              conditions.push("material = ?");
+              queryParams.push(filterMaterial);
+          }
+          if(filterGemstone) {
+              conditions.push("gemstone = ?");
+              queryParams.push(filterGemstone);
+          }
+            //joins multiple conditions
+          query += conditions.join(' AND ');
       }
-  
+        //edge, if price sort by it
+      if(sortPrice) {
+          query += ` ORDER BY price ${sortPrice}`;
+      }
+        //query occurs
       const [products, fields] = await db.execute(query, queryParams);
 
-      // var [products, fields] = await db.execute(
-      //   `SELECT * FROM product ORDER BY id DESC;`
-      // );
       if (products.length === 0) {
-        req.flash("error", `No products available`);
-      }
-      res.render('Shop', { title:'Shop ArtisanAura Jewelry',products: products, css:["newsletter.css","quiz.css","productspage.css"], js:["quiz.js"]});
-    }catch (err) {
-    console.error(err);
-    res.status(500).send("Server error");
-   }
+          return res.json({ error: 'No products available' });
+      }//self explanatory ^^^
+
+      return res.json(products);
+
+  } catch (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Server error' });
+  }
 });
 
 
