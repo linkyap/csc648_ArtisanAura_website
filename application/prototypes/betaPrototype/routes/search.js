@@ -10,7 +10,9 @@ router.get('/',
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      // return res.status(400).json({ errors: errors.array() });
+      //^^^^^^^^^^^^^ check to see if working
+      return res.render('searchresults', { errors: errors.array(), results: [] });
     }
 
     const searchTerm = req.query.q; // Get the search query from the request
