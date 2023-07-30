@@ -133,10 +133,10 @@ router.get('/Shop', async function(req, res, next){
       const [products, fields] = await db.execute(query, queryParams);
 
       if (products.length === 0) {
-        return res.render('shop', { error: 'No products available', products: [] });
+        return res.render('Shop', { error: 'No products available', products: [] });
       }//self explanatory ^^^
   
-      return res.render('shop', { products: products });
+      return res.render('Shop', { products: products });
 
   } catch (err) {
       console.error(err);
