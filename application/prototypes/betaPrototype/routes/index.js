@@ -133,14 +133,14 @@ router.get('/Shop', async function(req, res, next){
       const [products, fields] = await db.execute(query, queryParams);
 
       if (products.length === 0) {
-          return res.json({ error: 'No products available' });
+        return res.render('shop', { error: 'No products available', products: [] });
       }//self explanatory ^^^
-
-      return res.json(products);
+  
+      return res.render('shop', { products: products });
 
   } catch (err) {
       console.error(err);
-      return res.status(500).json({ error: 'Server error' });
+      return res.status(500).send({ error: 'Server error' });
   }
 });
 
