@@ -1,20 +1,5 @@
 <head>
     <style>
-    /* button style */
-    .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #008080;
-    color: #fff;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-/* .btn:hover {
-    background-color: #004848; 
-} */
-
 /* product recommenations style*/
   .row {
             display: flex;
@@ -49,13 +34,26 @@
                 max-width: 100%;
             }
         }
+
+/* customize your own  */
+@media (min-width: 800px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-gap: 16px;
+  }
+
+  aside {
+    align-self: start;
+  }
+}
 </style>
 </head>
 
 <main>
         <div style="margin: auto; max-width: 1300px; padding: 10px;">            
 
-     <div style="margin: 0 50px 50px; text-align:center;">    
+     <div style="margin: 50px; text-align:center;">    
         <h1>ArtisanAura Jewelry</h1>
          <p>Distinctive Artisan and Locally Crafted Jewelry.</p>
            
@@ -65,7 +63,7 @@
    
     
  <!-- product categories -->
-           <div style="margin: 0 auto 50px; text-align:center;"> 
+           <div style="margin: 0 auto 50px; text-align: center; border-top: 1px solid #70707194; padding: 20px 0 50px 0; border-bottom: 1px solid #70707194;"> 
                 <h2>Shop for Your Special Occasion</h2>
                 <div class="row"> 
                 <a href="Shop" class="column">
@@ -99,23 +97,15 @@
     
     
     
-            <div class="banner">
-                <img id="responsive-banner" src="/public/images/Banner_Home_Page.jpg" alt="ArtisanAura Jewelry">
-            </div>
-
-            
-
-       
- 
-
-         
-
-
-          <div style="margin: 0 50px 50px; text-align:center;"> 
+<div class="wrapper" style="margin: 0 auto 50px;display: flex;flex-wrap: wrap;padding: 0 4px;">
+  <aside style="text-align:center;padding: 10px;width: 100%;margin-bottom: 50px;flex: 20%;max-width: 30%;"> 
             <h2>Customize Your Own Jewelry</h2> 
             <!-- customize jewelry feature --> 
             <a href="productsingle" class="btn">Customize Your Own</a>
-            </div>
+            </aside>
+  <main style="padding: 10px;/*! flex: 43%; */max-width: 70%;"><img alt="Artisan Spotlight" style="/*! max-width: 600px; */height: auto;width: 100%;" src="/public/images/Banner_Home_Page.jpg">
+             </main>
+</div>
 
            <div style="margin: 0 50px 50px; text-align:center;"> 
             <h2>Join the ArtisanAura Community</h2>
