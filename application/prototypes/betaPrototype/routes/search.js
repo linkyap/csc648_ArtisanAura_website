@@ -4,6 +4,7 @@ const { check, validationResult } = require('express-validator');
 const router = express.Router();
 const db = require('../conf/database');
 
+
 // function to break down the search term, replace special characters like "+","@" with spaces, and ignore "s" or "es" at the end of each word
 function BreakdownSearchTerm(searchTerm) {
   searchTerm = searchTerm.replace(/[^\w\s]+/g, ' '); //remove special character
@@ -16,10 +17,12 @@ router.get('/',
   [check('q').not().isEmpty().withMessage('Search term is required')
     .isLength({ max: 60 })
     .withMessage('Search term must be less than 60 characters'),
+
   ],
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+
       return res.render('searchresults', { errors: errors.array(), results: [] });
     }
 
@@ -65,11 +68,13 @@ router.get('/',
         return res.render('searchresults', { results: [] });
       }
     }catch (err) {
+
       console.error('Error executing search query:', err);
       res.status(500).send('Internal Server Error');
     }
   }
 );
+
 
 // Function to retrieve product details from the database
 async function getProductDetails(productId) {

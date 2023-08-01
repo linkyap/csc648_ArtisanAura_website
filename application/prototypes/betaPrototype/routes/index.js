@@ -90,6 +90,7 @@ router.get('/AboutUs', async function(req,res,next){
 
 
 // shop page
+
 router.get('/Shop', async function(req, res, next){
   try {
       //for filtering
@@ -142,6 +143,7 @@ router.get('/Shop', async function(req, res, next){
       console.error(err);
       return res.status(500).send({ error: 'Server error' });
   }
+
 });
 
 
@@ -160,7 +162,9 @@ router.get('/CustomerSupport',function(req,res,next){
 });
 
 // Newsletter sign up
+
 const {checkEmail, registerValidator} = require('../helpers/regValidation');
+
 
 router.post('/Newsletter', async function(req,res,next){
   var newsletter_Id = req.params.id;
@@ -168,6 +172,7 @@ router.post('/Newsletter', async function(req,res,next){
   console.log(`newsletter_Id: ${newsletter_Id}, email: ${email}`);
 
   try {
+
 
     if(!checkEmail(email)){
       req.flash('error','Invaild email, Please give a vaild email address.');
@@ -189,6 +194,7 @@ router.post('/Newsletter', async function(req,res,next){
         return res.redirect(`/`);
       });
     }
+
 
     var [input, _] = await db.execute(
       "INSERT INTO newsletter (email) VALUES (?)",

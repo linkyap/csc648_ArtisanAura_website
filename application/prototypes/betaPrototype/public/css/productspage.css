@@ -27,15 +27,19 @@
     background-color: #fff;
 }
 
+
 .item:hover {
   background-color: #daebed;
 }
+
   
   /* Styles for item name */
 .title {
     font-size: 18px;
     margin-bottom: 5px;
+
     height: 70px;
+
 }
   
   /* Styles for item image */
