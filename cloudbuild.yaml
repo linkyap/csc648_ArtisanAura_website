@@ -3,25 +3,23 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/csc-648-848-team-05/artisan-aura'
+      - 'gcr.io/csc-648-848-team-05/artisanauraadev'
       - '.'
     dir: 'application/prototypes/betaPrototype'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-
-      - 'gcr.io/csc-648-848-team-05/artisan-aura'
+      - 'gcr.io/csc-648-848-team-05/artisanauraadev'
     dir: 'application/prototypes/betaPrototype'
-
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
       - 'deploy'
-      - 'artisan-aura'
+      - 'artisanauradevweb'
       - '--image'
-      - 'gcr.io/csc-648-848-team-05/artisan-aura'
+      - 'gcr.io/csc-648-848-team-05/artisanauraadev'
       - '--platform'
       - 'managed'
       - '--region'

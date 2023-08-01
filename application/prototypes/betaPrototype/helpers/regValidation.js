@@ -20,10 +20,7 @@ const registerValidator = (req, res, next) => {
         next();
     }
 }
-
 module.exports = {
     checkEmail,
     registerValidator
 };
-
-

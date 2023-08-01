@@ -17,9 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #daebed; 
     padding: 10px;
     text-align: center;
-
     border-bottom: 1px solid #70707194;
-
 }
 
 .nav-bar {
@@ -36,7 +34,6 @@ h1, h2, h3, h4, h5, h6 {
     list-style-type: none; 
     flex: 1;
 }
-
 
 .nav-bar a:hover {
     color: teal;
@@ -89,17 +86,13 @@ nav ul li a {
     display: flex;
     align-items: center;
     width: 70%;
-
     max-width: 400px;
-
     justify-content: space-between;
 }
 
 .search-bar input[type="text"] {
     padding: 5px;
-
     margin: 0px 5px;
-
     width: 87%;
     border-radius: 15px;
 }
@@ -112,7 +105,6 @@ nav ul li a {
     width: 10%;
 }
 
-
 .search-bar button:hover {
     background-color: #004848;
 }
@@ -120,7 +112,6 @@ nav ul li a {
 .container {
     margin: 0 20px;
     padding: 0 20px;
-
 }
 .container4 {
     margin: 10px;
@@ -169,14 +160,12 @@ nav ul li a {
    
 }
 
-
 .botm-footer a:hover {
     color: teal;
     text-decoration: underline;
     margin: 0 10px;
    
 }
-
 
 .my-icon img {
     width: 150px; 
@@ -224,7 +213,6 @@ nav ul li a {
 
 .button:hover {
     background-color: #004848;
-
 }
 
  /* index button style */
@@ -240,5 +228,4 @@ nav ul li a {
 
 .btn:hover {
     background-color: #004848; 
-
 }

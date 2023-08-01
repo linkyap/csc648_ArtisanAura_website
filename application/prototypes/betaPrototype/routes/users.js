@@ -4,9 +4,7 @@ var bcrypt = require('bcrypt');
 var db = require('../conf/database');
 const User = require('../db/users');
 const UserError = require('../helpers/userError');
-
 const { checkEmail, registerValidator } = require('../helpers/regValidation');
-
 
 router.use('/registration', registerValidator);
 router.post('/registration', (req, res, next) => {

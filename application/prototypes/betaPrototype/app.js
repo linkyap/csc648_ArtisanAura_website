@@ -81,7 +81,6 @@ app.use("/search", searchRouter);
 app.use("/product", productRouter);
 
 
-
 app.use((req,res,next) => {
     next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));
 })

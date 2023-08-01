@@ -1,8 +1,5 @@
 {
-
   "name": "betaprototype",
-
-
   "version": "1.0.0",
   "description": "For home page",
   "main": "app.js",
@@ -23,9 +20,7 @@
     "express-handlebars": "^7.0.7",
     "express-mysql-session": "^3.0.0",
     "express-session": "^1.17.3",
-
     "express-validator": "^7.0.1",
-
     "handlebars": "^4.7.7",
     "http-errors": "^2.0.0",
     "morgan": "^1.10.0",
