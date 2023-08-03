@@ -7,19 +7,16 @@ const Product = require('../db/products');
 router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
-    console.log("results: " + results);
-    console.log("results[0]" + results[0]);
-    console.log("results.product_id: " + results.product_id);
-    console.log("results[0].product_id" + results[0].product_id);
-    console.log("results.productId" + results.productId);
-    console.log("results[0].productId" + results[0].productId);
     if (results && results.length > 0) {
         let cartList = [];
-        // results.forEach(async result => {
-        //     let productId = result[0].product_id;
-        //     let product = await Product.getProductById(productId);
-        //     cartList.push(product[0]);
-        // })
+        results.forEach(async result => {
+            let productId = result[0].product_id;
+            console.log("ProductId : " + productId);
+            let product = await Product.getProductById(productId);
+            console.log("Product : " + product);
+            console.log("Product[0]: " + product[0]);
+            cartList.push(product[0]);
+        })
         // let cartList = results.map(async result => await Product.getProductById(result.product_id));
         if(cartList.length > 0){
             res.render('cart', { title: 'Shopping Cart', results: cartList});
