@@ -10,24 +10,22 @@ router.get('/cart-list', async (req, res, next) => {
     if (results && results.length > 0) {
         let cartList = [];
         results.forEach(async result => {
-            console.log("result: " + result);
             let productId = result.product_id;
-            console.log("ProductId : " + productId);
             let product = await Product.getProductById(productId);
-            console.log("Product : " + product);
-            console.log("Product[0]: " + product[0]);
-            cartList.push(product[0]);
-        })
+            cartList.push(product);
+        });
+        console.log("CartList : " + cartList);
+        console.log("Cart length : " + cartList.length);
         // let cartList = results.map(async result => await Product.getProductById(result.product_id));
-        if(cartList.length > 0){
-            res.render('cart', { title: 'Shopping Cart', results: cartList});
+        if (cartList.length > 0) {
+            res.render('cart', { title: 'Shopping Cart', results: cartList });
         }
         else {
-            res.render('cart', {title: 'Shopping Cart'});
+            res.render('cart', { title: 'Shopping Cart' });
         }
     }
-    else{
-        res.render('cart', { title: 'Shopping Cart'});
+    else {
+        res.render('cart', { title: 'Shopping Cart' });
     }
 });
 
