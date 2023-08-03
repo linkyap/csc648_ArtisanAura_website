@@ -10,7 +10,7 @@ router.get('/cart-list', async (req, res, next) => {
     if (results && results.length > 0) {
         let cartList = [];
         results.forEach(async result => {
-            let productId = results.product_id;
+            let productId = result.product_id;
             let product = await Product.getProductById(productId);
             cartList.push(product);
         })
