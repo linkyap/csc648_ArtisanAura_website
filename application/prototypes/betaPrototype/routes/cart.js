@@ -8,7 +8,13 @@ router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        res.render('cart', { title: 'Shopping Cart', results: results});
+        let cartList = results.map(result => Product.getProductById(result.product_id));
+        if(cartList.length > 0){
+            res.render('cart', { title: 'Shopping Cart', results: cartList});
+        }
+        else {
+            res.render('cart', {title: 'Shopping Cart'});
+        }
     }
     else{
         res.render('cart', { title: 'Shopping Cart'});
