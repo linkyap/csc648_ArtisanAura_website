@@ -1,8 +1,15 @@
 <div id="product-{{this.id}}" class="card">
-    <div class="card-body">
-        <p class="card-title"> {{this.title}}</p>
+    <div class="card-left">
         <img class="card-image" src="/{{this.thumbnail}}" alt="Missing Image">
-        <p class="card-text">{{this.price}}</p>
-        <a href="/product/{{this.id}}" class="anchor-buttons">Product Details</a>
+    </div>
+    <div class="card-right">
+        <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+        <p class="card-price">{{this.price}}</p>
+        <p class="card-quantity">{{this.quantity}}</p>
+        <select name="quantity" id="quantity">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
     </div>
 </div>

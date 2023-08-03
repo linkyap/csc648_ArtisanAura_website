@@ -1,8 +1,12 @@
 <link rel="stylesheet" href="/public/css/cart.css">
 <main class="main-content">
-    <form class="cart-form" action="/users/cart" method="POST" enctype="application/x-www-form-urlencoded">
+    <form class="cart-form" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="cart-items">
-            <p>Your shopping cart is empty!</p>
+            {{#if results}}
+                {{#each results}}
+                    {{> card this}}
+                {{/each}}
+            {{/if}}
         </div>
         <div class="side">
             <div class="side-content">

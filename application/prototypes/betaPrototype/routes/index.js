@@ -45,10 +45,6 @@ router.get('/req-refund',function(req,res,next){
 router.get('/order-status',function(req,res,next){
   res.render('orderStatus', { title:'Order Status'});
 });
-// Shopping cart page
-router.get('/cart', function (req,res,next){
-  res.render('cart', {title: 'Shopping Cart'});
-});
 
 // privacy policy page 
 router.get('/PrivacyPolicy',function(req,res,next){

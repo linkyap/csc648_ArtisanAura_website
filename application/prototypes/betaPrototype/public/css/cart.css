@@ -36,3 +36,19 @@
     justify-content: flex-end;
     text-align: right;
 }
+
+.card {
+    margin: 5px; 
+    display:flex;
+    border-bottom: 1px solid rgb(203, 202, 202);
+}
+.card-left {
+    flex: 30%;
+}
+.card-right {
+    flex:70%;
+}
+.card-title {
+    text-decoration: none;
+    color: black;
+}
