@@ -11,7 +11,7 @@ router.get('/cart-list', async (req, res, next) => {
         let cartList = [];
         results.forEach(async result => {
             console.log("result: " + result);
-            let productId = result[0].product_id;
+            let productId = result.product_id;
             console.log("ProductId : " + productId);
             let product = await Product.getProductById(productId);
             console.log("Product : " + product);
