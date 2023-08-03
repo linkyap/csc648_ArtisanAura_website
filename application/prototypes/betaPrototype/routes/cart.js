@@ -49,6 +49,9 @@ router.post('/add-item', async (req, res, next) => {
         //         res.redirect('/product/:id');
         //     });
         // }
+        req.session.save(err => {
+            res.redirect('/product/:id');
+        });
     }
     catch (error) {
         next(error);
