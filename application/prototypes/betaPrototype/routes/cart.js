@@ -9,10 +9,10 @@ router.get('/cart-list', async (req, res, next) => {
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
         let cartList = [];
-        results.forEach(result => {
+        results.forEach(async result => {
             let productId = result[0].product_id;
-            let product = Product.getProductById(productId);
-            cartList.push(product);
+            let product = await Product.getProductById(productId);
+            cartList.push(product[0]);
         })
         // let cartList = results.map(async result => await Product.getProductById(result.product_id));
         if(cartList.length > 0){
