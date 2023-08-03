@@ -11,7 +11,7 @@ router.get('/cart-list', async (req, res, next) => {
         res.render('cart', { title: 'Shopping Cart', results: results});
     }
     else{
-        res.render('cart', { title: 'Shopping Cart', results: []});
+        res.render('cart', { title: 'Shopping Cart'});
     }
 });
 
@@ -32,7 +32,9 @@ router.post('/checkout', (req, res, next) => {
 router.post('/add-item', async (req, res, next) => {
     try {
         let sessionId = req.session.id;
+        console.log("SESSION ID: " + sessionId);
         let productId = req.params.id;
+        console.log("PRODUCT ID: " + productId);
         let addedProductId = await Product.addToCart(productId, sessionId);
         if (addedProductId > 0) {
             req.flash('success', "Added to cart");
