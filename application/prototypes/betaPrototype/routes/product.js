@@ -22,7 +22,7 @@ router.get('/:id', async (req, res, next) => {
         res.render('productPage', {currentProduct: results[0]});
     }
     else{
-        req.flash("error", "Product not found");
+        req.flash("error", "Product "+ productId +" not found");
         res.redirect('/');
     }
 }

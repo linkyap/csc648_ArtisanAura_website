@@ -6,6 +6,7 @@ const Product = require('../db/products');
 // Shopping cart page
 router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
+    console.log("SESSION ID: " + sessionId);
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
         res.render('cart', { title: 'Shopping Cart', results: results});
