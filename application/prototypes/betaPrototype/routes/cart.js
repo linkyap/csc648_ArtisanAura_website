@@ -29,7 +29,7 @@ router.post('/checkout', (req, res, next) => {
     })
 });
 
-router.post('/add-item', async (req, res, next) => {
+router.post('/add-item/:id', async (req, res, next) => {
     try {
         let productId = req.params.id;
         let sessionId = req.session.id;
