@@ -31,23 +31,24 @@ router.post('/checkout', (req, res, next) => {
 
 router.post('/add-item', async (req, res, next) => {
     try {
-        let sessionId = req.session.id;
-        console.log("SESSION ID: " + sessionId);
+        console.log("TESTING");
         let productId = req.params.id;
         console.log("PRODUCT ID: " + productId);
-        let addedProductId = await Product.addToCart(productId, sessionId);
-        if (addedProductId > 0) {
-            req.flash('success', "Added to cart");
-            req.session.save(err => {
-                res.redirect('/product/:id');
-            });
-        }
-        else {
-            req.flash("error", "Failed to add to cart");
-            req.session.save(err => {
-                res.redirect('/product/:id');
-            });
-        }
+        let sessionId = req.session.id;
+        console.log("SESSION ID: " + sessionId);
+        // let addedProductId = await Product.addToCart(productId, sessionId);
+        // if (addedProductId > 0) {
+        //     req.flash('success', "Added to cart");
+        //     req.session.save(err => {
+        //         res.redirect('/product/:id');
+        //     });
+        // }
+        // else {
+        //     req.flash("error", "Failed to add to cart");
+        //     req.session.save(err => {
+        //         res.redirect('/product/:id');
+        //     });
+        // }
     }
     catch (error) {
         next(error);
