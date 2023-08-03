@@ -5,7 +5,7 @@ Product.getProductById = (productId) => {
     let query = `SELECT * FROM product WHERE id=?`;
     return db.execute(query, [productId])
     .then (([results, fields]) => {
-        return Promise.resolve(results);
+        return Promise.resolve(results[0]);
     })
     .catch((err) => Promise.reject(err));
 };
