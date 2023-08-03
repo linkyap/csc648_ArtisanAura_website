@@ -10,6 +10,7 @@ router.get('/cart-list', async (req, res, next) => {
     if (results && results.length > 0) {
         let cartList = [];
         results.forEach(async result => {
+            console.log("result: " + result);
             let productId = result[0].product_id;
             console.log("ProductId : " + productId);
             let product = await Product.getProductById(productId);
