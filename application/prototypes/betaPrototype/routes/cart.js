@@ -8,11 +8,10 @@ router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        const cartList = await Promise.all(results.map(result => Product.getProductById(result.product_id)));
-        console.log("cartlist[0][0].id : " + cartList[0][0].id);
-        console.log("cartlist[1][0].id : " + cartList[1][0].id);
-        console.log("cartlist[1][0].title : " + cartList[1][0].title);
-        console.log("cartlist[2][0].id : " + cartList[2][0].id)
+        const cartList = await Promise.all(results.map(result => Product.getProductById(result.product_id)[0]));
+        console.log("cartlist[0].id : " + cartList[0].id);
+        console.log("cartlist[1].id : " + cartList[1].id);
+        console.log("cartlist[2].id : " + cartList[2].id);
         if (cartList.length > 0) {
             res.render('cart', { title: 'Shopping Cart', results: cartList});
         }
