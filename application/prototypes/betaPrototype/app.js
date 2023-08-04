@@ -61,7 +61,8 @@ app.use(sessions({
   store: sessionStore,
   cookie: {
     httpOnly: true,
-    secure: false
+    secure: false,
+    maxAge: 60 * 500 //30 seconds
   }
 }));
 
