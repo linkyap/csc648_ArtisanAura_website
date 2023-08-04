@@ -9,12 +9,12 @@ router.get('/cart-list', async (req, res, next) => {
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
         const cartList = await Promise.all(results.map(result => Product.getProductById(result.product_id)));
-        console.log("cartlist[0] : " + cartList[0]);
-        console.log("cartlist[0].id : " + cartList[0].id);
-        console.log("cartlist[0].title : " + cartList[0].title);
-        console.log("cartlist[1].product_id : " + cartList[1].product_id);
-        console.log("cartlist[0][0].id : " + cartList[0][0].id)
-        console.log("cartList.keys: " + Object.keys(cartList));
+        console.log("cartlist[0][0].id : " + cartList[0][0].id);
+        console.log("cartlist[0][1].id : " + cartList[0][1].id);
+        console.log("cartlist[1][0].title : " + cartList[1][0].title);
+        console.log("cartlist[1][1].id : " + cartList[1][1].id);
+        console.log("cartlist[0][2].title : " + cartList[0][2].title)
+        console.log("cartList[0].keys: " + Object.keys(cartList[0]));
         if (cartList.length > 0) {
             res.render('cart', { title: 'Shopping Cart', results: cartList});
         }

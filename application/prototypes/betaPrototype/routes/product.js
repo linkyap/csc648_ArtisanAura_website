@@ -19,8 +19,6 @@ router.get('/:id', async (req, res, next) => {
     let productId = req.params.id;
     let results = await Product.getProductById(productId);
     if(results && results.length > 0){
-      console.log("product results: " + results);
-      console.log("product results[0] : " + results[0]);
       res.render('productPage', {currentProduct: results[0]});
     }
     else{
