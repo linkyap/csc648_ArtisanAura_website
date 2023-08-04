@@ -17,18 +17,18 @@ router.get('/cart-list', async (req, res, next) => {
             let subtotal = 0;
             cartList.forEach(item => {
                 let price = item.price;
-                subtotal += price;
+                subtotal += Number(price);
             });
-            let tax = subtotal * .09;
+            let tax = Number(subtotal * .09);
             let shipping = 4.99;
             let total = subtotal + tax + shipping;
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
-                subtotal: Number(subtotal).toFixed(2), 
-                tax: Number(tax).toFixed(2), 
-                shipping: Number(shipping).toFixed(2),
-                total: Number(total).toFixed(2)});
+                subtotal: subtotal.toFixed(2), 
+                tax: tax.toFixed(2), 
+                shipping: shipping.toFixed(2),
+                total: total.toFixed(2)});
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
