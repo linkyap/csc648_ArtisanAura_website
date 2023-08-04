@@ -21,7 +21,7 @@ router.get('/cart-list', async (req, res, next) => {
             });
             let tax = subtotal * .09;
             let shipping = 4.99;
-            let total = subtotal + tax + shipping + total;
+            let total = subtotal + tax + shipping;
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
