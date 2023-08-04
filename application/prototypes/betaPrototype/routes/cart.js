@@ -8,7 +8,7 @@ router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        const cartList = await Promise.all (results.map(async result => await Product.getProductById(result.product_id)));
+        const cartList = await Promise.all (results.map(result => Product.getProductById(result.product_id)));
         console.log("cartlist[0] : " + cartList[0]);
         console.log("cartlist[0].id : " + cartList[0].id);
         console.log("cartlist[0].title : " + cartList[0].title);
