@@ -15,6 +15,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/search");
 const productRouter = require("./routes/product");
+const cartRouter = require("./routes/cart");
 
 const app = express();
 
@@ -80,7 +81,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/search", searchRouter);
 app.use("/product", productRouter);
-
+app.use("/cart", cartRouter);
 
 app.use((req,res,next) => {
     next(createError(404, `The route ${req.method} : ${req.url} does not exist.`));

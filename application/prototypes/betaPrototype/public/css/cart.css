@@ -21,6 +21,9 @@
     border-radius: 10px;
     flex: 20%;
     padding:10px;
+    position: sticky;
+    align-self: flex-start;
+    top: 0;
 }
 .side-content {
     display: flex;
@@ -35,4 +38,28 @@
     flex: 50%;
     justify-content: flex-end;
     text-align: right;
+}
+
+.card {
+    margin: 20px 0; 
+    display:flex;
+    border-bottom: 1px solid rgb(203, 202, 202);
+}
+.card-left {
+    flex: 30%;
+    margin: 0 20px 20px 20px;
+}
+.card-right {
+    flex:70%;
+}
+.card-title {
+    text-decoration: none;
+    color: black;
+}
+.card-image {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.card-price {
+    font-weight: bold;
 }

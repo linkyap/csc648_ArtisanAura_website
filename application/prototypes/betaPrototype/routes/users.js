@@ -4,7 +4,7 @@ var bcrypt = require('bcrypt');
 var db = require('../conf/database');
 const User = require('../db/users');
 const UserError = require('../helpers/userError');
-const registerValidator = require('../helpers/regValidation');
+const { checkEmail, registerValidator } = require('../helpers/regValidation');
 
 router.use('/registration', registerValidator);
 router.post('/registration', (req, res, next) => {
@@ -108,13 +108,6 @@ router.post('/order-status', (req, res, next) => {
   req.flash('success', 'Order pending. Check again in 24 hours.');
   req.session.save(err => {
     res.redirect('/order-status');
-  })
-});
-
-router.post('/cart', (req, res, next) => {
-  req.flash('error', 'Shopping cart is empty');
-  req.session.save(err => {
-    res.redirect('/cart');
   })
 });
 

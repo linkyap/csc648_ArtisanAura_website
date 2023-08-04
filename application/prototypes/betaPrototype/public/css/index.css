@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #daebed; 
     padding: 10px;
     text-align: center;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #70707194;
 }
 
 .nav-bar {
@@ -213,6 +213,17 @@ nav ul li a {
 
 .button:hover {
     background-color: #004848;
+}
+
+ /* index button style */
+ .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #008080;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {

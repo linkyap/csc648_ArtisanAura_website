@@ -1,32 +1,57 @@
 <link rel="stylesheet" href="/public/css/cart.css">
 <main class="main-content">
-    <form class="cart-form" action="/users/cart" method="POST" enctype="application/x-www-form-urlencoded">
+    <form class="cart-form" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="cart-items">
-            <p>Your shopping cart is empty!</p>
+            {{#if results}}
+                {{#each results}}
+                    <div class="card">
+                        <div class="card-left">
+                            <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" alt="Missing Image">
+                        </div>
+                        <div class="card-right">
+                            <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+                            <p class="card-price">${{this.price}}</p>
+                            <div class="card-select">
+                                <label for="quantity">Quantity: </label>
+                                <select name="quantity" id="quantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+            <p>Your shopping cart is empty.</p>
+            {{/if}}
         </div>
         <div class="side">
             <div class="side-content">
                 <p class="text">Subtotal:</p>
-                <p class="cost">$0.00</p>
+                <p class="cost">${{subtotal}}</p>
             </div>
 
             <div class="side-content">
                 <p class="text">Tax:</p>
-                <p class="cost">$0.00</p>
+                <p class="cost">${{tax}}</p>
             </div>
 
             <div class="side-content">
                 <p class="text">Shipping:</p>
-                <p class="cost">$0.00</p>
+                <p class="cost">${{shipping}}</p>
             </div>
 
             <div class="side-content">
                 <p class="text">Total:</p>
-                <p class="cost">$0.00</p>
+                <p class="cost">${{total}}</p>
             </div>
-            
+
             <input class="submit" type="submit" value="Checkout">
         </div>
     </form>
-    
+
 </main>

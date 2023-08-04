@@ -45,10 +45,6 @@ router.get('/req-refund',function(req,res,next){
 router.get('/order-status',function(req,res,next){
   res.render('orderStatus', { title:'Order Status'});
 });
-// Shopping cart page
-router.get('/cart', function (req,res,next){
-  res.render('cart', {title: 'Shopping Cart'});
-});
 
 // privacy policy page 
 router.get('/PrivacyPolicy',function(req,res,next){
@@ -160,12 +156,36 @@ router.get('/CustomerSupport',function(req,res,next){
 });
 
 // Newsletter sign up
+const {checkEmail, registerValidator} = require('../helpers/regValidation');
+
 router.post('/Newsletter', async function(req,res,next){
   var newsletter_Id = req.params.id;
   var email = req.body.email;
   console.log(`newsletter_Id: ${newsletter_Id}, email: ${email}`);
 
   try {
+
+    if(!checkEmail(email)){
+      req.flash('error','Invaild email, Please give a vaild email address.');
+      return req.session.save(function (error) {
+        if(error) next(error);
+        return res.redirect('/');
+      });
+    }
+
+    const [existemail] = await db.execute(
+      'SELECT * FROM newsletter WHERE email = ?',
+      [email]
+    );
+
+    if (existemail.length > 0) {
+      req.flash('error', 'This email is already subscribed to the newsletter.');
+      return req.session.save(function (error) {
+        if (error) next(error);
+        return res.redirect(`/`);
+      });
+    }
+
     var [input, _] = await db.execute(
       "INSERT INTO newsletter (email) VALUES (?)",
       [email]

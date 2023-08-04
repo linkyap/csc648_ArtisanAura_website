@@ -20,4 +20,7 @@ const registerValidator = (req, res, next) => {
         next();
     }
 }
-module.exports = registerValidator;
+module.exports = {
+    checkEmail,
+    registerValidator
+};

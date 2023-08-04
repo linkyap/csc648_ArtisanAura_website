@@ -4,7 +4,7 @@ var multer = require('multer');
 var sharp = require('sharp');
 var crypto = require('crypto');
 var db = require('../conf/database');
-const {getProductById} = require('../db/products');
+const Product = require('../db/products');
 const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
@@ -17,13 +17,13 @@ var uploader = multer();
 router.get('/:id', async (req, res, next) => {
   try{
     let productId = req.params.id;
-    let results = await getProductById(productId);
+    let results = await Product.getProductById(productId);
     if(results && results.length > 0){
-        res.render('productPage', {currentProduct: results[0]});
+      res.render('productPage', {currentProduct: results[0]});
     }
     else{
-        req.flash("error", "Product not found");
-        res.redirect('/');
+      req.flash("error", "Product "+ productId +" not found");
+      res.redirect('/');
     }
 }
 catch (error){
@@ -31,19 +31,6 @@ catch (error){
 }
 });
 
-router.post('/add-custom-item', (req, res, next) => {
-  req.flash('error', 'Failed to add to cart');
-  req.session.save(err => {
-    res.redirect('/customproduct');
-  });
-});
-
-router.post('/add-item', (req, res, next) => {
-  req.flash('error', 'Failed to add to cart');
-  req.session.save(err => {
-    res.redirect('/product/:id');
-  });
-});
 
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
   try {
