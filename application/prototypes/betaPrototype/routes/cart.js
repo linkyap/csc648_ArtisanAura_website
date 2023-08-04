@@ -14,7 +14,21 @@ router.get('/cart-list', async (req, res, next) => {
     if (results && results.length > 0) {
         const cartList = await Promise.all(results.map(result => getDetails(result))); 
         if (cartList.length > 0) {
-            res.render('cart', { title: 'Shopping Cart', results: cartList});
+            let subtotal = 0;
+            cartList.forEach(item => {
+                let price = item.price;
+                subtotal += price;
+            });
+            let tax = subtotal * .09;
+            let shipping = 4.99;
+            let total = subtotal + tax + shipping + total;
+            res.render('cart', { 
+                title: 'Shopping Cart', 
+                results: cartList, 
+                subtotal: subtotal.toFixed(2), 
+                tax: tax.toFixed(2), 
+                shipping: shipping.toFixed(2),
+                total: total.toFixed(2)});
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
