@@ -52,3 +52,6 @@
     text-decoration: none;
     color: black;
 }
+.card-price {
+    font-weight: bold;
+}

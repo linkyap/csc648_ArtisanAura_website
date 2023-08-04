@@ -6,18 +6,22 @@
                 {{#each results}}
                     <div class="card">
                         <div class="card-left">
-                            <p>Title: {{this.title}}</p>
-                            <img class="card-image" src="/{{this.thumbnail}}" alt="Missing Image">
+                            <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" alt="Missing Image">
                         </div>
                         <div class="card-right">
                             <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
-                            <p class="card-price">{{this.price}}</p>
-                            <p class="card-quantity">Quantity</p>
-                            <select name="quantity" id="quantity">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </select>
+                            <p class="card-price">${{this.price}}</p>
+                            <div class="card-select">
+                                <label for="quantity">Quantity: </label>
+                                <select name="quantity" id="quantity">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            
                         </div>
                     </div>
                 {{/each}}
