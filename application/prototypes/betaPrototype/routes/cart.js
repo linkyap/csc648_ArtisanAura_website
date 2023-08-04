@@ -14,11 +14,11 @@ router.get('/cart-list', async (req, res, next) => {
         //     let product = await Product.getProductById(productId);
         //     cartList.push(product);
         // });
-        let cartList = results.map(async result => await Product.getProductById(result.product_id));
+        let cartList = await Promise.all (results.map(async result => await Product.getProductById(result.product_id)));
         console.log("CartList : " + cartList);
         console.log("Cart length : " + cartList.length);
         if (cartList.length > 0) {
-            res.render('cart', { title: 'Shopping Cart', results: cartList });
+            res.render('cart', { title: 'Shopping Cart', results: cartList});
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
