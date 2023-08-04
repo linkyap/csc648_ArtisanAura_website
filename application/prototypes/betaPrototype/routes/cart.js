@@ -25,10 +25,10 @@ router.get('/cart-list', async (req, res, next) => {
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
-                subtotal: subtotal.toFixed(2), 
-                tax: tax.toFixed(2), 
-                shipping: shipping.toFixed(2),
-                total: total.toFixed(2)});
+                subtotal: Number(subtotal).toFixed(2), 
+                tax: Number(tax).toFixed(2), 
+                shipping: Number(shipping).toFixed(2),
+                total: Number(total).toFixed(2)});
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
