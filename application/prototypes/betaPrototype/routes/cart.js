@@ -25,10 +25,10 @@ router.get('/cart-list', async (req, res, next) => {
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
-                subtotal: subtotal.toFixed(2), 
-                tax: tax.toFixed(2), 
-                shipping: shipping.toFixed(2),
-                total: total.toFixed(2)});
+                subtotal: subtotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
+                tax: tax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
+                shipping: shipping.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}),
+                total: total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})});
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
