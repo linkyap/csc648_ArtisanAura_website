@@ -3,23 +3,24 @@
     <form class="cart-form" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="cart-items">
             {{#if results}}
-            {{#each results}}
-            <div id="product-{{this.id}}" class="card">
-                <div class="card-left">
-                    <img class="card-image" src="/{{this.thumbnail}}" alt="Missing Image">
-                </div>
-                <div class="card-right">
-                    <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
-                    <p class="card-price">{{this.price}}</p>
-                    <p class="card-quantity">Quantity</p>
-                    <select name="quantity" id="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-            </div>
-            {{/each}}
+                {{#each results}}
+                    <div class="card">
+                        <div class="card-left">
+                            <p>Title: {{this.title}} {{title}} {{results.title}}</p>
+                            <img class="card-image" src="/{{this.thumbnail}}" alt="Missing Image">
+                        </div>
+                        <div class="card-right">
+                            <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+                            <p class="card-price">{{this.price}}</p>
+                            <p class="card-quantity">Quantity</p>
+                            <select name="quantity" id="quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                {{/each}}
             {{else}}
             <p>Your shopping cart is empty.</p>
             {{/if}}
