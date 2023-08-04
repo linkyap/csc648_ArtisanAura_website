@@ -3,12 +3,16 @@ var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
 
+async function getDetails(result) {
+    let product = await Product.getProductById(result.product_id);
+    return product[0];
+}
 // Shopping cart page
 router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        const cartList = await Promise.all(results.map(result => Product.getProductById(result.product_id)[0]));
+        const cartList = await Promise.all(results.map(result => getDetails(result))); 
         if (cartList.length > 0) {
             res.render('cart', { title: 'Shopping Cart', results: cartList});
         }
