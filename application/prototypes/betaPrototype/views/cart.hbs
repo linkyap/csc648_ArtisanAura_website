@@ -3,11 +3,25 @@
     <form class="cart-form" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="cart-items">
             {{#if results}}
-                {{#each results}}
-                    {{> card this}}
-                {{/each}}
+            {{#each results}}
+            <div id="product-{{this.id}}" class="card">
+                <div class="card-left">
+                    <img class="card-image" src="/{{this.thumbnail}}" alt="Missing Image">
+                </div>
+                <div class="card-right">
+                    <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+                    <p class="card-price">{{this.price}}</p>
+                    <p class="card-quantity">Quantity</p>
+                    <select name="quantity" id="quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            {{/each}}
             {{else}}
-                <p>Your shopping cart is empty.</p>
+            <p>Your shopping cart is empty.</p>
             {{/if}}
         </div>
         <div class="side">
@@ -30,9 +44,9 @@
                 <p class="text">Total:</p>
                 <p class="cost">$0.00</p>
             </div>
-            
+
             <input class="submit" type="submit" value="Checkout">
         </div>
     </form>
-    
+
 </main>
