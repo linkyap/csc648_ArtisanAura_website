@@ -80,10 +80,12 @@
     margin-left: 10px;
 }
 .counter p {
+    margin-top: auto;
+    height: 18px;
     width: 30px;
     font-size: 14px;
     text-align: center;
-    border: 1px solid darkgrey;
+    border: 1px solid transparent;
     border-radius: 4px;
 }
 .counter input{
@@ -92,6 +94,7 @@
     text-align: center;
     border: 1px solid darkgrey;
     border-radius: 4px;
+    cursor: pointer;
 }
 .card-remove-form {
     align-self: flex-end;

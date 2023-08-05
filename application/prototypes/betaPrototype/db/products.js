@@ -48,17 +48,28 @@ Product.addToCart = (productId, sessionId) => {
 
 };
 Product.removeOneFromCart = (productId, sessionId) => {
-    let query = `UPDATE cart SET quantity = quantity - 1 WHERE product_id=? AND sessions_id=?;`;
-    return db.execute(query, [productId, sessionId])
-        .then(([results, fields]) => {
-            if (results && results.affectedRows) {
-                return Promise.resolve(1);
+    let selectQuery = `SELECT quantity FROM cart WHERE product_id=? AND sessions_id=?;`;
+    return db.execute(selectQuery, [productId, sessionId])
+        .then(([selectResults, selectFields]) => {
+            const quantity = selectResults[0];
+            if (quantity > 0) {
+                let updateQuery = `UPDATE cart SET quantity = quantity - 1 WHERE product_id=? AND sessions_id=?;`;
+                return db.execute(updateQuery, [productId, sessionId])
+                    .then(([updateResults, updateFields]) => {
+                        if (updateResults && updateResults.affectedRows) {
+                            return Promise.resolve(1);
+                        }
+                        else {
+                            return Promise.resolve(-1);
+                        }
+                    })
+                    .catch((updateErr) => Promise.reject(updateErr));
             }
-            else {
-                return Promise.resolve(-1);
+            else{
+                return Product.removeFromCart(productId, sessionId);
             }
         })
-        .catch((err) => Promise.reject(err));
+        .catch((selectErr) => Promise.reject(selectErr));
 }
 Product.removeFromCart = (productId, sessionId) => {
     let query = `DELETE FROM cart WHERE product_id=? AND sessions_id=?;`;
