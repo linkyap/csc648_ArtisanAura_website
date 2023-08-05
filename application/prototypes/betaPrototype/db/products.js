@@ -11,7 +11,7 @@ Product.getProductById = (productId) => {
 };
 Product.addToCart = (productId, sessionId) => {
     // Checks if product exists in cart already
-    let selectQuery = `SELECT COUNT(*) AS count FROM cart WHERE product_id=? AND session_id=?;`;
+    let selectQuery = `SELECT COUNT(*) AS count FROM cart WHERE product_id=? AND sessions_id=?;`;
     return db.execute(selectQuery, [productId, sessionId])
         .then(([selectResults, selectFields]) => {
             const quantity = selectResults[0].count;
@@ -31,7 +31,7 @@ Product.addToCart = (productId, sessionId) => {
             }
             // If product exists, increment quantity
             else{
-                let updateQuery = `UPDATE cart SET quantity = quantity + 1 WHERE product_id=? AND session_id=?;`;
+                let updateQuery = `UPDATE cart SET quantity = quantity + 1 WHERE product_id=? AND sessions_id=?;`;
                 return db.execute(updateQuery, [productId, sessionId])
                 .then(([updateResults, updateFields]) => {
                     if(updateResults && updateResults.affectedRows) {
