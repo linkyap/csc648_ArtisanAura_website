@@ -52,7 +52,11 @@ Product.removeOneFromCart = (productId, sessionId) => {
     return db.execute(selectQuery, [productId, sessionId])
         .then(([selectResults, selectFields]) => {
             const quantity = selectResults[0];
-            if (quantity > 0) {
+            console.log("QUANTITY = " + quantity);
+            if (quantity === 0) {
+                return Product.removeFromCart(productId, sessionId);
+            }
+            else{
                 let updateQuery = `UPDATE cart SET quantity = quantity - 1 WHERE product_id=? AND sessions_id=?;`;
                 return db.execute(updateQuery, [productId, sessionId])
                     .then(([updateResults, updateFields]) => {
@@ -64,9 +68,6 @@ Product.removeOneFromCart = (productId, sessionId) => {
                         }
                     })
                     .catch((updateErr) => Promise.reject(updateErr));
-            }
-            else{
-                return Product.removeFromCart(productId, sessionId);
             }
         })
         .catch((selectErr) => Promise.reject(selectErr));
