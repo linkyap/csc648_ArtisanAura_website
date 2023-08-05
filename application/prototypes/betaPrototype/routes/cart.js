@@ -12,23 +12,27 @@ router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
+        // Get product details 
         const cartList = await Promise.all(results.map(result => getDetails(result))); 
         if (cartList.length > 0) {
             let subtotal = 0;
             cartList.forEach(item => {
+                // Calculates subtotal by getting sum of prices
                 let price = item.price;
                 subtotal += Number(price);
             });
             let tax = Number(subtotal * .09);
             let shipping = 4.99;
             let total = subtotal + tax + shipping;
+
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
                 subtotal: subtotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
                 tax: tax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
                 shipping: shipping.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}),
-                total: total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})});
+                total: total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}
+            );
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
