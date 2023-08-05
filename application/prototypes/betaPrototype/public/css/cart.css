@@ -127,7 +127,7 @@
     flex-direction: row;
 }
 .address-city > div {
-    margin: 30px;
+    margin-right: 30px;
     flex: 50%;
 }
 .state-zip {
@@ -135,7 +135,7 @@
     flex-direction: row;
 }
 .state-zip > div {
-    margin: 30px;
+    margin-right: 30px;
     flex: 50%;
 }
 .exp-cvv {
@@ -143,16 +143,12 @@
     flex-direction: row;
 }
 .exp-cvv > div {
-    margin: 30px;
+    margin-right: 30px;
     flex: 50%;
 }
+.input-group {
+    margin-right: 30px;
+}
 .input-group input {
-    width: 100%;
     border: 1px solid darkgray;
-    border-radius: 10px;
-    margin-bottom: 25px;
-    font-size: 16px;
-    padding: 10px;
-    outline: none;
-    background: white;
 }
