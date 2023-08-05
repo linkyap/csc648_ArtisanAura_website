@@ -4,9 +4,6 @@
     <div class="cart-items">
         {{#if results}}
         {{#each results}}
-        <div id="product-id">
-            {{this.id}}
-        </div>
         <div class="card">
             <div class="card-left">
                 <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
@@ -19,11 +16,11 @@
                     <label for="quantity">Quantity: </label>
                     <div class="counter">
                         <form class="counter-down" action="/cart/dec-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-                            <input class="down">-</input>
+                            <input class="down" type="submit" value="-">
                         </form>                        
                         <input type="text" value="{{this.quantity}}">
                         <form class="counter-up" action="/cart/inc-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-                            <input class="up">+</input>
+                            <input class="up" type="submit" value="+">
                         </form>
                     </div>
                 </div>
