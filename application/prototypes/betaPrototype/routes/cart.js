@@ -25,7 +25,8 @@ router.get('/cart-list', async (req, res, next) => {
             cartList.forEach(item => {
                 // Calculates subtotal by getting sum of prices
                 let price = item.price;
-                subtotal += Number(price);
+                let qty = item.quantity;
+                subtotal += (Number(price) * Number(qty));
             });
             let tax = Number(subtotal * .09);
             let shipping = 4.99;

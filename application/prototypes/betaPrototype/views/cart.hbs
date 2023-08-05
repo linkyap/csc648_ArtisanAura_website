@@ -18,7 +18,7 @@
                         <form class="counter-down" action="/cart/dec-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
                             <input class="down" type="submit" value="-">
                         </form>                        
-                        <input type="text" value="{{this.quantity}}">
+                        <p class="card-qty">{{this.quantity}}</p>
                         <form class="counter-up" action="/cart/inc-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
                             <input class="up" type="submit" value="+">
                         </form>
