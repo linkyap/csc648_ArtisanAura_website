@@ -48,10 +48,10 @@ Product.addToCart = (productId, sessionId) => {
 
 };
 Product.removeOneFromCart = (productId, sessionId) => {
-    let selectQuery = `SELECT quantity FROM cart WHERE product_id=? AND sessions_id=?;`;
+    let selectQuery = `SELECT quantity AS quantity FROM cart WHERE product_id=? AND sessions_id=?;`;
     return db.execute(selectQuery, [productId, sessionId])
         .then(([selectResults, selectFields]) => {
-            const quantity = selectResults[0];
+            const quantity = selectResults[0].quantity;
             console.log("QUANTITY = " + quantity);
             if (quantity === 0) {
                 return Product.removeFromCart(productId, sessionId);
