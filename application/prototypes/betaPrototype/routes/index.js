@@ -102,6 +102,9 @@ router.get('/Shop', async function(req, res, next){
       let filterMaterial = req.query.material;
       let filterGemstone = req.query.gemstone;
       let sortPrice = req.query.sort_price;
+      let min_price = req.query.min_price ? parseFloat(req.query.min_price) : null;
+      let max_price = req.query.max_price ? parseFloat(req.query.max_price) : null;
+
         // all product data
       let query = "SELECT * FROM product";
       let queryParams = [];
@@ -123,9 +126,21 @@ router.get('/Shop', async function(req, res, next){
               queryParams.push('%' + filterMaterial + '%');
           }
           if(filterGemstone) {
-            conditions.push("material LIKE ?");
+            conditions.push("gemstone LIKE ?");
             queryParams.push('%' + filterGemstone + '%');
           }
+
+          if (min_price !== null && max_price !== null) {
+            conditions.push("price >= ? AND price <= ?");
+            queryParams.push(min_price, max_price);
+        } else if (min_price !== null) {
+            conditions.push("price >= ?");
+            queryParams.push(min_price);
+        } else if (max_price !== null) {
+            conditions.push("price <= ?");
+            queryParams.push(max_price);
+        }
+
             //joins multiple conditions
           query += conditions.join(' AND ');
       }
