@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="/public/css/cart.css">
+<main class="main-content">
+    <div class="checkout-details">
+        <div class="ship-details">
+            <p class="ship-title">Shipping Information</p>
+            <div class="input-group">
+                <input class="ship-name" type="text" name="ship-name" required="">
+                <label for="ship-name">Name</label>
+            </div>
+            <div class="input-group">
+                <input class="ship-address" type="text" name="ship-address" required="">
+                <label for="ship-address">Address</label>
+            </div> 
+            <div class="input-group">
+                <input class="ship-city" type="text" name="ship-city" required="">
+                <label for="ship-city">City</label>
+            </div> 
+            <div class="input-group">
+                <input class="ship-state" type="text" name="ship-state" required="">
+                <label for="ship-state">State</label>
+            </div>
+            <div class="input-group">
+                <input class="ship-zip" type="text" name="ship-zip" required="">
+                <label for="ship-zip">Zip/Postal Code</label>
+            </div>
+
+        </div>
+        <div class="pay-details">
+            <p class="pay-title">Payment Information</p>
+        </div>
+        <div class="rev-details">
+            <p class="rev-title">Review Information</p>
+        </div>
+    </div>
+    <div class="side">
+        <div class="side-content">
+            <p class="text">Subtotal:</p>
+            <p class="cost" id="subtotal">${{subtotal}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Tax:</p>
+            <p class="cost" id="tax">${{tax}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Shipping:</p>
+            <p class="cost">${{shipping}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Total:</p>
+            <p class="total-cost" id="total">${{total}}</p>
+        </div>
+    </div>
+</main>

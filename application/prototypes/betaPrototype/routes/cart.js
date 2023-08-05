@@ -59,12 +59,18 @@ router.post('/add-custom-item', (req, res, next) => {
 });
 
 router.post('/checkout/:subtotal/:tax/:shipping/:total', (req, res, next) => {
-    console.log("subtotal: " + req.params.subtotal);
-    console.log("tax: " + req.params.tax);
-    console.log("shipping: " + req.params.shipping);
-    console.log("total: "+ req.params.total);
-    req.session.save(err => {
-        res.redirect('back');
+    let subtotal = req.params.subtotal;
+    let tax = req.params.tax;
+    let shipping = req.params.shipping;
+    let total = req.params.total;
+
+    
+    res.render('checkout', {
+        title: 'Checkout',
+        subtotal: subtotal,
+        tax: tax,
+        shipping: shipping,
+        total: total
     })
 });
 
