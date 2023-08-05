@@ -3,6 +3,7 @@ var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
 
+// Get product details
 async function getDetails(result) {
     let product = await Product.getProductById(result.product_id);
     return product[0];
@@ -57,13 +58,17 @@ router.post('/add-custom-item', (req, res, next) => {
     });
 });
 
-router.post('/checkout', (req, res, next) => {
-    req.flash('error', 'Shopping cart is empty');
+router.post('/checkout/:subtotal/:tax/:shipping/:total', (req, res, next) => {
+    console.log("subtotal: " + req.params.subtotal);
+    console.log("tax: " + req.params.tax);
+    console.log("shipping: " + req.params.shipping);
+    console.log("total: "+ req.params.total);
     req.session.save(err => {
         res.redirect('back');
     })
 });
 
+// Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
     try {
         let productId = req.params.id;
@@ -86,6 +91,7 @@ router.post('/add-item/:id', async (req, res, next) => {
         next(error);
     }
 });
+// Increments quantity inside cart and adjusts price accordingly
 router.post('/inc-qty/:id', async (req, res, next) => {
     try {
         let productId = req.params.id;
@@ -107,6 +113,7 @@ router.post('/inc-qty/:id', async (req, res, next) => {
         next(error);
     }
 });
+// Decrements quantity inside cart and adjusts price accordingly
 router.post('/dec-qty/:id', async (req, res, next) => {
     try {
         let productId = req.params.id;
@@ -128,6 +135,7 @@ router.post('/dec-qty/:id', async (req, res, next) => {
         next(error);
     }
 });
+// Removes item from cart
 router.post('/remove/:id', async (req, res, next) => {
     try {
         let productId = req.params.id;
