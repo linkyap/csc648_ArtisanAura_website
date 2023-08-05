@@ -1,59 +1,60 @@
 <link rel="stylesheet" href="/public/css/cart.css">
 <main class="main-content">
-    <form class="cart-form" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
-        <div class="cart-items">
-            {{#if results}}
-                {{#each results}}
-                    <div class="card">
-                        <div class="card-left">
-                            <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" alt="Missing Image">
-                        </div>
-                        <div class="card-right">
-                            <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
-                            <p class="card-price">${{this.price}}</p>
-                            <div class="card-select">
-                                <label for="quantity">Quantity: {{this.quantity}}</label>
-                                {{!-- <select name="quantity" id="quantity">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select> --}}
-                            </div>
-                            {{!-- <div class="cart-edits">
-                                <input
-                            </div> --}}
-                        </div>
-                    </div>
-                {{/each}}
-            {{else}}
-            <p>Your shopping cart is empty.</p>
-            {{/if}}
+    <div class="cart-items">
+        {{#if results}}
+        {{#each results}}
+        <div class="card">
+            <div class="card-left">
+                <img class="card-image"
+                    src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
+                    alt="Missing Image">
+            </div>
+            <div class="card-right">
+                <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+                <p class="card-price">${{this.price}}</p>
+                <div class="card-select">
+                    <label for="quantity">Quantity: {{this.quantity}}</label>
+                    {{!-- <select name="quantity" id="quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select> --}}
+                </div>
+                <form class="card-remove-form" action="/cart/remove/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+                    <input class="card-remove" type="submit" value="Remove">
+                </form>
+
+            </div>
         </div>
-        <div class="side">
-            <div class="side-content">
-                <p class="text">Subtotal:</p>
-                <p class="cost">${{subtotal}}</p>
-            </div>
+        {{/each}}
+        {{else}}
+        <p>Your shopping cart is empty.</p>
+        {{/if}}
+    </div>
+    <div class="side">
+        <div class="side-content">
+            <p class="text">Subtotal:</p>
+            <p class="cost">${{subtotal}}</p>
+        </div>
 
-            <div class="side-content">
-                <p class="text">Tax:</p>
-                <p class="cost">${{tax}}</p>
-            </div>
+        <div class="side-content">
+            <p class="text">Tax:</p>
+            <p class="cost">${{tax}}</p>
+        </div>
 
-            <div class="side-content">
-                <p class="text">Shipping:</p>
-                <p class="cost">${{shipping}}</p>
-            </div>
+        <div class="side-content">
+            <p class="text">Shipping:</p>
+            <p class="cost">${{shipping}}</p>
+        </div>
 
-            <div class="side-content">
-                <p class="text">Total:</p>
-                <p class="total-cost">${{total}}</p>
-            </div>
-
+        <div class="side-content">
+            <p class="text">Total:</p>
+            <p class="total-cost">${{total}}</p>
+        </div>
+        <form class="cart-checkout" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
             <input class="submit" type="submit" value="Checkout">
-        </div>
-    </form>
-
+        </form>
+    </div>
 </main>
