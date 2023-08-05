@@ -1,0 +1,31 @@
+<link rel="stylesheet" href="/public/css/cart.css">
+<main class="main-content">
+    <div class="review-details">
+        <p class="review-title">Review Information</p>
+    </div>
+    <div class="side">
+        <div class="side-content">
+            <p class="text">Subtotal:</p>
+            <p class="cost" id="subtotal">${{subtotal}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Tax:</p>
+            <p class="cost" id="tax">${{tax}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Shipping:</p>
+            <p class="cost">${{shipping}}</p>
+        </div>
+
+        <div class="side-content">
+            <p class="text">Total:</p>
+            <p class="total-cost" id="total">${{total}}</p>
+        </div>
+        <form class="review-form" action="/cart/place-order/{{subtotal}}/{{tax}}/{{shipping}}/{{total}}" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <input class="submit" type="submit" value="Place Order">
+        </form>
+    </div>
+</main>
