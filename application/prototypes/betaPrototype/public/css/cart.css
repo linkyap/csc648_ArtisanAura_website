@@ -122,6 +122,19 @@
     font-weight: bold;
     margin: 10px 5px 30px 10px;
 }
+.address-city{
+    display:flex;
+    flex-direction: row;
+}
+
+.state-zip {
+    display: flex;
+    flex-direction: row;
+}
+.exp-cvv {
+    display: flex;
+    flex-direction: row;
+}
 .input-group input {
     width: 100%;
     border: 1px solid darkgray;
