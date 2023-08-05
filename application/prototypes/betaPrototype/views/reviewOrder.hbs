@@ -2,6 +2,11 @@
 <main class="main-content">
     <div class="review-details">
         <p class="review-title">Review Information</p>
+        {{#if results}}
+        {{#each results}}
+            {{>card this}}
+        {{/each}}
+        {{/if}}
     </div>
     <div class="side">
         <div class="side-content">

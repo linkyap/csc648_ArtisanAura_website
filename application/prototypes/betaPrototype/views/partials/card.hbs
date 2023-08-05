@@ -1,0 +1,26 @@
+<div class="card">
+            <div class="card-left">
+                <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
+                    alt="Missing Image">
+            </div>
+            <div class="card-right">
+                <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+                <p class="card-price">${{this.price}}</p>
+                <div class="card-quantity">
+                    <label for="quantity">Quantity: </label>
+                    <div class="counter">
+                        <form class="counter-down" action="/cart/dec-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+                            <input class="down" type="submit" value="-">
+                        </form>                        
+                        <p class="card-qty">{{this.quantity}}</p>
+                        <form class="counter-up" action="/cart/inc-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+                            <input class="up" type="submit" value="+">
+                        </form>
+                    </div>
+                </div>
+                <form class="card-remove-form" action="/cart/remove/{{this.id}}" method="POST"
+                    enctype="application/x-www-form-urlencoded">
+                    <input class="card-remove" type="submit" value="Remove">
+                </form>
+            </div>
+        </div>
