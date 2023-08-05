@@ -12,10 +12,14 @@ router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        // Get product quantities
-        const quantityList = await Promise.all(results.map(result => result.quantity));
         // Get product details 
-        const cartList = await Promise.all(results.map(result => getDetails(result))); 
+        const cartList = await Promise.all(results.map(async result => {
+            const product = await getDetails(result);
+            return {
+                ...product, 
+                quantity: result.quantity
+            };
+        })); 
         if (cartList.length > 0) {
             let subtotal = 0;
             cartList.forEach(item => {
@@ -30,7 +34,6 @@ router.get('/cart-list', async (req, res, next) => {
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
-                quantities: quantityList,
                 subtotal: subtotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
                 tax: tax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
                 shipping: shipping.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}),
