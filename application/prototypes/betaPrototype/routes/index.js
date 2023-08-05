@@ -19,7 +19,15 @@ router.get('/login',function(req,res,next){
 
 //profile page
 router.get('/users/profile/:id', function(req, res, next){
-  res.render('profile', {title:'Profile'});
+  if (req.session.userId) {
+    //logged in, continue 
+    res.render('profile', {title:'Profile'});
+    next();
+  } else {
+    // not logged in/timeout
+    res.redirect('/login');
+  }
+
 });
 
 // registration page 
