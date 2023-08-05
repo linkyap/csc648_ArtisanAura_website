@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .cart-items {
     background-color: white;
     border: 5px solid #daebed;
@@ -118,4 +117,18 @@
 }
 .card-remove-form input:hover{
     text-decoration: underline;
+}
+.checkout-details p {
+    font-weight: bold;
+    margin: 10px 5px 30px 10px;
+}
+.input-group input {
+    width: 100%;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    padding: 10px;
+    outline: none;
+    background: white;
 }
