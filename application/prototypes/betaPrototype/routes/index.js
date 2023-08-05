@@ -119,12 +119,12 @@ router.get('/Shop', async function(req, res, next){
               queryParams.push(filterType);
           }
           if(filterMaterial) {
-              conditions.push("material = ?");
-              queryParams.push(filterMaterial);
+              conditions.push("material LIKE ?");
+              queryParams.push('%' + filterMaterial + '%');
           }
           if(filterGemstone) {
-              conditions.push("gemstone = ?");
-              queryParams.push(filterGemstone);
+            conditions.push("material LIKE ?");
+            queryParams.push('%' + filterGemstone + '%');
           }
             //joins multiple conditions
           query += conditions.join(' AND ');
