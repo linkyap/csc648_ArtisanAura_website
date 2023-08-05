@@ -1,31 +1,30 @@
 <link rel="stylesheet" href="/public/css/cart.css">
+<script defer src="/public/js/counter.js"></script>
 <main class="main-content">
     <div class="cart-items">
         {{#if results}}
         {{#each results}}
         <div class="card">
             <div class="card-left">
-                <img class="card-image"
-                    src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
+                <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
                     alt="Missing Image">
             </div>
             <div class="card-right">
                 <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
                 <p class="card-price">${{this.price}}</p>
-                <div class="card-select">
-                    <label for="quantity">Quantity: {{this.quantity}}</label>
-                    {{!-- <select name="quantity" id="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select> --}}
+                <div class="card-quantity">
+                    <label for="quantity">Quantity: </label>
+                    <div class="counter">
+                        <button class="down" onclick="decreaseCount(event, this)">-</button>
+                        <input type="text" value="{{this.quantity}}">
+                        <button class="up" onclick="increaseCount(event, this)">+</button>
+                    </div>
                 </div>
-                <form class="card-remove-form" action="/cart/remove/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+                <form class="card-remove-form" action="/cart/remove/{{this.id}}" method="POST"
+                    enctype="application/x-www-form-urlencoded">
                     <input class="card-remove" type="submit" value="Remove">
                 </form>
-
+    
             </div>
         </div>
         {{/each}}

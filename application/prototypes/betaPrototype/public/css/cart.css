@@ -58,6 +58,9 @@
 }
 .card-right {
     flex:70%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 .card-title {
     text-decoration: none;
@@ -65,14 +68,31 @@
 }
 .card-image {
     margin-right: 10px;
-    margin-bottom: 10px;
 }
 .card-price {
     font-weight: bold;
 }
+.counter{
+    display: flex;
+}
+.counter input{
+    width: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+.counter button{
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.card-remove-form {
+    align-self: flex-end;
+}
 .card-remove-form input{
     border: none;
     background-color: transparent;
+    font-family: 'Avenir', 'Arial', sans-serif;
+    font-size: 14px;
 }
 .card-remove-form input:hover{
     text-decoration: underline;
