@@ -96,27 +96,44 @@ router.get('/AboutUs', async function(req,res,next){
 // shop page
 router.get('/Shop', async function(req, res, next){
   try {
-      //for filtering
-      let filterPrice = req.query.price;
-      let filterType = req.query.type;
-      let filterMaterial = req.query.material;
-      let filterGemstone = req.query.gemstone;
-      let sortPrice = req.query.sort_price;
-      let min_price = req.query.min_price ? parseFloat(req.query.min_price) : null;
-      let max_price = req.query.max_price ? parseFloat(req.query.max_price) : null;
+       // chk if rest clicked
+       if (req.query.reset === 'true') {
+        req.session.filters = {};
+        return res.redirect('/Shop');
+    }
 
+      //for filtering
+
+     //session filter or empty
+     req.session.filters = req.session.filters || {};
+        
+     // filters in query
+     if (req.query.type) req.session.filters.type = req.query.type;
+     if (req.query.material) req.session.filters.material = req.query.material;
+     if (req.query.gemstone) req.session.filters.gemstone = req.query.gemstone;
+     if (req.query.sort_price) req.session.filters.sort_price = req.query.sort_price;
+     if (req.query.min_price) req.session.filters.min_price = parseFloat(req.query.min_price);
+     if (req.query.max_price) req.session.filters.max_price = parseFloat(req.query.max_price);
+
+     // filter from session
+     let {
+         type: filterType,
+         material: filterMaterial,
+         gemstone: filterGemstone,
+         sort_price: sortPrice,
+         min_price: min_price,
+         max_price: max_price
+     } = req.session.filters;
+
+
+     
         // all product data
       let query = "SELECT * FROM product";
       let queryParams = [];
-            // conditions for each filter
-      if (filterPrice || filterType || filterMaterial || filterGemstone) {
-          query += " WHERE ";
-          let conditions = [];
+      let conditions = [];
 
-          if(filterPrice) {
-              conditions.push("price <= ?");
-              queryParams.push(parseFloat(filterPrice));
-          }
+
+          //each filter type below
           if(filterType) {
               conditions.push("type = ?");
               queryParams.push(filterType);
@@ -142,8 +159,10 @@ router.get('/Shop', async function(req, res, next){
         }
 
             //joins multiple conditions
-          query += conditions.join(' AND ');
-      }
+          if (conditions.length > 0) {
+          query += " WHERE " + conditions.join(' AND ');
+        }
+      
         //edge, if price sort by it
       if(sortPrice) {
           query += ` ORDER BY price ${sortPrice}`;
@@ -155,7 +174,7 @@ router.get('/Shop', async function(req, res, next){
         return res.render('Shop', { error: 'No products available', products: [] });
       }//self explanatory ^^^
   
-      return res.render('Shop', { products: products });
+      return res.render('Shop', { products: products, filters: req.session.filters });
 
   } catch (err) {
       console.error(err);
