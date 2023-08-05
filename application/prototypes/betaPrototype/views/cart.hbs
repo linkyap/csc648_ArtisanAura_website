@@ -4,6 +4,9 @@
     <div class="cart-items">
         {{#if results}}
         {{#each results}}
+        <div id="product-id">
+            {{this.id}}
+        </div>
         <div class="card">
             <div class="card-left">
                 <img class="card-image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}"
@@ -15,16 +18,19 @@
                 <div class="card-quantity">
                     <label for="quantity">Quantity: </label>
                     <div class="counter">
-                        <button class="down" onclick="decreaseCount(event, this)">-</button>
+                        <form class="counter-down" action="/cart/dec-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+                            <input class="down">-</input>
+                        </form>                        
                         <input type="text" value="{{this.quantity}}">
-                        <button class="up" onclick="increaseCount(event, this)">+</button>
+                        <form class="counter-up" action="/cart/inc-qty/{{this.id}}" method="POST" enctype="application/x-www-form-urlencoded">
+                            <input class="up">+</input>
+                        </form>
                     </div>
                 </div>
                 <form class="card-remove-form" action="/cart/remove/{{this.id}}" method="POST"
                     enctype="application/x-www-form-urlencoded">
                     <input class="card-remove" type="submit" value="Remove">
                 </form>
-    
             </div>
         </div>
         {{/each}}
@@ -35,12 +41,12 @@
     <div class="side">
         <div class="side-content">
             <p class="text">Subtotal:</p>
-            <p class="cost">${{subtotal}}</p>
+            <p class="cost" id="subtotal">${{subtotal}}</p>
         </div>
 
         <div class="side-content">
             <p class="text">Tax:</p>
-            <p class="cost">${{tax}}</p>
+            <p class="cost" id="tax">${{tax}}</p>
         </div>
 
         <div class="side-content">
@@ -50,7 +56,7 @@
 
         <div class="side-content">
             <p class="text">Total:</p>
-            <p class="total-cost">${{total}}</p>
+            <p class="total-cost" id="total">${{total}}</p>
         </div>
         <form class="cart-checkout" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
             <input class="submit" type="submit" value="Checkout">

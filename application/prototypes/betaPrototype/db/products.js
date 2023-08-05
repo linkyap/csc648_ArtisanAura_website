@@ -47,6 +47,33 @@ Product.addToCart = (productId, sessionId) => {
         .catch((selectErr) => Promise.reject(selectErr));
 
 };
+Product.removeOneFromCart = (productId, sessionId) => {
+    let query = `UPDATE cart SET quantity = quantity - 1 WHERE product_id=? AND sessions_id=?;`;
+    return db.execute(query, [productId, sessionId])
+        .then(([results, fields]) => {
+            if (results && results.affectedRows) {
+                return Promise.resolve(1);
+            }
+            else {
+                return Promise.resolve(-1);
+            }
+        })
+        .catch((err) => Promise.reject(err));
+}
+Product.removeFromCart = (productId, sessionId) => {
+    let query = `DELETE FROM cart WHERE product_id=? AND sessions_id=?;`;
+    return db.execute(query, [productId, sessionId])
+        .then(([results, fields]) => {
+            if (results && results.affectedRows) {
+                return Promise.resolve(1);
+            }
+            else {
+                return Promise.resolve(-1);
+            }
+        })
+        .catch((err) => Promise.reject(err));
+}
+
 Product.getCart = (sessionId) => {
     let query = `SELECT * FROM cart WHERE sessions_id=?`;
     return db.execute(query, [sessionId])

@@ -72,6 +72,10 @@
 .card-price {
     font-weight: bold;
 }
+.card-quantity {
+    margin-left: 10px;
+    display:flex;
+}
 .counter{
     display: flex;
 }
@@ -79,14 +83,21 @@
     width: 30px;
     font-size: 14px;
     text-align: center;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
 }
 .counter button{
     font-size: 14px;
     padding: 0 10px;
     cursor: pointer;
+    background-color: #fafafa;
+    border: 1px solid darkgrey;
+    border-radius: 4px;
 }
 .card-remove-form {
     align-self: flex-end;
+    margin-right: 20px;
+    margin-top: auto;
 }
 .card-remove-form input{
     border: none;

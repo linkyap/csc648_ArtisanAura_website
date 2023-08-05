@@ -85,5 +85,68 @@ router.post('/add-item/:id', async (req, res, next) => {
         next(error);
     }
 });
+router.post('/inc-qty/:id', async (req, res, next) => {
+    try {
+        let productId = req.params.id;
+        let sessionId = req.session.id;
+        let addedProductId = await Product.addToCart(productId, sessionId);
+        if (addedProductId > 0) {
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+        else {
+            req.flash("error", "Failed to add to cart");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+});
+router.post('/dec-qty/:id', async (req, res, next) => {
+    try {
+        let productId = req.params.id;
+        let sessionId = req.session.id;
+        let removedProductId = await Product.removeOneFromCart(productId, sessionId);
+        if (removedProductId > 0) {
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+        else {
+            req.flash("error", "Failed to decrease quantity of product");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+});
+router.post('/remove/:id', async (req, res, next) => {
+    try {
+        let productId = req.params.id;
+        let sessionId = req.session.id;
+        let removedProductId = await Product.removeFromCart(productId, sessionId);
+        if (removedProductId > 0) {
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+        else {
+            req.flash("error", "Failed to remove product from cart");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+});
 
 module.exports = router;
