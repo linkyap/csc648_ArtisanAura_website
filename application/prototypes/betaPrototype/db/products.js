@@ -53,7 +53,7 @@ Product.removeOneFromCart = (productId, sessionId) => {
         .then(([selectResults, selectFields]) => {
             const quantity = selectResults[0].quantity;
             console.log("QUANTITY = " + quantity);
-            if (quantity === 0) {
+            if (quantity === 1) {
                 return Product.removeFromCart(productId, sessionId);
             }
             else{
