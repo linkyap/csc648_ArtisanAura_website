@@ -30,7 +30,7 @@ router.get('/cart-list', async (req, res, next) => {
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
-                quantites: quantityList,
+                quantities: quantityList,
                 subtotal: subtotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
                 tax: tax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
                 shipping: shipping.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}),

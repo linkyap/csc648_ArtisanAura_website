@@ -70,3 +70,9 @@
 .card-price {
     font-weight: bold;
 }
+.card-remove {
+    border: none;
+}
+.card-remove :hover{
+    text-decoration: underline;
+}
