@@ -70,9 +70,10 @@
 .card-price {
     font-weight: bold;
 }
-.card-remove {
+.card-remove-form{
     border: none;
+    background-color: transparent;
 }
-.card-remove :hover{
+.card-remove-form input:hover{
     text-decoration: underline;
 }
