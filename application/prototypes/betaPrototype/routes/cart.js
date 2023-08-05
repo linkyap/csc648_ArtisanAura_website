@@ -59,21 +59,69 @@ router.post('/add-custom-item', (req, res, next) => {
 });
 
 router.post('/checkout/:subtotal/:tax/:shipping/:total', (req, res, next) => {
-    let subtotal = req.params.subtotal;
-    let tax = req.params.tax;
-    let shipping = req.params.shipping;
-    let total = req.params.total;
-
+    try {
+        let { subtotal, tax, shipping, total } = req.params;
+        if(subtotal === undefined) {
+            req.flash('error', "Cart is empty");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+        else {
+            res.render('checkout', {
+                title: 'Checkout',
+                subtotal: subtotal,
+                tax: tax,
+                shipping: shipping,
+                total: total
+            });
+        }
+    }
+    catch (error) {
+        next(error);
+    }
     
-    res.render('checkout', {
-        title: 'Checkout',
-        subtotal: subtotal,
-        tax: tax,
-        shipping: shipping,
-        total: total
-    })
 });
+router.post('/review/:subtotal/:tax/:shipping/:total', async (req, res, next) => {
+    let { subtotal, tax, shipping, total } = req.params;    
+    let sessionId = req.session.id
+    let results = await Product.getCart(sessionId);
+    if (results && results.length > 0) {
+        // Get product details 
+        const cartList = await Promise.all(results.map(async result => {
+            const product = await getDetails(result);
+            return {
+                ...product,
+                quantity: result.quantity
+            };
+        }));
+        res.render('reviewOrder', {
+            title: 'Review Order',
+            results: cartList,
+            subtotal: subtotal,
+            tax: tax,
+            shipping: shipping,
+            total: total
+        });
+    }
+    else{
+        req.flash('error', "Cannot move on to review");
+        req.session.save(err => {
+            res.redirect('back');
+        });
+    }
 
+});
+// router.post('/place-order/:subtotal/:tax/:shipping/:total', (req, res, next) => {
+//     let { subtotal, tax, shipping, total } = req.params;
+//     res.render('reviewOrder', {
+//         title: 'Review Order',
+//         subtotal: subtotal,
+//         tax: tax,
+//         shipping: shipping,
+//         total: total
+//     });
+// });
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
     try {

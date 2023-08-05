@@ -45,9 +45,6 @@
                 </div>
             </div>
         </div>
-        <div class="rev-details">
-            <p class="rev-title">Review Information</p>
-        </div>
     </div>
     <div class="side">
         <div class="side-content">
@@ -69,5 +66,9 @@
             <p class="text">Total:</p>
             <p class="total-cost" id="total">${{total}}</p>
         </div>
+        <form class="checkout-form" action="/cart/review/{{subtotal}}/{{tax}}/{{shipping}}/{{total}}" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <input class="submit" type="submit" value="Review Order">
+        </form>
     </div>
 </main>
