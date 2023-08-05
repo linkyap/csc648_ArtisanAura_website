@@ -127,24 +127,24 @@
     flex-direction: row;
 }
 .address-city > div {
-    margin: 10px;
-    flex: 40%;
+    margin: 30px;
+    flex: 50%;
 }
 .state-zip {
     display: flex;
     flex-direction: row;
 }
 .state-zip > div {
-    margin: 10px;
-    flex: 40%;
+    margin: 30px;
+    flex: 50%;
 }
 .exp-cvv {
     display: flex;
     flex-direction: row;
 }
 .exp-cvv > div {
-    margin: 10px;
-    flex: 40%;
+    margin: 30px;
+    flex: 50%;
 }
 .input-group input {
     width: 100%;
