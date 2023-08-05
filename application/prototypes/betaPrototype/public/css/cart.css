@@ -70,7 +70,7 @@
 .card-price {
     font-weight: bold;
 }
-.card-remove-form{
+.card-remove-form input{
     border: none;
     background-color: transparent;
 }

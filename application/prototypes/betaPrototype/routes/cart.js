@@ -16,10 +16,6 @@ router.get('/cart-list', async (req, res, next) => {
         const quantityList = await Promise.all(results.map(result => result.quantity));
         // Get product details 
         const cartList = await Promise.all(results.map(result => getDetails(result))); 
-        console.log("cartlist length : " + cartList.length);
-        console.log("quantitylist length : " + quantityList.length);
-        console.log("quantity[0] : " + quantityList[0]);
-        console.log("quantity[0][0] : " + quantityList[0][0]);
         if (cartList.length > 0) {
             let subtotal = 0;
             cartList.forEach(item => {
