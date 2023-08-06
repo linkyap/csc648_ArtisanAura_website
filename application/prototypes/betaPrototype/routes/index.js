@@ -163,7 +163,7 @@ router.get('/Shop', async function (req, res, next) {
       if (['ASC', 'DESC'].includes(sortPrice.toUpperCase())) {
         query += ` ORDER BY price ${sortPrice}`;
       } else {
-         
+
       }
     }
     
@@ -201,6 +201,8 @@ router.get('/Shop', async function (req, res, next) {
     return res.render('Shop', {
         products: products,
         filters: req.session.filters
+        //need to add message that no results found for combined search
+        // need to update idividuals so they follow the price update
     });
 
   } catch (err) {
