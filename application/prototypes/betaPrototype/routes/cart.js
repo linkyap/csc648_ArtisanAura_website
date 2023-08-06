@@ -131,9 +131,29 @@ router.post('/place-order', async (req, res, next) => {
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
     try {
-        let productId = req.params.id;
-        let sessionId = req.session.id;
-        let addedProductId = await Product.addToCart(productId, sessionId);
+        const productId = req.params.id;
+        const sessionId = req.session.id;
+
+        //validation for quantity and producy
+    //--------------------------------------------
+        //chk stock quantiy
+        const product = await Product.getProductById(productId);
+
+        if(!product){
+            req.flash('error', 'Product not found');
+            return res.redirect('back');
+        }
+
+        if(product.quantity<=0){
+            req.flash('error', 'Product is out of stock at the moment');
+            return req.session.save(err=> {
+                res.redirect('back');
+            });
+        }
+    //--------------------------------------------
+
+
+        const addedProductId = await Product.addToCart(productId, sessionId);
         if (addedProductId > 0) {
             req.flash('success', "Added to cart");
             req.session.save(err => {
