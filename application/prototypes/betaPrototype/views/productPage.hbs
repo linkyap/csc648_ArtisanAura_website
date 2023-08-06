@@ -6,6 +6,16 @@
         <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{currentProduct.image}}"
             alt="product images coming soon" />
     </div>
+   
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+ <a id="review" target="_self" href="">Reviews</a>
+
+
+
     <div class="product-details">
         <h3 class="price">${{currentProduct.price}}</h3>
         <div class="description">
@@ -13,11 +23,9 @@
             <p class="description">{{currentProduct.description}}</p>
         </div>
         <form action="/cart/add-item/{{currentProduct.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-            <button class="add-item">Add to cart</button></a>
+            <button class="add-item" style="margin: ;">Add to cart</button></a>
         </form>
-         <div style="margin: 10px;">
-        <button class="add-item2" style="margin:10px;">Save</button>
-        <button class="add-item2" style="margin:10px;">Share</button>
-        </div>
+          <button class="add-item" style="margin: ;">Save</button>
+            <button class="add-item" style="margin: ;">Share</button>
     </div>
 </main>

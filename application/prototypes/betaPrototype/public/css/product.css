@@ -111,7 +111,13 @@
   .desc-header {
     font-weight: bold;
   }
+  .fa {
+    font-size: 25px;
+  }
   
+  .checked {
+    color: orange;
+  }
   .add-item {
     display: block;
     padding: 10px 20px;
@@ -126,7 +132,7 @@
     display: block;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #0e4375d7;
+    background-color: #d4e6d4d7;
     color: #fff;
     border: none;
     border-radius: 5px;
