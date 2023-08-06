@@ -38,6 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-bar a:hover {
     color: teal;
     text-decoration: underline;
+    background-color: transparent;
 }
 
 nav ul li a {
@@ -164,6 +165,7 @@ nav ul li a {
     color: teal;
     text-decoration: underline;
     margin: 0 10px;
+    background-color: transparent;
    
 }
 
@@ -180,12 +182,20 @@ nav ul li a {
     justify-content: center;
 }
 
+.my-icon a:hover {
+    background-color: transparent;
+}
+
+.my-icon-logo a:hover {
+    background-color: transparent;
+}
+
 #responsive-banner {
     width: 100%;
     height: auto;
 }
 
-.fa{
+.fa {
     color: whitesmoke;
 }
 
@@ -200,6 +210,10 @@ nav ul li a {
 .fa-sign-in{
     font-size: 15px;
     /* user logo size */
+}
+
+.fa-search {
+    font-size: 14px;
 }
 
 
