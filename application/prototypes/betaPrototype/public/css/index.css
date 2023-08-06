@@ -46,6 +46,8 @@ nav ul li a {
     text-decoration: none;
     font-size: 20px;
     font-weight: lighter;
+    display: unset;
+    padding: 0px;
 }
 
 .search-bar{
@@ -158,7 +160,8 @@ nav ul li a {
     color: #323232;
     text-decoration: none;
     margin: 0 10px;
-   
+    display: unset;
+    padding: 0px;
 }
 
 .botm-footer a:hover {
