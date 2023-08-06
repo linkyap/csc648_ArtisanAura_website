@@ -1,6 +1,7 @@
 const { check } = require('express-validator');
 
 const ckreview = [
+    check('email').trim().not().isEmpty().withMessage('Email is required'),
     check('name').trim().not().isEmpty().withMessage('Name is required'),
 
     check('address').trim().not().isEmpty().withMessage('Address is required'),

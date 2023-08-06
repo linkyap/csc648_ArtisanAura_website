@@ -97,7 +97,6 @@ router.post('/review', ckreview, async (req, res, next) => {
         })
     }
 
-
     let inputs = req.body;
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
