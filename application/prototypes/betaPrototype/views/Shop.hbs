@@ -14,38 +14,38 @@
 
                     <label for="type">Jewelry Type:</label>
                     <select id="type" name="type">
-                        <option value="" {{!type ? 'selected' : '' }}>All</option>
-                        <option value="ring" {{type==='ring' ? 'selected' : '' }}>Ring</option>
-                        <option value="necklace" {{type==='necklace' ? 'selected' : '' }}>Necklace</option>
-                        <option value="bracelet" {{type==='bracelet' ? 'selected' : '' }}>Bracelet</option>
-                        <option value="earrings" {{type==='earrings' ? 'selected' : '' }}>Earrings</option>
+                        <option value="">All</option>
+                        <option value="ring">Ring</option>
+                        <option value="necklace">Necklace</option>
+                        <option value="bracelet">Bracelet</option>
+                        <option value="earrings">Earring</option>
                     </select>
 
                     <label for="material">Material:</label>
                     <select id="material" name="material">
-                        <option value="" {{!material ? 'selected' : '' }}>All</option>
-                        <option value="silver" {{material==='silver' ? 'selected' : '' }}>Sterling Silver</option>
-                        <option value="white gold" {{material==='white gold' ? 'selected' : '' }}>White Gold</option>
-                        <option value="yellow gold" {{material==='yellow gold' ? 'selected' : '' }}>Yellow Gold</option>
+                        <option value="">All</option>
+                        <option value="silver">Sterling Silver</option>
+                        <option value="white gold">White Gold</option>
+                        <option value="yellow gold">Yellow Gold</option>
                     </select>
 
                     <label for="gemstone">Gemstone:</label>
                     <select id="gemstone" name="gemstone">
-                        <option value="" {{!gemstone ? 'selected' : '' }}>All</option>
-                        <option value="agate" {{gemstone==='agate' ? 'selected' : '' }}>Agate</option>
-                        <option value="diamond" {{gemstone==='diamond' ? 'selected' : '' }}>Diamond</option>
-                        <option value="moonstone" {{gemstone==='moonstone' ? 'selected' : '' }}>Moonstone</option>
-                        <option value="ruby" {{gemstone==='ruby' ? 'selected' : '' }}>Ruby</option>
-                        <option value="saphhire" {{gemstone==='sapphire' ? 'selected' : '' }}>Sapphire</option>
-                        <option value="eye" {{gemstone==='eye' ? 'selected' : '' }}>Tiger's Eye</option>
-                        <option value="turquoise" {{gemstone==='turquoise' ? 'selected' : '' }}>Turquoise</option>
-                        <option value="none" {{gemstone==='none' ? 'selected' : '' }}>Gemlesss</option>
+                        <option value="">All</option>
+                        <option value="agate">Agate</option>
+                        <option value="diamond">Diamond</option>
+                        <option value="moonstone">Moonstone</option>
+                        <option value="ruby">Ruby</option>
+                        <option value="saphhire">Sapphire</option>
+                        <option value="eye">Tiger's Eye</option>
+                        <option value="turquoise">Turquoise</option>
+                        <option value="none">Gemlesss</option>
                     </select>
 
 
                     <label for="sort_price">Sort by Price:</label>
                     <select id="sort_price" name="sort_price">
-                        <option value="-"></option>
+                        <option value=""></option>
                         <option value="asc">Low to High</option>
                         <option value="desc">High to Low</option>
                     </select>
@@ -55,9 +55,7 @@
 
                     <label for="max_price">Max Price ($):</label>
                     <input type="number" name="max_price" id="max_price" step="0.01" placeholder="Enter maximum price">
-
                     <button type="submit">Apply Filters</button>
-                    <button type="button" onclick="window.location.href='/Shop?reset=true'">Reset Filters</button>
 
                 </form>
             </div>
