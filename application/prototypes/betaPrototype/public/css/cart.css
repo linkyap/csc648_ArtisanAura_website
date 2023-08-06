@@ -1,20 +1,11 @@
-.main-content{
+.checkout-form, .main-content{
     margin: 40px 200px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.cart-items {
-    background-color: white;
-    border: 5px solid #daebed;
-    border-radius: 10px;
-    flex: 70%;
-    min-height: 210px;
-    margin-right: 50px;
-    padding:10px;
-}
-.checkout-details {
+.cart-items, .checkout-details, .review-details {
     background-color: white;
     border: 5px solid #daebed;
     border-radius: 10px;
@@ -118,33 +109,23 @@
 .card-remove-form input:hover{
     text-decoration: underline;
 }
-.checkout-details p {
+.checkout-details p, .review-title, .cart-title {
     font-weight: bold;
     margin: 10px 5px 30px 10px;
 }
-.address-city{
+
+.address-city, .state-zip, .exp-cvv{
     display:flex;
     flex-direction: row;
 }
-.address-city > div {
+.address-city > div, .state-zip > div, .exp-cvv > div{
     margin-right: 30px;
     flex: 50%;
 }
-.state-zip {
-    display: flex;
-    flex-direction: row;
-}
-.state-zip > div {
-    margin-right: 30px;
-    flex: 50%;
-}
-.exp-cvv {
-    display: flex;
-    flex-direction: row;
-}
-.exp-cvv > div {
-    margin-right: 30px;
-    flex: 50%;
+.shipping-info, .pay-info {
+    white-space: pre-line;
+    margin: -5px 15px 25px 15px;
+    border-bottom:1px solid rgb(203, 202, 202);
 }
 .input-group {
     margin-right: 30px;

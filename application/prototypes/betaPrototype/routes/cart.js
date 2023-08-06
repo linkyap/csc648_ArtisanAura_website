@@ -2,45 +2,21 @@ var express = require('express');
 var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
+const Cart = require('../helpers/cartHelpers');
 
-// Get product details
-async function getDetails(result) {
-    let product = await Product.getProductById(result.product_id);
-    return product[0];
-}
 // Shopping cart page
 router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        // Get product details 
-        const cartList = await Promise.all(results.map(async result => {
-            const product = await getDetails(result);
-            return {
-                ...product, 
-                quantity: result.quantity
-            };
-        })); 
+        let cartList = await Cart.getCartList(results);
         if (cartList.length > 0) {
-            let subtotal = 0;
-            cartList.forEach(item => {
-                // Calculates subtotal by getting sum of prices
-                let price = item.price;
-                let qty = item.quantity;
-                subtotal += (Number(price) * Number(qty));
-            });
-            let tax = Number(subtotal * .09);
-            let shipping = 4.99;
-            let total = subtotal + tax + shipping;
-
+            let costs = Cart.getTotals(cartList);
             res.render('cart', { 
                 title: 'Shopping Cart', 
                 results: cartList, 
-                subtotal: subtotal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
-                tax: tax.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}), 
-                shipping: shipping.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}),
-                total: total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})}
-            );
+                cost: costs
+            });
         }
         else {
             res.render('cart', { title: 'Shopping Cart' });
@@ -58,59 +34,53 @@ router.post('/add-custom-item', (req, res, next) => {
     });
 });
 
-router.post('/checkout/:subtotal/:tax/:shipping/:total', (req, res, next) => {
+router.post('/checkout', async (req, res, next) => {
     try {
-        let { subtotal, tax, shipping, total } = req.params;
-        if(subtotal === undefined) {
+        let sessionId = req.session.id;
+        let results = await Product.getCart(sessionId);
+        if (results && results.length > 0) {
+            let cartList = await Cart.getCartList(results);
+            if (cartList.length > 0) {
+                let costs = Cart.getTotals(cartList);
+                res.render('checkout', {
+                    title: 'Checkout',
+                    cost: costs,
+                });
+            }
+        }
+        else {
             req.flash('error', "Cart is empty");
             req.session.save(err => {
                 res.redirect('back');
-            });
-        }
-        else {
-            res.render('checkout', {
-                title: 'Checkout',
-                subtotal: subtotal,
-                tax: tax,
-                shipping: shipping,
-                total: total
             });
         }
     }
     catch (error) {
         next(error);
     }
-    
 });
-router.post('/review/:subtotal/:tax/:shipping/:total', async (req, res, next) => {
-    let { subtotal, tax, shipping, total } = req.params;    
-    let sessionId = req.session.id
+router.post('/review', async (req, res, next) => {
+    let inputs = req.body;
+    let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
-        // Get product details 
-        const cartList = await Promise.all(results.map(async result => {
-            const product = await getDetails(result);
-            return {
-                ...product,
-                quantity: result.quantity
-            };
-        }));
-        res.render('reviewOrder', {
-            title: 'Review Order',
-            results: cartList,
-            subtotal: subtotal,
-            tax: tax,
-            shipping: shipping,
-            total: total
-        });
+        let cartList = await Cart.getCartList(results);
+        if (cartList.length > 0) {
+            let costs = Cart.getTotals(cartList);
+            res.render('reviewOrder', {
+                title: 'Review Order',
+                results: cartList,
+                cost: costs,
+                info: inputs,
+            });
+        }
     }
-    else{
+    else {
         req.flash('error', "Cannot move on to review");
         req.session.save(err => {
             res.redirect('back');
         });
     }
-
 });
 // router.post('/place-order/:subtotal/:tax/:shipping/:total', (req, res, next) => {
 //     let { subtotal, tax, shipping, total } = req.params;
@@ -161,6 +131,7 @@ router.post('/inc-qty/:id', async (req, res, next) => {
             req.session.save(err => {
                 res.redirect('back');
             });
+            
         }
     }
     catch (error) {

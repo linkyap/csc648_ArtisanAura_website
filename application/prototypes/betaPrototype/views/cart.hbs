@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="/public/css/cart.css">
 <main class="main-content">
     <div class="cart-items">
+        <p class="cart-title">Shopping Cart</p>
         {{#if results}}
         {{#each results}}
-            {{>card this}}
+            {{> card this review=false}}
         {{/each}}
         {{else}}
         <p>Your shopping cart is empty.</p>
@@ -12,24 +13,24 @@
     <div class="side">
         <div class="side-content">
             <p class="text">Subtotal:</p>
-            <p class="cost" id="subtotal">${{subtotal}}</p>
+            <p class="cost" id="subtotal">${{cost.subtotal}}</p>
         </div>
 
         <div class="side-content">
             <p class="text">Tax:</p>
-            <p class="cost" id="tax">${{tax}}</p>
+            <p class="cost" id="tax">${{cost.tax}}</p>
         </div>
 
         <div class="side-content">
             <p class="text">Shipping:</p>
-            <p class="cost">${{shipping}}</p>
+            <p class="cost">${{cost.shipping}}</p>
         </div>
 
         <div class="side-content">
             <p class="text">Total:</p>
-            <p class="total-cost" id="total">${{total}}</p>
+            <p class="total-cost" id="total">${{cost.total}}</p>
         </div>
-        <form class="cart-checkout" action="/cart/checkout/{{subtotal}}/{{tax}}/{{shipping}}/{{total}}" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="cart-checkout" action="/cart/checkout" method="POST" enctype="application/x-www-form-urlencoded">
             <input class="submit" type="submit" value="Checkout">
         </form>
     </div>
