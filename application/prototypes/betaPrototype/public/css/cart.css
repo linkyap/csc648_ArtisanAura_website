@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
 }
-
 .cart-items {
     background-color: white;
     border: 5px solid #daebed;
@@ -118,4 +117,38 @@
 }
 .card-remove-form input:hover{
     text-decoration: underline;
+}
+.checkout-details p {
+    font-weight: bold;
+    margin: 10px 5px 30px 10px;
+}
+.address-city{
+    display:flex;
+    flex-direction: row;
+}
+.address-city > div {
+    margin-right: 30px;
+    flex: 50%;
+}
+.state-zip {
+    display: flex;
+    flex-direction: row;
+}
+.state-zip > div {
+    margin-right: 30px;
+    flex: 50%;
+}
+.exp-cvv {
+    display: flex;
+    flex-direction: row;
+}
+.exp-cvv > div {
+    margin-right: 30px;
+    flex: 50%;
+}
+.input-group {
+    margin-right: 30px;
+}
+.input-group input {
+    border: 1px solid darkgray;
 }

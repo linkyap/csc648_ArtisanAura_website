@@ -1,12 +1,11 @@
 <link rel="stylesheet" href="/public/css/cart.css">
 <main class="main-content">
-    <div class="cart-items">
+    <div class="review-details">
+        <p class="review-title">Review Information</p>
         {{#if results}}
         {{#each results}}
             {{>card this}}
         {{/each}}
-        {{else}}
-        <p>Your shopping cart is empty.</p>
         {{/if}}
     </div>
     <div class="side">
@@ -29,8 +28,9 @@
             <p class="text">Total:</p>
             <p class="total-cost" id="total">${{total}}</p>
         </div>
-        <form class="cart-checkout" action="/cart/checkout/{{subtotal}}/{{tax}}/{{shipping}}/{{total}}" method="POST" enctype="application/x-www-form-urlencoded">
-            <input class="submit" type="submit" value="Checkout">
+        <form class="review-form" action="/cart/place-order/{{subtotal}}/{{tax}}/{{shipping}}/{{total}}" method="POST"
+            enctype="application/x-www-form-urlencoded">
+            <input class="submit" type="submit" value="Place Order">
         </form>
     </div>
 </main>

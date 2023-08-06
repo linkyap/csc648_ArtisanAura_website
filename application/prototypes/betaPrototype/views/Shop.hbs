@@ -1,82 +1,89 @@
-
 <main>
-<div style="margin: auto; max-width: 1300px; padding: 10px;">  
+    <div style="margin: auto; max-width: 1300px; padding: 10px;">
 
-    <div style="margin: 50px; text-align:center;">     
-        <h1>Shop All Jewelry</h1>
-        <p>Discover Your Unique Style. Explore Artisan Jewelry.</p>
-    </div>
-    
-
-    <div style=" margin: 0 auto 20px; border-top: 1px solid #70707194;padding: 50px 0 50px 0;text-align: center;">  
-          <!-- Product filter form -->   
-        <div>
-            <form action="/shop" method="GET" id="filter-form">
-
-            <label for="type">Jewelry Type:</label>
-            <select id="type" name="type">
-                <option value="">All</option>
-                <option value="ring">Ring</option>
-                <option value="necklace">Necklace</option>
-                <option value="bracelet">Bracelet</option>
-                <option value="earring">Earring</option>
-            </select>
-
-            <label for="material">Material:</label>
-            <select id="material" name="material">
-                <option value="">All</option>
-                <option value="silver">Sterling Silver</option>
-                <option value="white-gold">White Gold</option>
-                <option value="yellow-gold">Yellow Gold</option>
-            </select>
-
-            <label for="color">Gemstone:</label>
-            <select id="gemstone" name="gemstone">
-                <option value="">All</option>
-                <option value="agate">Agate</option>
-                <option value="red">Diamond</option>
-                <option value="moonstone">Moonstone</option>
-                <option value="green">Ruby</option>
-                <option value="blue">Sapphire</option>
-                <option value="tiger-eye">Tiger's Eye</option>
-                <option value="turqoise">Turquoise</option>
-            </select>
-
-
-            <label for="sort_price">Sort by Price:</label>
-            <select id="sort_price" name="sort_price">
-                <option value="">None</option>
-                <option value="asc">Low to High</option>
-                <option value="desc">High to Low</option>
-            </select>
-
-            <label for="price">Max Price ($):</label>
-            <input type="number" name="price" id="price" min="490" step="100.00">
-
-            <button type="submit">Apply Filters</button>
-
-        </form>
+        <div style="margin: 50px; text-align:center;">
+            <h1>Shop All Jewelry</h1>
+            <p>Discover Your Unique Style. Explore Artisan Jewelry.</p>
         </div>
-    </div>
-    
 
-    <div style="border-bottom: 1px solid #70707194;padding: 0 0 50px 0;margin: 0 auto 20px;">    
-        <!-- product grid -->   
-        <div class="products-container">
-            {{>productspage}}
+
+        <div style=" margin: 0 auto 20px; border-top: 1px solid #70707194;padding: 50px 0 50px 0;text-align: center;">
+            <!-- Product filter form -->
+            <div>
+                <form action="/shop" method="GET" id="filter-form">
+
+                    <label for="type">Jewelry Type:</label>
+                    <select id="type" name="type">
+                        <option value="" {{!type ? 'selected' : '' }}>All</option>
+                        <option value="ring" {{type==='ring' ? 'selected' : '' }}>Ring</option>
+                        <option value="necklace" {{type==='necklace' ? 'selected' : '' }}>Necklace</option>
+                        <option value="bracelet" {{type==='bracelet' ? 'selected' : '' }}>Bracelet</option>
+                        <option value="earrings" {{type==='earrings' ? 'selected' : '' }}>Earrings</option>
+                    </select>
+
+                    <label for="material">Material:</label>
+                    <select id="material" name="material">
+                        <option value="" {{!material ? 'selected' : '' }}>All</option>
+                        <option value="silver" {{material==='silver' ? 'selected' : '' }}>Sterling Silver</option>
+                        <option value="white gold" {{material==='white gold' ? 'selected' : '' }}>White Gold</option>
+                        <option value="yellow gold" {{material==='yellow gold' ? 'selected' : '' }}>Yellow Gold</option>
+                    </select>
+
+                    <label for="gemstone">Gemstone:</label>
+                    <select id="gemstone" name="gemstone">
+                        <option value="" {{!gemstone ? 'selected' : '' }}>All</option>
+                        <option value="agate" {{gemstone==='agate' ? 'selected' : '' }}>Agate</option>
+                        <option value="diamond" {{gemstone==='diamond' ? 'selected' : '' }}>Diamond</option>
+                        <option value="moonstone" {{gemstone==='moonstone' ? 'selected' : '' }}>Moonstone</option>
+                        <option value="ruby" {{gemstone==='ruby' ? 'selected' : '' }}>Ruby</option>
+                        <option value="saphhire" {{gemstone==='sapphire' ? 'selected' : '' }}>Sapphire</option>
+                        <option value="eye" {{gemstone==='eye' ? 'selected' : '' }}>Tiger's Eye</option>
+                        <option value="turquoise" {{gemstone==='turquoise' ? 'selected' : '' }}>Turquoise</option>
+                        <option value="none" {{gemstone==='none' ? 'selected' : '' }}>Gemlesss</option>
+                    </select>
+
+
+                    <label for="sort_price">Sort by Price:</label>
+                    <select id="sort_price" name="sort_price">
+                        <option value="-"></option>
+                        <option value="asc">Low to High</option>
+                        <option value="desc">High to Low</option>
+                    </select>
+
+                    <label for="min_price">Min Price ($):</label>
+                    <input type="number" name="min_price" id="min_price" step="0.01" placeholder="Enter minimum price">
+
+                    <label for="max_price">Max Price ($):</label>
+                    <input type="number" name="max_price" id="max_price" step="0.01" placeholder="Enter maximum price">
+
+                    <button type="submit">Apply Filters</button>
+                    <button type="button" onclick="window.location.href='/Shop?reset=true'">Reset Filters</button>
+
+                </form>
+            </div>
         </div>
-    </div>
-    
 
-    <!-- quiz -->
-   <div style="margin: 20px 50px;text-align: center;padding: 20px 0;">
+
+        <div style="border-bottom: 1px solid #70707194;padding: 0 0 50px 0;margin: 0 auto 20px;">
+            <!-- product grid -->
+            <div class="products-container">
+                {{>productspage}}
+            </div>
+        </div>
+
+
+        <!-- quiz -->
+        <div style="margin: 20px 50px;text-align: center;padding: 20px 0;">
             <h3>Discover Your Unique Style with Our Quiz</h3>
-            <p style="text-align: justify;">Experience personalized shopping with our unique style quiz. Tailored to your preferences, this quick, engaging quiz uncovers your distinct taste, leading you to curated jewelry selections from our handcrafted collection. Start your simplified, rewarding shopping journey with the ArtisanAura style quiz today. Let your style shine through your jewelry choices.</p>
+            <p style="text-align: justify;">Experience personalized shopping with our unique style quiz. Tailored to
+                your preferences, this quick, engaging quiz uncovers your distinct taste, leading you to curated jewelry
+                selections from our handcrafted collection. Start your simplified, rewarding shopping journey with the
+                ArtisanAura style quiz today. Let your style shine through your jewelry choices.</p>
+        </div>
     </div>
-</div>
 
-{{>newsletter}}
-{{>quiz}}
+    {{>newsletter}}
+    {{>quiz}}
 </main>
 
 <script src="/helpers/shop.js"></script>
