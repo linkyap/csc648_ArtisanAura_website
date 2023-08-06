@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 //---- LOCAL TESTING ----
 // const mysql = require('mysql2');
-=======
-//  const mysql = require('mysql2');
->>>>>>> f073a7ebfb0781a64111158069fe416f395df2cd
 
 // const pool = mysql.createPool({
 //   host: '34.72.218.74',
@@ -17,19 +13,7 @@
 
 // module.exports = pool;
 
-<<<<<<< HEAD
 // ---- WEB TESTING ----
-=======
-
-
-//^^^^^^^^^^^ uncomment above for local testing ^^^^^^^^^^^^^^^^^^^^
-//vvvvvvvvvvvv comment below for local testing vvvvvvvvvvvvvvvvvvvvvvvvvv
-//----------------------------------------------
-//^^^^^^^^^^^ comment above for web testing ^^^^^^^^^^^^^^^^^^^^
-//vvvvvvvvvvvv uncomment below for web testing vvvvvvvvvvvvvvvvvvvvvvvvvv
-
-
->>>>>>> f073a7ebfb0781a64111158069fe416f395df2cd
 const mysql = require('mysql2');
 
 const pool = mysql.createPool({

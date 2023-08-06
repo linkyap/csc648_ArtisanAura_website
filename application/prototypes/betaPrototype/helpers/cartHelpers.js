@@ -25,13 +25,12 @@ CartHelper.getTotals = (cartList) => {
         total: totalPrice.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})};
 }
 
-CartHelper.getCartList = async (results, review) => {
+CartHelper.getCartList = async (results) => {
     const cartList = await Promise.all(results.map(async item => {
         const product = await CartHelper.getProductDetails(item);
         return {
             ...product, 
             quantity: item.quantity,
-            // show: review,
         };
     })); 
     return cartList;
