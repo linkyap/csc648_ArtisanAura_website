@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("csc648T05"));
 
 app.use("/public", express.static(path.join(__dirname, "public")));
-
+app.use('/helpers', express.static('public/helpers'));
 
 app.use(sessions({
   secret: "csc648T05",
