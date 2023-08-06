@@ -27,7 +27,10 @@ const hbs = handlebars.create({
     helpers: {
       neo: function(obj){ //when not a empty object = neo
         return obj && obj.constructor === Object && Object.keys(obj).length > 0;
-      }
+      },
+      isSelected: function(value, expectedValue) {
+        return value === expectedValue ? 'selected' : '';
+    }
     }
 });
 
