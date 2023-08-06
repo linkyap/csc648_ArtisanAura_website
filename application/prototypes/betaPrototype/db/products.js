@@ -71,7 +71,7 @@ Product.removeOneFromCart = (productId, sessionId) => {
             }
         })
         .catch((selectErr) => Promise.reject(selectErr));
-}
+};
 Product.removeFromCart = (productId, sessionId) => {
     let query = `DELETE FROM cart WHERE product_id=? AND sessions_id=?;`;
     return db.execute(query, [productId, sessionId])
@@ -84,8 +84,7 @@ Product.removeFromCart = (productId, sessionId) => {
             }
         })
         .catch((err) => Promise.reject(err));
-}
-
+};
 Product.getCart = (sessionId) => {
     let query = `SELECT * FROM cart WHERE sessions_id=?`;
     return db.execute(query, [sessionId])
@@ -94,4 +93,13 @@ Product.getCart = (sessionId) => {
     })
     .catch((err) => Promise.reject(err));
 };
+Product.placeOrder = (cartId) => {
+    let query = `INSERT INTO orders (cart_id) VALUES (?);`;
+    return db.execute(query, [cartId])
+    .then(([results, fields]) => {
+        return Promise.resolve(results.insertId);
+    })
+    .catch((err) => Promise.reject(err));
+};
+
 module.exports = Product;

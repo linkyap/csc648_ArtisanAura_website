@@ -82,16 +82,17 @@ router.post('/review', async (req, res, next) => {
         });
     }
 });
-// router.post('/place-order/:subtotal/:tax/:shipping/:total', (req, res, next) => {
-//     let { subtotal, tax, shipping, total } = req.params;
-//     res.render('reviewOrder', {
-//         title: 'Review Order',
-//         subtotal: subtotal,
-//         tax: tax,
-//         shipping: shipping,
-//         total: total
-//     });
-// });
+router.post('/place-order', async (req, res, next) => {
+    let sessionId = req.session.id;
+    let results = await Product.getCart(sessionId);
+    if (results && results.length > 0){
+        let orderId = await Product.placeOrder(results[0].id);
+        res.render('orderConfirm', {
+            title: 'Order Confirmation',
+            id: orderId
+        })
+    }
+});
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
     try {
