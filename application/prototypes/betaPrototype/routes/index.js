@@ -99,7 +99,7 @@ router.get('/Shop', async function (req, res, next) {
     // chk if reset clicked
     if (req.query.reset === 'true') {
       req.session.filters = {};
-     ret
+     
     }
 
     // session filter or empty
@@ -163,25 +163,44 @@ router.get('/Shop', async function (req, res, next) {
       if (['ASC', 'DESC'].includes(sortPrice.toUpperCase())) {
         query += ` ORDER BY price ${sortPrice}`;
       } else {
-        // Invalid sort direction - you can decide to handle this with an error message or just ignore it
+         
       }
     }
-    console.log('SQL Query:', query); // Log the query
-    console.log('Query Params:', queryParams); // Log the parameters
+    
 
-    // Check for undefined in queryParams
-    if (queryParams.some(param => typeof param === 'undefined')) {
-      throw new Error("One or more query parameters are undefined.");
+    const [products] = await db.execute(query, queryParams);
+
+    if (products.length === 0) {
+        let individualResults = [];
+
+        // type
+        if (filterType) {
+            const [typeProducts] = await db.execute("SELECT * FROM product WHERE type = ? GROUP BY id LIMIT 5", [filterType]);
+            individualResults.push(...typeProducts);
+        }
+
+        // material
+        if (filterMaterial) {
+            const [materialProducts] = await db.execute("SELECT * FROM product WHERE material LIKE ? GROUP BY id LIMIT 5", ['%' + filterMaterial + '%']);
+            individualResults.push(...materialProducts);
+        }
+
+        // gemstones
+        if (filterGemstone) {
+            const [gemstoneProducts] = await db.execute("SELECT * FROM product WHERE gemstone LIKE ? GROUP BY id LIMIT 5", ['%' + filterGemstone + '%']);
+            individualResults.push(...gemstoneProducts);
+        }
+
+        return res.render('Shop', {
+            products: individualResults,
+            filters: req.session.filters,
+            error: individualResults.length === 0 ? 'No products available' : undefined
+        });
     }
-    // query occurs
-    const [products, fields] = await db.execute(query, queryParams);
-    if (!products) throw new Error("Error fetching products from DB.");
-
 
     return res.render('Shop', {
-      products: products,
-      filters: req.session.filters,
-      error: products.length === 0 ? 'No products available' : undefined
+        products: products,
+        filters: req.session.filters
     });
 
   } catch (err) {

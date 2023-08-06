@@ -30,7 +30,10 @@ const hbs = handlebars.create({
       },
       isSelected: function(value, expectedValue) {
         return value === expectedValue ? 'selected' : '';
-    }
+      },
+      not: function(value) {
+      return !value;
+      }
     }
 });
 
