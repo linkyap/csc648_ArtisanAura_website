@@ -122,14 +122,12 @@ router.post('/review', ckreview, async (req, res, next) => {
 });
 router.post('/place-order', async (req, res, next) => {
     let sessionId = req.session.id;
-    let results = await Product.getCart(sessionId);
-    if (results && results.length > 0){
-        let orderId = await Product.placeOrder(results[0].id);
-        res.render('orderConfirm', {
+    let orderId = await Product.placeOrder(sessionId);
+    res.render('orderConfirm', {
             title: 'Order Confirmation',
             id: orderId
-        })
-    }
+    });
+    req.session.destroy();
 });
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {

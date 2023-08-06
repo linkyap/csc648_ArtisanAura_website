@@ -93,9 +93,9 @@ Product.getCart = (sessionId) => {
     })
     .catch((err) => Promise.reject(err));
 };
-Product.placeOrder = (cartId) => {
-    let query = `INSERT INTO orders (cart_id) VALUES (?);`;
-    return db.execute(query, [cartId])
+Product.placeOrder = (sessionId) => {
+    let query = `INSERT INTO orders (session_id) VALUES (?);`;
+    return db.execute(query, [sessionId])
     .then(([results, fields]) => {
         return Promise.resolve(results.insertId);
     })
