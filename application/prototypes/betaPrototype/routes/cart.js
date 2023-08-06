@@ -1,8 +1,11 @@
 var express = require('express');
+const { validationResult } = require('express-validator');
 var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
 const Cart = require('../helpers/cartHelpers');
+const {ckreview} = require('../helpers/ckval')
+
 
 // Shopping cart page
 router.get('/cart-list', async (req, res, next) => {
@@ -34,6 +37,28 @@ router.post('/add-custom-item', (req, res, next) => {
     });
 });
 
+
+router.get('/checkout', async (req, res, next) => {
+    try {
+        let sessionId = req.session.id;
+        let results = await Product.getCart(sessionId);
+        if (results && results.length > 0) {
+            let cartList = await Cart.getCartList(results);
+            if (cartList.length > 0) {
+                let costs = Cart.getTotals(cartList);
+                res.render('checkout', {
+                    title: 'Checkout',
+                    cost: costs,
+                });
+            }
+        }
+
+    }
+    catch (error) {
+        next(error);
+    }
+});
+
 router.post('/checkout', async (req, res, next) => {
     try {
         let sessionId = req.session.id;
@@ -59,7 +84,20 @@ router.post('/checkout', async (req, res, next) => {
         next(error);
     }
 });
-router.post('/review', async (req, res, next) => {
+
+
+
+router.post('/review', ckreview, async (req, res, next) => {
+    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        req.flash('error', errors.array().map(error => error.msg).join(' '));
+        return req.session.save(err=>{
+            res.redirect('back');
+        })
+    }
+
+
     let inputs = req.body;
     let sessionId = req.session.id;
     let results = await Product.getCart(sessionId);
@@ -82,6 +120,9 @@ router.post('/review', async (req, res, next) => {
         });
     }
 });
+
+
+
 // router.post('/place-order/:subtotal/:tax/:shipping/:total', (req, res, next) => {
 //     let { subtotal, tax, shipping, total } = req.params;
 //     res.render('reviewOrder', {
