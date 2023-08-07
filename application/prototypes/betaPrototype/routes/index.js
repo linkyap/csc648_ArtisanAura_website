@@ -33,6 +33,7 @@ router.get('/users/profile/:id', function (req, res, next) {
   //   // not logged in/timeout
   //   res.redirect('/login');
   // }
+  
   // breadcrumbs
   const breadcrumbs = 
   [
@@ -178,16 +179,16 @@ router.get('/AboutUs', async function (req, res, next) {
 
 // shop page
 router.get('/Shop', async function (req, res, next) {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Shop', url: '/shop' }
+  ];
+  
+  res.render('Shop', { title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+  
   try {
-    res.render('Shop', { title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
-
-    // breadcrumbs
-    const breadcrumbs = 
-    [
-      { name: 'Home', url: '/' }, 
-      { name: 'Shop', url: '/shop' }
-    ];
-
     // chk if reset clicked
     if (req.query.reset === 'true') {
       req.session.filters = {};
