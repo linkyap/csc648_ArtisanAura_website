@@ -154,14 +154,14 @@ router.get('/termsService', function (req, res, next) {
 
 // about us page
 router.get('/AboutUs', async function (req, res, next) {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'About Us', url: '/AboutUs' }
+  ];
+  
   try {
-
-    // breadcrumbs
-    const breadcrumbs = 
-    [
-      { name: 'Home', url: '/' }, 
-      { name: 'About Us', url: '/AboutUs' }
-    ];
 
     var [products, fields] = await db.execute(
       `SELECT * FROM product ORDER BY id DESC;`
@@ -185,9 +185,7 @@ router.get('/Shop', async function (req, res, next) {
     { name: 'Home', url: '/' }, 
     { name: 'Shop', url: '/shop' }
   ];
-  
-  res.render('Shop', { title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
-  
+    
   try {
     // chk if reset clicked
     if (req.query.reset === 'true') {
@@ -291,6 +289,8 @@ router.get('/Shop', async function (req, res, next) {
             error: individualResults.length === 0 ? 'No products available' : undefined,
         });
     }
+    
+    res.render('Shop', { title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
 
     return res.render('Shop', {
         products: products,
