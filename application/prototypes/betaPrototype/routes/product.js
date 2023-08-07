@@ -38,33 +38,20 @@ catch (error){
 }
 });
 
-router.post('/product/update/:id', async (req, res, next) => {
-  try {
-      const productId = req.params.id;
-      const { title, description, price } = req.body;
-
-      // Add logic to update the product in the database using the provided details
-
-      req.flash('success', 'Product updated successfully');
-      res.redirect('/product/' + productId);
-  } catch (error) {
-      next(error);
-  }
-});
 
 router.post('/update/:id', async (req, res, next) => {
   try {
       const productId = req.params.id;
       const { title, description, price } = req.body;
 
-      // Naming the SQL command
+      // for use below
       const updateProductQuery = `
           UPDATE product
           SET title = ?, description = ?, price = ?
           WHERE id = ?;
       `;
 
-      // Execute the named query
+      //Query from above gets executed 
       await db.query(updateProductQuery, [title, description, price, productId]);
 
       req.flash('success', 'Product updated successfully');
