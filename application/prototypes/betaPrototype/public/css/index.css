@@ -275,6 +275,9 @@ nav ul li a {
 .breadcrumbs a {
 color: #9aa8aa;
 text-decoration: none;
+display: unset;
+padding: 0px;
+margin: 0px;
 }
 
 .breadcrumbs a:hover {
