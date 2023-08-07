@@ -179,6 +179,7 @@ router.get('/AboutUs', async function (req, res, next) {
 
 // shop page
 router.get('/Shop', async function (req, res, next) {
+  try {
   // breadcrumbs
   const breadcrumbs = 
   [
@@ -186,7 +187,6 @@ router.get('/Shop', async function (req, res, next) {
     { name: 'Shop', url: '/shop' }
   ];
     
-  try {
     // chk if reset clicked
     if (req.query.reset === 'true') {
       req.session.filters = {};
@@ -295,6 +295,7 @@ router.get('/Shop', async function (req, res, next) {
         products: products,
         filters: req.session.filters,
         breadcrumbs: breadcrumbs,
+        title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] 
         //need to add message that no results found for combined search
         // need to update idividuals so they follow the price update
     });
@@ -311,13 +312,14 @@ router.get('/Shop', async function (req, res, next) {
 
 // Guides page
 router.get('/Guides', function (req, res, next) {
-  //res.render('Guides', { title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+  res.render('Guides', { breadcrumbs: breadcrumbs, title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
    // breadcrumbs
    const breadcrumbs = 
    [
      { name: 'Home', url: '/' }, 
      { name: 'Guides', url: '/Guides' }
    ];
+   //res.render('Guides', { breadcrumbs: breadcrumbs });
 });
 
 // Refund page
