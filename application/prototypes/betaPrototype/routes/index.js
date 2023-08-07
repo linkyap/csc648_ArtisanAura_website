@@ -96,6 +96,12 @@ router.get('/AboutUs', async function (req, res, next) {
 // shop page
 router.get('/Shop', async function (req, res, next) {
   try {
+    const breadcrumbs = 
+    [
+      { name: 'Home', url: '/' }, 
+      { name: 'Shop', url: '/shop' }
+    ];
+
     // chk if reset clicked
     if (req.query.reset === 'true') {
       req.session.filters = {};
@@ -194,13 +200,15 @@ router.get('/Shop', async function (req, res, next) {
         return res.render('Shop', {
             products: individualResults,
             filters: req.session.filters,
-            error: individualResults.length === 0 ? 'No products available' : undefined
+            breadcrumbs: breadcrumbs,
+            error: individualResults.length === 0 ? 'No products available' : undefined,
         });
     }
 
     return res.render('Shop', {
         products: products,
-        filters: req.session.filters
+        filters: req.session.filters,
+        breadcrumbs: breadcrumbs,
         //need to add message that no results found for combined search
         // need to update idividuals so they follow the price update
     });
