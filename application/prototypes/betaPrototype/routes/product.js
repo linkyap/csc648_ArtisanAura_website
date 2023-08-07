@@ -22,9 +22,10 @@ router.get('/:id', async (req, res, next) => {
   const breadcrumbs = 
   [
     { name: 'Home', url: '/' }, 
-    { name: 'Shop', url: '/shop' }
+    { name: 'Shop', url: '/shop' },
+    { name: 'Product', url: '/:id' }
   ];
-  
+
     let account_type = (req.session && req.session.account) ? req.session.account.account_type : null;
     let productId = req.params.id;
     let results = await Product.getProductById(productId);
