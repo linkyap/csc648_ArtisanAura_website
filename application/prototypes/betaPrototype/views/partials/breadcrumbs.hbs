@@ -1,6 +1,26 @@
- <div class="breadcrumbs">
+<!-- <div class="breadcrumbs">
     {{#each breadcrumbs}}
         <a href="{{this.url}}">{{this.name}}</a>
         {{#unless @last}} / {{/unless}}
+    {{/each}}
+</div> 
+
+<div class="breadcrumbs">
+    {{#each breadcrumbs}}
+        {{#unless @last}}
+            <a href="{{this.url}}">{{this.name}}</a> / 
+        {{else}}
+            {{this.name}}
+        {{/unless}}
+    {{/each}}
+</div> -->
+
+<div class="breadcrumbs">
+    {{#each breadcrumbs}}
+        {{#unless @last}}
+            <a href="{{this.url}}" class="active-link">{{this.name}}</a> / 
+        {{else}}
+            <span class="inactive-link">{{this.name}}</span>
+        {{/unless}}
     {{/each}}
 </div>
