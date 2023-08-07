@@ -118,7 +118,7 @@ router.get('/productsingle', function (req, res, next) {
      { name: 'Shop', url: '/shop' }, 
      { name: 'Product', url: '/productsingle' }
    ];
-  res.render('productsingle', { breadcrumbs: breadcrumbs, title: 'Product' });
+  res.render('productsingle', { breadcrumbs: breadcrumbs, title: 'Customize Your Own Jewelry' });
 });
 
 // custom product page 

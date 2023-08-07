@@ -18,6 +18,13 @@ var uploader = multer();
 
 router.get('/:id', async (req, res, next) => {
   try{
+    // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Shop', url: '/shop' }
+  ];
+  
     let account_type = (req.session && req.session.account) ? req.session.account.account_type : null;
     let productId = req.params.id;
     let results = await Product.getProductById(productId);
@@ -33,12 +40,14 @@ router.get('/:id', async (req, res, next) => {
           accountId: accountId,
           reviews: reviews,
           account_type: account_type,
+          breadcrumbs: breadcrumbs,
         });
       }else{
         res.render('productPage', {
           currentProduct: results[0], 
           reviews: reviews,
-          account_type: account_type
+          account_type: account_type,
+          breadcrumbs: breadcrumbs,
         });
       }
       
