@@ -312,13 +312,14 @@ router.get('/Shop', async function (req, res, next) {
 
 // Guides page
 router.get('/Guides', function (req, res, next) {
-  res.render('Guides', { breadcrumbs: breadcrumbs, title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
    // breadcrumbs
    const breadcrumbs = 
    [
      { name: 'Home', url: '/' }, 
      { name: 'Guides', url: '/Guides' }
    ];
+   res.render('Guides', { breadcrumbs: breadcrumbs, title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+
    //res.render('Guides', { breadcrumbs: breadcrumbs });
 });
 
