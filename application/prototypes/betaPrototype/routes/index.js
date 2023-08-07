@@ -19,14 +19,14 @@ router.get('/login', function (req, res, next) {
 
 //profile page
 router.get('/users/profile/:id', function (req, res, next) {
-  if (req.session.userId) {
-    //logged in, continue 
+  // if (req.session.userid) {
+  //   //logged in, continue 
     res.render('profile', { title: 'Profile' });
-    next();
-  } else {
-    // not logged in/timeout
-    res.redirect('/login');
-  }
+  //   next();
+  // } else {
+  //   // not logged in/timeout
+  //   res.redirect('/login');
+  // }
 
 });
 
