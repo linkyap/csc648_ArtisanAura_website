@@ -33,7 +33,10 @@ const hbs = handlebars.create({
       },
       not: function(value) {
       return !value;
-      }
+      },
+      isEmployee: function(account_type) {
+        return account_type === 'employee';
+    }
     }
 });
 

@@ -5,6 +5,11 @@
         <a class="profile" href="/users/profile/{{account.id}}">
             Profile
         </a>
+        {{!-- {{#if (isEmployee account_type)}}
+        <a class="addProduct" href="/addProduct">
+            Add new product
+        </a>
+        {{/if}} --}}
         <form action="/users/logout" method="post">
             <input type="hidden" value="{{csrf}}">
             <button class="nav-items" id="logout" type="submit">Log out <i class="fa fa-sign-in"

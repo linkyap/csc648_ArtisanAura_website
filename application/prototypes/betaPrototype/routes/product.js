@@ -14,12 +14,19 @@ const storage = new Storage({
 
 var uploader = multer();
 
+
+
 router.get('/:id', async (req, res, next) => {
   try{
+    let account_type = (req.session && req.session.account) ? req.session.account.account_type : null;
+
     let productId = req.params.id;
     let results = await Product.getProductById(productId);
     if(results && results.length > 0){
-      res.render('productPage', {currentProduct: results[0]});
+      res.render('productPage', {
+        currentProduct: results[0],
+        account_type: account_type
+      });
     }
     else{
       req.flash("error", "Product "+ productId +" not found");
@@ -30,6 +37,32 @@ catch (error){
     next(error);
 }
 });
+
+
+router.post('/update/:id', async (req, res, next) => {
+  try {
+      const productId = req.params.id;
+      const { title, description, price } = req.body;
+
+      // for use below
+      const updateProductQuery = `
+          UPDATE product
+          SET title = ?, description = ?, price = ?
+          WHERE id = ?;
+      `;
+
+      //Query from above gets executed 
+      await db.query(updateProductQuery, [title, description, price, productId]);
+
+      req.flash('success', 'Product updated successfully');
+      res.redirect('/product/' + productId);
+  } catch (error) {
+      console.error("Failed to update product:", error);
+      req.flash('error', 'Failed to update product.');
+      res.redirect('/product/' + productId);
+  }
+});
+
 
 
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
