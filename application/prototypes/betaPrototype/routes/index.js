@@ -311,7 +311,7 @@ router.get('/Shop', async function (req, res, next) {
 
 // Guides page
 router.get('/Guides', function (req, res, next) {
-  res.render('Guides', { title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+  //res.render('Guides', { title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
    // breadcrumbs
    const breadcrumbs = 
    [
@@ -322,7 +322,7 @@ router.get('/Guides', function (req, res, next) {
 
 // Refund page
 router.get('/Refund', function (req, res, next) {
-  // res.render('Refund', { title: 'Refund', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+  res.render('Refund', { title: 'Refund', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
    // breadcrumbs
    const breadcrumbs = 
    [
