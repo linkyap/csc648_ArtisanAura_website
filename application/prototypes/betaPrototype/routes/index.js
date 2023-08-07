@@ -160,7 +160,7 @@ router.get('/AboutUs', async function (req, res, next) {
     { name: 'Home', url: '/' }, 
     { name: 'About Us', url: '/AboutUs' }
   ];
-  
+
   try {
 
     var [products, fields] = await db.execute(
@@ -290,7 +290,6 @@ router.get('/Shop', async function (req, res, next) {
         });
     }
     
-    res.render('Shop', { title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
 
     return res.render('Shop', {
         products: products,
