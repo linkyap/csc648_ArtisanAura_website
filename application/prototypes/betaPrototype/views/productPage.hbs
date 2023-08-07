@@ -22,6 +22,14 @@
             <label class="desc-header">Description</label>
             <p class="description">{{currentProduct.description}}</p>
         </div>
+         <div class="quantity-dropdown">
+            <label for="quantity">Quantity:</label>
+            <select name="quantity" id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
         <form action="/cart/add-item/{{currentProduct.id}}" method="POST" enctype="application/x-www-form-urlencoded">
             <button class="add-item" style="margin: ;">Add to cart</button></a>
         </form>
@@ -32,5 +40,6 @@
 
 <a href="#" class="back item ">&#8249;</a>
 <a href="#" class="next item">&#8250;</a>
+
     </div>
 </main>

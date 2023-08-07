@@ -85,6 +85,10 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
         contentType: req.file.mimetype,
       },
     });
+    document.getElementById("go-forward").addEventListener("click", (e) => {
+      window.history.go(2);
+    });
+    
 
     //make image public
     const thumbnailfile = bucket.file(thumbnailFileName);
@@ -101,5 +105,7 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
     next(error);
   }
 });
+
+
 
 module.exports = router;
