@@ -149,6 +149,8 @@
   a:hover {
     background-color: #ddd;
     color: black;
+    height: 150px;
+    width: 150px;
   }
   .next {
     background-color:   #daebed;
@@ -161,8 +163,16 @@
     margin-right: 240px;
   }
   
-  
-  
-  .square {
-    border-radius: 50%;
+   .carasouel {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
   }
+  
+  .carasouel img {
+   height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+
+  
