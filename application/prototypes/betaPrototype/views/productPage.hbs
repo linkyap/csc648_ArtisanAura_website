@@ -7,13 +7,6 @@
             alt="product images coming soon" />
     </div>
 
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star checked"></span>
-    <span class="fa fa-star"></span>
-    <a id="review" target="_self" href="">Reviews</a>
-
     {{#if (isEmployee account_type) }}
         {{!-- employee controls --}}
         <form action="/product/update/{{currentProduct.id}}" method="POST">
@@ -45,8 +38,8 @@
             </select>
         </div>
         <form action="/cart/add-item/{{currentProduct.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="{{currentProduct.quantity}}" required>
+           
+           
             <button class="add-item">Add to cart</button>
         </form>
         <button class="add-item">Save</button>
@@ -56,4 +49,97 @@
         <a href="#" class="next item">&#8250;</a>
 
     </div>
+    
+
+
+
+
+    {{#if isLoggedIn}}
+        <div class="review-form">
+            <form action="/product/review" method="POST" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="productid" value="{{currentProduct.id}}">
+                <input type="hidden" id="rating-value-input" name="rating" value="0" />
+                <input type="hidden" name="accountid" value="{{accountId}}">
+                <div class="rating-wrap">
+                    <h2>Rate this product</h2>
+                    <div class="center">
+                        <fieldset class="rating">
+                            <label for="star1" class="star" onclick="setRatingValue(1)"></label>
+                            <label for="star2" class="star" onclick="setRatingValue(2)"></label>
+                            <label for="star3" class="star" onclick="setRatingValue(3)"></label>
+                            <label for="star4" class="star" onclick="setRatingValue(4)"></label>
+                            <label for="star5" class="star" onclick="setRatingValue(5)"></label>
+                        </fieldset>
+                    </div>
+                </div>
+                <br>
+                <label for="title">Review Title</label>
+                <br>
+                <input type="text" id="reviewtitle" name="reviewtitle" placeholder="Enter your title here">
+                <br>
+                <label for="review">Write a review</label>
+                <br>
+                <textarea id="review" name="review" rows="4" cols="50" placeholder="Enter your comment"></textarea>
+                <br>
+                <button class="submit-review">Submit Review</button>
+            </form>
+        </div>
+    {{else}}
+        <h2>please sign in to write a review. </h2>
+    {{/if}}
+
+
+    <script>
+    // JavaScript function to set the rating value
+    function setRatingValue(rating) {
+        const ratingValueInput = document.getElementById('rating-value-input');
+        ratingValueInput.value = rating;
+        updateStars(rating);
+    }
+
+    // JavaScript function to update the star icons
+    function updateStars(rating) {
+        const labels = document.querySelectorAll('.rating-wrap label');
+        labels.forEach((label, index) => {
+            if (index < rating) {
+                label.classList.add('star-fill');
+            } else {
+                label.classList.remove('star-fill');
+            }
+        });
+    }
+    </script>
+    
+    {{#if reviews}}
+    <h2>Product Reviews:</h2>
+    <ul>
+        {{#each reviews}}
+        <li>
+            <h4>Review Title: {{title}}</h4>
+            <p>Rating: {{rating}}</p>
+            <p>{{description}}</p>
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <p>No reviews available for this product.</p>
+    {{/if}}
+
+
+
+
+
 </main>
+<div class="similar">
+    <h2>Similar Products:</h2>
+<div class="carasouel">
+    <a href="https://artisan-aura-ifjhxbedya-uw.a.run.app/product/36">
+        <img src="/public/images/Necklace_02.jpg"  >
+    </a>
+    <a href="https://artisan-aura-ifjhxbedya-uw.a.run.app/product/50">
+        <img src="/public/images/Earring_08.jpg" >
+    </a>
+    <a href="https://artisanauradevweb-ifjhxbedya-uw.a.run.app/product/48">
+        <img src="/public/images/Earring_03.jpg" >
+    </a>
+</div>

@@ -14,78 +14,163 @@ router.get('/', async function (req, res, next) {
 
 // login page 
 router.get('/login', function (req, res, next) {
-  res.render('login');
+   // breadcrumbs
+   const breadcrumbs = 
+   [
+     { name: 'Home', url: '/' }, 
+     { name: 'Login', url: '/login' }
+   ];
+  res.render('login', { breadcrumbs: breadcrumbs, title: 'Login' });
 });
 
 //profile page
 router.get('/users/profile/:id', function (req, res, next) {
-  if (req.session.userId) {
-    //logged in, continue 
-    res.render('profile', { title: 'Profile' });
-    next();
-  } else {
-    // not logged in/timeout
-    res.redirect('/login');
-  }
-
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Profile', url: '/profile' }
+  ];
+  
+  // if (req.session.userid) {
+  //   //logged in, continue 
+    res.render('profile', { breadcrumbs: breadcrumbs, title: 'Profile' });
+  //   next();
+  // } else {
+  //   // not logged in/timeout
+  //   res.redirect('/login');
+  // }
 });
 
 // registration page 
 router.get("/registration", function (req, res, next) {
-  res.render('registration');
+ // breadcrumbs
+ const breadcrumbs = 
+ [
+   { name: 'Home', url: '/' }, 
+   { name: 'Login', url: '/login' },
+   { name: 'Registration', url: '/registration' }
+ ];
+  res.render('registration', { breadcrumbs: breadcrumbs, title: 'Registration' });
 });
 
 // coming soon page 
 router.get('/ComingSoon', function (req, res, next) {
-  res.render('ComingSoon', { title: 'Coming Soon', css: ["newsletter.css"] });
-});
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Coming Soon', url: '/ComingSoon' }
+  ];
+  res.render('ComingSoon', { breadcrumbs: breadcrumbs, title: 'Coming Soon', css: ["newsletter.css"] });
+ });
 
 // add product page 
 router.get('/addProduct', function (req, res, next) {
-  res.render('addProduct');
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Add Product', url: '/addProduct' }
+  ];
+  res.render('addProduct', { breadcrumbs: breadcrumbs, title: 'Add Product' });
 });
 
 // Refund page
 router.get('/req-refund', function (req, res, next) {
-  res.render('refundReq', { title: 'Request Refund' });
+ // breadcrumbs
+ const breadcrumbs = 
+ [
+   { name: 'Home', url: '/' }, 
+   { name: 'Request Refund', url: '/refundReq' }
+ ];
+  res.render('refundReq', { breadcrumbs: breadcrumbs, title: 'Request Refund' });
 });
+
 // Order page
 router.get('/order-status', function (req, res, next) {
-  res.render('orderStatus', { title: 'Order Status' });
+ // breadcrumbs
+ const breadcrumbs = 
+ [
+   { name: 'Home', url: '/' }, 
+   { name: 'Order Status', url: '/orderStatus' }
+ ];
+  res.render('orderStatus', { breadcrumbs: breadcrumbs, title: 'Order Status' });
 });
 
 // privacy policy page 
 router.get('/PrivacyPolicy', function (req, res, next) {
-  res.render('PrivacyPolicy', { title: 'ArtisanAura Privacy Policy' });
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'ArtisanAura Privacy Policy', url: '/PrivacyPolicy' }
+  ];
+  res.render('PrivacyPolicy', { breadcrumbs: breadcrumbs, title: 'ArtisanAura Privacy Policy' });
 });
+
 // single product page 
 router.get('/productsingle', function (req, res, next) {
-  res.render('productsingle');
+   // breadcrumbs
+   const breadcrumbs = 
+   [
+     { name: 'Home', url: '/' }, 
+     { name: 'Shop', url: '/shop' }, 
+     { name: 'Product', url: '/productsingle' }
+   ];
+  res.render('productsingle', { breadcrumbs: breadcrumbs, title: 'Product' });
 });
+
 // custom product page 
 router.get('/customproduct', function (req, res, next) {
-  res.render('customproduct');
+ // breadcrumbs
+ const breadcrumbs = 
+ [
+   { name: 'Home', url: '/' }, 
+   { name: 'Customize Your Own Jewelry', url: '/customproduct' }
+ ]; 
+  res.render('customproduct', { breadcrumbs: breadcrumbs, title: 'Customize Your Own Jewelry' });
 });
+
 // terms and conditions page
 router.get('/termsConditions', function (req, res, next) {
-  res.render('termsConditions', { title: 'ArtisanAura Terms and Conditions' });
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'ArtisanAura Terms and Conditions', url: '/termsConditions' }
+  ];
+  res.render('termsConditions', { breadcrumbs: breadcrumbs, title: 'ArtisanAura Terms and Conditions' });
 });
 
 // terms of service and privacy for user registration page
 router.get('/termsService', function (req, res, next) {
-  res.render('termsService', { title: 'Terms of Service and Privacy Policy' });
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Terms of Service and Privacy Policy', url: '/termsService' }
+  ];
+  res.render('termsService', { breadcrumbs: breadcrumbs, title: 'Terms of Service and Privacy Policy' });
 });
 
 // about us page
 router.get('/AboutUs', async function (req, res, next) {
   try {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'About Us', url: '/AboutUs' }
+  ];
+
     var [products, fields] = await db.execute(
       `SELECT * FROM product ORDER BY id DESC;`
     );
     if (products.length === 0) {
       req.flash("error", `No products available`);
     }
-    res.render('AboutUs', { title: 'About ArtisanAura Jewelry', products: products, css: ["newsletter.css", "quiz.css", "productspage.css"], js: ["quiz.js"] });
+    res.render('AboutUs', { breadcrumbs: breadcrumbs, title: 'About ArtisanAura Jewelry', products: products, css: ["newsletter.css", "quiz.css", "productspage.css"], js: ["quiz.js"] });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -96,6 +181,13 @@ router.get('/AboutUs', async function (req, res, next) {
 // shop page
 router.get('/Shop', async function (req, res, next) {
   try {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Shop', url: '/shop' }
+  ];
+    
     // chk if reset clicked
     if (req.query.reset === 'true') {
       req.session.filters = {};
@@ -194,13 +286,17 @@ router.get('/Shop', async function (req, res, next) {
         return res.render('Shop', {
             products: individualResults,
             filters: req.session.filters,
-            error: individualResults.length === 0 ? 'No products available' : undefined
+            breadcrumbs: breadcrumbs,
+            error: individualResults.length === 0 ? 'No products available' : undefined,
         });
     }
+    
 
     return res.render('Shop', {
         products: products,
-        filters: req.session.filters
+        filters: req.session.filters,
+        breadcrumbs: breadcrumbs,
+        title: 'Shop All Jewelry', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] 
         //need to add message that no results found for combined search
         // need to update idividuals so they follow the price update
     });
@@ -217,17 +313,37 @@ router.get('/Shop', async function (req, res, next) {
 
 // Guides page
 router.get('/Guides', function (req, res, next) {
-  res.render('Guides', { title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+   // breadcrumbs
+   const breadcrumbs = 
+   [
+     { name: 'Home', url: '/' }, 
+     { name: 'Guides', url: '/Guides' }
+   ];
+   res.render('Guides', { breadcrumbs: breadcrumbs, title: 'Guides', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
 });
+
 // Refund page
 router.get('/Refund', function (req, res, next) {
-  res.render('Refund', { title: 'Refund', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+  res.render('Refund', { breadcrumbs: breadcrumbs, title: 'Refund', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+   // breadcrumbs
+   const breadcrumbs = 
+   [
+     { name: 'Home', url: '/' }, 
+     { name: 'Refund', url: '/Refund' }
+   ];
 });
 
 // Customer Service page
 router.get('/CustomerSupport', function (req, res, next) {
-  res.render('CustomerSupport', { title: 'Customer Support', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Customer Support', url: '/CustomerSupport' }
+  ];
+  res.render('CustomerSupport', { breadcrumbs: breadcrumbs, title: 'Customer Support', css: ["newsletter.css", "quiz.css"], js: ["quiz.js"] });
 });
+
 
 // Newsletter sign up
 const { checkEmail, registerValidator } = require('../helpers/regValidation');

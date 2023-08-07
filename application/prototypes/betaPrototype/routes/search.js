@@ -58,7 +58,9 @@ router.get('/',
         // Render the searchresults template with the final results
         res.render('searchresults', { results: finalResults, searchTerm: searchTerm });
         } else {
-        res.render('searchresults', { notFound: true, searchTerm: searchTerm });
+        const [results, fields] = await db.execute("SELECT * FROM product LIMIT 10");
+        res.render('searchresults', { notFound: true, searchTerm: searchTerm, results: results});
+        //need to add flash that nothing found
         } 
       }else{
         // If the processed search term has no keywords, render the searchresults template with an empty results array
