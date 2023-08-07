@@ -185,6 +185,12 @@ nav ul li a {
     justify-content: center;
 }
 
+.my-icon a {
+    padding: 0px;
+    text-decoration: none;
+    display: unset;
+}
+
 .my-icon a:hover {
     background-color: transparent;
 }
