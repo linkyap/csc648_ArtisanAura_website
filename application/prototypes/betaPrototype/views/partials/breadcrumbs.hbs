@@ -1,6 +1,6 @@
  <div class="breadcrumbs">
     {{#each breadcrumbs}}
         <a href="{{this.url}}">{{this.name}}</a>
-        {{#unless @last}} > {{/unless}}
+        {{#unless @last}} / {{/unless}}
     {{/each}}
 </div>

@@ -257,10 +257,11 @@ nav ul li a {
 .breadcrumbs {
     padding: 5px 20px 0px;
     margin: 0px 20px;
+    color: #9aa8aa
 }
 
 .breadcrumbs a {
-color: #323232;
+color: #9aa8aa;
 text-decoration: none;
 }
 
