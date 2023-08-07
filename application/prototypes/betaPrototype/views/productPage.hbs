@@ -43,32 +43,7 @@
             <button class="add-item">Add to cart</button>
         </form>
         <button class="add-item">Save</button>
-        <script>
-        // Share on Facebook
-        document.getElementById('facebookButton').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            openShareWindow(shareUrl);
-        });
-
-
-        // Share on Twitter
-        document.getElementById('twitterButton').addEventListener('click', function() {
-            var title = encodeURIComponent('Check out this amazing product!');
-            var url = encodeURIComponent(window.location.href);
-            var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-            openShareWindow(shareUrl);
-        });
-
-        function openShareWindow(url) {
-            var width = 600;
-            var height = 400;
-            var left = (window.innerWidth - width) / 2;
-            var top = (window.innerHeight - height) / 2;
-
-            window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
-        }
-    </script>
+        <button class="add-item">Share</button>
 
         <a href="#" class="back item">&#8249;</a>
         <a href="#" class="next item">&#8250;</a>
