@@ -6,15 +6,29 @@
         <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{currentProduct.image}}"
             alt="product images coming soon" />
     </div>
-   
+
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star checked"></span>
     <span class="fa fa-star"></span>
- <a id="review" target="_self" href="">Reviews</a>
+    <a id="review" target="_self" href="">Reviews</a>
 
+    {{#if (isEmployee account_type) }}
+        {{!-- employee controls --}}
+        <form action="/product/update/{{currentProduct.id}}" method="POST">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{currentProduct.title}}" required>
 
+            <label for="description">Description:</label>
+            <textarea id="description" name="description">{{currentProduct.description}}</textarea>
+
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" value="{{currentProduct.price}}" required>
+
+            <input type="submit" value="Update Product">
+        </form>
+    {{/if}}
 
     <div class="product-details">
         <h3 class="price">${{currentProduct.price}}</h3>
@@ -23,18 +37,14 @@
             <p class="description">{{currentProduct.description}}</p>
         </div>
         <form action="/cart/add-item/{{currentProduct.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-            
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="{{currentProduct.quantity}}" required>
-
-            <button class="add-item" style="margin: ;">Add to cart</button></a>
+            <button class="add-item">Add to cart</button>
         </form>
-          <button class="add-item" style="margin: ;">Save</button>
-            <button class="add-item" style="margin: ;">Share</button>
+        <button class="add-item">Save</button>
+        <button class="add-item">Share</button>
 
-
-
-<a href="#" class="back item ">&#8249;</a>
-<a href="#" class="next item">&#8250;</a>
+        <a href="#" class="back item">&#8249;</a>
+        <a href="#" class="next item">&#8250;</a>
     </div>
 </main>

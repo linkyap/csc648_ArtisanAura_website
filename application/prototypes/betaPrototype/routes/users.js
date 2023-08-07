@@ -59,7 +59,8 @@ router.post('/login', async function (req, res, next) {
       req.session.account = {
         id: loggedUser.id,
         email: email,
-        name: loggedUser.name
+        name: loggedUser.name,
+        account_type: loggedUser.account_type
       };
       req.flash('success', 'You are now logged in!');
       req.session.save(err => {
