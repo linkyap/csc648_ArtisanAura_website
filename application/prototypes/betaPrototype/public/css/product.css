@@ -175,4 +175,29 @@
     border-radius: 5px;
   }
 
+
+.rating-wrap {
+    display: inline-block;
+    font-size: 0; /* Remove any extra spacing between inline-block elements */
+}
+
+.rating-wrap label {
+    width: 24px; /* Adjust the width of the stars */
+    height: 24px; /* Adjust the height of the stars */
+    cursor: pointer; /* Set the cursor to pointer on hover */
+    display: inline-block;
+    background-size: contain; /* Ensure the stars have the same size */
+    background-repeat: no-repeat;
+    padding-right: 3px;      
+}
+
+/* Add the star and star-fill images as background images */
+.rating-wrap .star {
+    background-image: url("/public/images/star.svg");
+}
+
+.rating-wrap .star-fill {
+    background-image: url("/public/images/star-fill.svg");
+}
+
   

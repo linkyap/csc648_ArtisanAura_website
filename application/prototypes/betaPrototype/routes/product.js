@@ -19,16 +19,30 @@ var uploader = multer();
 router.get('/:id', async (req, res, next) => {
   try{
     let account_type = (req.session && req.session.account) ? req.session.account.account_type : null;
-
     let productId = req.params.id;
     let results = await Product.getProductById(productId);
+
     if(results && results.length > 0){
-      res.render('productPage', {
-        currentProduct: results[0],
-        account_type: account_type
-      });
-    }
-    else{
+      //get all reviews first.
+      const [reviews] = await db.execute('SELECT * FROM review WHERE product_id = ?', [productId]);
+
+      if(res.locals.isLoggedIn && res.locals.account){
+        let accountId = res.locals.account.id;
+        res.render('productPage',{
+          currentProduct: results[0],
+          accountId: accountId,
+          reviews: reviews,
+          account_type: account_type,
+        });
+      }else{
+        res.render('productPage', {
+          currentProduct: results[0], 
+          reviews: reviews,
+          account_type: account_type
+        });
+      }
+      
+    }else{
       req.flash("error", "Product "+ productId +" not found");
       res.redirect('/');
     }
@@ -37,6 +51,46 @@ catch (error){
     next(error);
 }
 });
+
+router.post('/review', async (req, res, next) => {
+  try {
+    
+    const { productid, rating, accountid, reviewtitle, review } = req.body;
+    
+
+    // Check if the user has already rated this product
+    const [existingReview] = await db.execute('SELECT * FROM review WHERE product_id = ? AND user_id = ?', [productid, accountid]);
+    if (existingReview.length>0) {
+      return res.status(400).json({ message: 'Please delete the old rating and try again.' });
+    }
+
+    // Insert the new review into the database
+    const insertReviewSql = 'INSERT INTO review (product_id, user_id, description, rating, title) VALUES (?, ?, ?, ?, ?)';
+    await db.execute(insertReviewSql, [productid, accountid, review, rating, reviewtitle]);
+
+    // need to update new average rating for the product.
+    const [totalRatings] = await db.execute('SELECT rating FROM review WHERE product_id = ?', [productid]);
+
+    let total = 0;
+    for (let i = 0; i < totalRatings.length; i++) {
+      total += totalRatings[i].rating;
+    }
+    const averageRating = total / totalRatings.length;
+
+    // make rating = .5 or int. ex : average rating = 1.3 will be 1.5. 
+    const roundedAverageRating = Math.round(averageRating * 2) / 2;
+
+    const updateProducrating = 'UPDATE product SET rating = ? WHERE id = ?';
+    await db.execute(updateProducrating, [roundedAverageRating, productid]);
+        
+
+    return res.status(200).json({ message: 'Review added.' });
+  } catch (error) {
+    console.error('Error handling review submission:', error);
+    return res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+
 
 
 router.post('/update/:id', async (req, res, next) => {
@@ -62,6 +116,7 @@ router.post('/update/:id', async (req, res, next) => {
       res.redirect('/product/' + productId);
   }
 });
+
 
 
 
