@@ -258,5 +258,22 @@ router.post('/remove/:id', async (req, res, next) => {
         next(error);
     }
 });
+router.post('/add-item/:id', async (req, res, next) => {
+    try {
+        const productId = req.params.id;
+        const sessionId = req.session.id;
+        const quantity = req.body.quantity || 1; // Default quantity is 1
 
+        const addedProductId = await Product.addToCart(productId, sessionId, quantity);
+        if (addedProductId > 0) {
+            res.json({ success: true });
+        }
+        else {
+            res.json({ success: false });
+        }
+    }
+    catch (error) {
+        next(error);
+    }
+});
 module.exports = router;

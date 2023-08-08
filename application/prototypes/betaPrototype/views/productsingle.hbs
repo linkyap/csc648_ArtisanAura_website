@@ -99,6 +99,33 @@
 
             alert('Design saved!');
         });
+
+        document.getElementById('addToCartForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var quantity = parseInt(document.getElementById('quantity').value, 10);
+            var productId = '{{currentProduct.id}}'; // Replace with actual product ID
+
+            // Send cart item to server (simulated)
+            fetch(`/cart/add-item/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ quantity: quantity })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Item added to cart!');
+                } else {
+                    alert('Failed to add item to cart.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
    </script>
 
 
