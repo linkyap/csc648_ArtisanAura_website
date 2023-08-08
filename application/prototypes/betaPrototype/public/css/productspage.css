@@ -42,8 +42,11 @@
   /* Styles for item name */
 .title {
     font-size: 18px;
-    margin-bottom: 5px;
     height: 70px;
+    font-weight: 400;
+    color: #333;
+    margin: 0px 10px 10px;
+    padding: 10px;
 }
   
   /* Styles for item image */

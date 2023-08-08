@@ -240,12 +240,13 @@
 }
 
 .fa {
-  font-size: 20px;
-  margin-right: 2px;
+  font-size: 14px;
 }
 
 .star-fill {
   color: gold; 
+  font-size: 20px;
+  margin-right: 2px;
 }
 
 .fa-star-o {
