@@ -192,24 +192,37 @@ router.post('/add-item/:id', async (req, res, next) => {
 router.post('/add-custom', async (req, res, next) => {
     let { style, jewel, metal, size, engraving, packaging, quantity } = req.body;
     const sessionId = req.session.id;
+    
     const sql = `INSERT INTO product (title, type, gemstone, material, size, price, engraving, packaging, customized, image, thumbnail) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     const result = await db.execute(sql, ['Customized Jewelry', style, , jewel, metal, size, 1090.00, engraving, packaging, true, '', '']);
     const productId = result[0].insertId;
+
+    if(req.body.button == 'save'){
+        // --- When save button is clicked ----
+
+
+
+
+
+    }
+    else{
+        // Add to cart button was clicked
+        const addedProductId = await Product.addToCart(productId, sessionId);
+        if (addedProductId > 0) {
+            req.flash('success', "Added to cart");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+        else {
+            req.flash("error", "Failed to add to cart");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+    }
     
-    const addedProductId = await Product.addToCart(productId, sessionId);
-    if (addedProductId > 0) {
-        req.flash('success', "Added to cart");
-        req.session.save(err => {
-            res.redirect('back');
-        });
-    }
-    else {
-        req.flash("error", "Failed to add to cart");
-        req.session.save(err => {
-            res.redirect('back');
-        });
-    }
 });
 
 // Increments quantity inside cart and adjusts price accordingly
