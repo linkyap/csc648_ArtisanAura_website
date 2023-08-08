@@ -6,6 +6,7 @@
     <div class="card-right">
         <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
         <p class="card-price">${{this.price}}</p>
+        {{{displayRatingStars this.rating}}}
         <div class="card-quantity">
             <label for="quantity">Quantity: </label>
             <div class="counter">
