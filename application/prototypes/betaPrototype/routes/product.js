@@ -128,6 +128,26 @@ router.post('/update/:id', async (req, res, next) => {
 });
 
 
+router.post('/delete/:id', async function (req, res, next) {
+  const productId = req.params.id;
+  try {
+      // delete reviews associated with the product
+      await db.execute(`DELETE FROM review WHERE product_id = ?`, [productId]);
+
+      // delete product
+      const [result, fields] = await db.execute(`DELETE FROM product WHERE id = ?`, [productId]);
+
+      if (result && result.affectedRows) {
+          return res.json({ success: true, message: `Product with ID ${productId} has been deleted successfully` });
+      } else {
+          return res.status(404).json({ success: false, message: `Product with ID ${productId} not found.` });
+      }
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: "Server error" });
+  }
+});
+
 
 
 router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
@@ -183,9 +203,8 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
         contentType: req.file.mimetype,
       },
     });
-    document.getElementById("go-forward").addEventListener("click", (e) => {
-      window.history.go(2);
-    });
+    // document.getElementById("go-forward").addEventListener("click", (e) => {
+    //   window.history.go(2);});//problematic 
     
 
     //make image public
