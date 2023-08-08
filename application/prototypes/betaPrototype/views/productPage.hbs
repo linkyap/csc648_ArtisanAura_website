@@ -149,6 +149,7 @@
                 <li>
                     <h4>Review Title: {{title}}</h4>
                     <p>Rating: {{rating}}</p>
+                    {{{displayRatingStars rating}}}
                     <p>{{description}}</p>
                     {{#isReviewByAccountId user_id}}
                         <form action="/product/delete-review/{{id}}" method="POST">
