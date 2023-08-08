@@ -5,6 +5,7 @@ var sharp = require('sharp');
 var db = require('../conf/database');
 const Product = require('../db/products');
 const { Storage } = require('@google-cloud/storage');
+const { employee } = require('../helpers/loggedandtype');
 
 const storage = new Storage({
   projectId: 'csc-648-848-team-05',
@@ -185,7 +186,7 @@ router.post('/update/:id', async (req, res, next) => {
 });
 
 
-router.post('/delete/:id', async function (req, res, next) {
+router.post('/delete/:id', employee, async function (req, res, next) {
   const productId = req.params.id;
   try {
       // delete reviews associated with the product
@@ -207,7 +208,7 @@ router.post('/delete/:id', async function (req, res, next) {
 
 
 
-router.post('/createProduct', uploader.single('uploadImage'), async (req, res, next) => {
+router.post('/createProduct',employee, uploader.single('uploadImage'), async (req, res, next) => {
   try {
     const { title, type, material, description, price } = req.body;
 

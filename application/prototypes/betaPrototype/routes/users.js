@@ -6,8 +6,8 @@ const User = require('../db/users');
 const UserError = require('../helpers/userError');
 const { checkEmail, registerValidator } = require('../helpers/regValidation');
 
-router.use('/registration', registerValidator);
-router.post('/registration', (req, res, next) => {
+// router.use('/registration', registerValidator);
+router.post('/registration', registerValidator,(req, res, next) => {
   let { name, email, password } = req.body;
   User.emailExists(email)
     .then((emailDoesExist) => {

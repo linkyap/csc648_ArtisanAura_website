@@ -3,6 +3,7 @@ const path = require("path");
 var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
+const { employee } = require('../helpers/loggedandtype');
 
 // home page aka index
 router.get('/', async function (req, res, next) {
@@ -61,7 +62,7 @@ router.get('/ComingSoon', function (req, res, next) {
  });
 
 // add product page 
-router.get('/addProduct', function (req, res, next) {
+router.get('/addProduct',employee, async function (req, res) {
   // breadcrumbs
   const breadcrumbs = 
   [
@@ -340,7 +341,6 @@ router.get('/CustomerSupport', function (req, res, next) {
 
 
 // Newsletter sign up
-const { checkEmail, registerValidator } = require('../helpers/regValidation');
 
 router.post('/Newsletter', async function (req, res, next) {
   var newsletter_Id = req.params.id;
