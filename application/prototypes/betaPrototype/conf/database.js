@@ -11,7 +11,7 @@
 //   queueLimit: 0
 // }).promise();
 
-module.exports = pool;
+// module.exports = pool;
 
 // ---- WEB TESTING ----
 const mysql = require('mysql2');
