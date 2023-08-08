@@ -45,7 +45,21 @@
            
             <button class="add-item">Add to cart</button>
         </form>
-        <button class="saveButtons">Save</button>
+        
+        <button class="saveButtons" onclick="showFlashMessage('saveButtons')">Save</button>
+        <script>
+            function showFlashMessage(buttonClass) {
+             var saveButton = document.querySelector('.' + buttonClass);
+            var flashMessage = document.createElement('div');
+             flashMessage.className = 'flash-message';
+             flashMessage.innerText = 'Feature coming soon!';
+             saveButton.parentNode.insertBefore(flashMessage, saveButton);
+    
+             setTimeout(function() {
+             flashMessage.remove();
+             }, 8000);
+  }
+</script>
 
         <button id="facebookButton">Share on Facebook</button>
     <button id="twitterButton">Share on Twitter</button>
