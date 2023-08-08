@@ -89,8 +89,13 @@
                 
             };
 
-            
-            localStorage.setItem('savedDesign', JSON.stringify(customizationOptions));
+            fetch('/save-design', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(customizationOptions)
+            })
 
             alert('Design saved!');
         });
@@ -129,17 +134,4 @@
     </script>
     
     </div>
-    <div class="similar">
-    <h2>Similar Products:</h2>
-<div class="carasouel">
-    <a href="https://artisan-aura-ifjhxbedya-uw.a.run.app/product/36">
-        <img src="/public/images/Necklace_02.jpg"  >
-    </a>
-    <a href="https://artisan-aura-ifjhxbedya-uw.a.run.app/product/50">
-        <img src="/public/images/Earring_08.jpg" >
-    </a>
-    <a href="https://artisanauradevweb-ifjhxbedya-uw.a.run.app/product/48">
-        <img src="/public/images/Earring_03.jpg" >
-    </a>
-</div>
-</main>
+   
