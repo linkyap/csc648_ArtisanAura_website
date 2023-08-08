@@ -59,7 +59,7 @@
     text-decoration: none;
 }
 .delete-acc {
-    position: relative;
+   /* position: relative;
     float: right;
     top: 100px;
     text-decoration: none;
@@ -67,7 +67,12 @@
     background: transparent;
     cursor: pointer;
     color: black;
-    font-size: 14px
+    font-size: 14px */
+    font-size: xx-small;
+    background: #fff;
+    border-color: #daebed;
+    border-width: thin;
+    margin: 30px 0px 0px;
 }
 
 .delete-acc:hover {
