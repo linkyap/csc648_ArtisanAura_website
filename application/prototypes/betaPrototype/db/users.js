@@ -37,6 +37,18 @@ User.emailExists = (email) => {
     })
     .catch((err) => Promise.reject(err));
 };
+User.deleteUser = (email) => {
+    return db.execute("DELETE FROM account WHERE email=?;", [email])
+    .then(([results, fields]) => {
+        if(results && results.affectedRows) {
+            return Promise.resolve(1);
+        }
+        else{
+            return Promise.resolve(-1)
+        }
+    })
+    .catch((err) => Promise.reject(err));
+}
 
 User.authenticate = (email, password) => {
     let account;
