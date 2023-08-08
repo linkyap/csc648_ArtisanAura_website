@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/public/css/product.css">
+<link rel="stylesheet" href="/public/css/productspage.css">
  {{>breadcrumbs}}
 
 <main class="product-page">
@@ -185,7 +186,7 @@
     <h2>Similar Products:</h2>
     <div class="carousel">
         {{#each relatedProducts}}
-        <a href="/product/{{id}}">
+        <a class="carousel" href="/product/{{id}}">
             <img src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{thumbnail}}" alt="{{title}}">
             <p>{{title}}</p>
         </a>
