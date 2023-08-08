@@ -119,6 +119,15 @@ router.post('/review', async (req, res, next) => {
     return res.redirect('/product/' + productid);
   }
 });
+router.get('/addProduct',employee, async function (req, res) {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Add Product', url: '/addProduct' }
+  ];
+  res.render('addProduct', { breadcrumbs: breadcrumbs, title: 'Add Product' });
+});
 
 router.post('/delete-review/:id', async (req, res, next) => {
   try {

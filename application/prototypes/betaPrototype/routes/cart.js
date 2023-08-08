@@ -30,6 +30,8 @@ router.get('/cart-list', async (req, res, next) => {
 });
 
 
+
+
 router.get('/checkout', async (req, res, next) => {
     try {
         let sessionId = req.session.id;
@@ -76,6 +78,7 @@ router.post('/checkout', async (req, res, next) => {
         next(error);
     }
 });
+
 
 router.post('/review', ckreview, async (req, res, next) => {
     const errors = validationResult(req);
@@ -145,6 +148,8 @@ router.post('/place-order', async (req, res, next) => {
         next(error);
     }
 });
+
+
 
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
