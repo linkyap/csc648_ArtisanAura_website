@@ -23,6 +23,7 @@
         <h2 class="title">{{this.title}}</h2>
         <img class="image" src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{this.thumbnail}}" width="200"
           height="150" alt="product images coming soon" />
+          {{{displayRatingStars this.rating}}}
         {{!-- <p class="description">{{this.description}}</p> --}}
         <h2 class="price">${{this.price}}</h2>
       </div>

@@ -111,6 +111,23 @@ router.post('/delete-review/:id', async (req, res, next) => {
       if (existingReview) {
          // Delete the review from the database
         await db.execute('DELETE FROM review WHERE id = ?', [reviewId]); 
+
+        //also need to update average rating
+        const [totalRatings] = await db.execute('SELECT rating FROM review WHERE product_id = ?', [productId]);
+        
+        let total = 0;
+        for (let i = 0; i < totalRatings.length; i++) {
+          total += totalRatings[i].rating;
+        }
+        const averageRating = total / totalRatings.length;
+
+        // make rating = .5 or int. ex : average rating = 1.3 will be 1.5.
+        const roundedAverageRating = Math.round(averageRating * 2) / 2;
+
+        const updateProductRating = 'UPDATE product SET rating = ? WHERE id = ?';
+        await db.execute(updateProductRating, [roundedAverageRating, productId]);
+
+
         req.flash('successfully deleted!')
         return res.redirect('/product/' + productId);
       }else{
