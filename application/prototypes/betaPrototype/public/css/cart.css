@@ -134,10 +134,7 @@
     border: 1px solid darkgray;
 }
 
-.star-fill {
-    color: gold; 
-}
-  
-.fa-star-o {
-    color: #333; 
+.custom{
+    white-space: pre-line;
+    font-size: 13px;
 }

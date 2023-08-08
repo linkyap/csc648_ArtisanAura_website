@@ -6,7 +6,6 @@ const Product = require('../db/products');
 const Cart = require('../helpers/cartHelpers');
 const {ckreview} = require('../helpers/ckval')
 
-
 // Shopping cart page
 router.get('/cart-list', async (req, res, next) => {
     let sessionId = req.session.id;
@@ -28,13 +27,6 @@ router.get('/cart-list', async (req, res, next) => {
     else {
         res.render('cart', { title: 'Shopping Cart' });
     }
-});
-
-router.post('/add-custom-item', (req, res, next) => {
-    req.flash('error', 'Failed to add to cart');
-    req.session.save(err => {
-        res.redirect('back');
-    });
 });
 
 
@@ -178,7 +170,6 @@ router.post('/add-item/:id', async (req, res, next) => {
         }
     //--------------------------------------------
 
-
         const addedProductId = await Product.addToCart(productId, sessionId);
         if (addedProductId > 0) {
             req.flash('success', "Added to cart");
@@ -197,6 +188,30 @@ router.post('/add-item/:id', async (req, res, next) => {
         next(error);
     }
 });
+
+router.post('/add-custom', async (req, res, next) => {
+    let { style, jewel, metal, size, engraving, packaging, quantity } = req.body;
+    const sessionId = req.session.id;
+    const sql = `INSERT INTO product (title, type, gemstone, material, size, price, engraving, packaging, customized, image, thumbnail) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const result = await db.execute(sql, ['Customized Jewelry', style, , jewel, metal, size, 1090.00, engraving, packaging, true, '', '']);
+    const productId = result[0].insertId;
+    
+    const addedProductId = await Product.addToCart(productId, sessionId);
+    if (addedProductId > 0) {
+        req.flash('success', "Added to cart");
+        req.session.save(err => {
+            res.redirect('back');
+        });
+    }
+    else {
+        req.flash("error", "Failed to add to cart");
+        req.session.save(err => {
+            res.redirect('back');
+        });
+    }
+});
+
 // Increments quantity inside cart and adjusts price accordingly
 router.post('/inc-qty/:id', async (req, res, next) => {
     try {
@@ -266,30 +281,30 @@ router.post('/remove/:id', async (req, res, next) => {
 });
 // Server-Side (Hypothetical Cart Endpoint)
 
-router.post('/add-item/:id', async (req, res, next) => {
-    try {
-        const productId = req.params.id;
-        const sessionId = req.session.id;
-        const quantity = req.body.quantity || 1;
+// router.post('/add-item/:id', async (req, res, next) => {
+//     try {
+//         const productId = req.params.id;
+//         const sessionId = req.session.id;
+//         const quantity = req.body.quantity || 1;
+        
+//         const product = await Product.getProductById(productId);
+//         if (!product) {
+//             res.json({ success: false, message: 'Product not found' });
+//             return;
+//         }
 
-        const product = await Product.getProductById(productId);
-        if (!product) {
-            res.json({ success: false, message: 'Product not found' });
-            return;
-        }
 
-
-        const addedProductId = await Product.addToCart(productId, sessionId, quantity);
-        if (addedProductId > 0) {
-            res.json({ success: true });
-        }
-        else {
-            res.json({ success: false });
-        }
-    }
-    catch (error) {
-        next(error);
-    }
-});
+//         const addedProductId = await Product.addToCart(productId, sessionId, quantity);
+//         if (addedProductId > 0) {
+//             res.json({ success: true });
+//         }
+//         else {
+//             res.json({ success: false });
+//         }
+//     }
+//     catch (error) {
+//         next(error);
+//     }
+// });
 
 module.exports = router;
