@@ -31,6 +31,20 @@ router.get('/:id', async (req, res, next) => {
 
     if(results && results.length > 0){
       //get all reviews first.
+      // let relatedProducts = [];
+      let productType = results[0].type;
+      let productMaterial = results[0].material;
+      let productGemstone = results[0].gemstone;
+
+      const [relatedProducts] = await db.execute(`
+      (SELECT * FROM product WHERE type = ? AND id != ? LIMIT 2)
+      UNION
+      (SELECT * FROM product WHERE material LIKE ? AND id != ? LIMIT 2)
+      UNION
+      (SELECT * FROM product WHERE gemstone LIKE ? AND id != ? LIMIT 2)
+  `, [productType, productId, '%' + productMaterial + '%', productId, '%' + productGemstone + '%', productId]);
+      const trimmedProducts = relatedProducts.slice(0, 3);
+
       const [reviews] = await db.execute('SELECT * FROM review WHERE product_id = ?', [productId]);
 
       if(res.locals.isLoggedIn && res.locals.account){
@@ -41,6 +55,7 @@ router.get('/:id', async (req, res, next) => {
           reviews: reviews,
           account_type: account_type,
           breadcrumbs: breadcrumbs,
+          relatedProducts: trimmedProducts,
         });
       }else{
         res.render('productPage', {
@@ -48,6 +63,8 @@ router.get('/:id', async (req, res, next) => {
           reviews: reviews,
           account_type: account_type,
           breadcrumbs: breadcrumbs,
+          relatedProducts: trimmedProducts,
+
         });
       }
       
@@ -60,6 +77,8 @@ catch (error){
     next(error);
 }
 });
+
+
 
 router.post('/review', async (req, res, next) => {
   try {
