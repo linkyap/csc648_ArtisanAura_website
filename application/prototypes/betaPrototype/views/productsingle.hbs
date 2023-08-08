@@ -25,50 +25,64 @@
             interactive experience that results in a one-of-a-kind piece, mirroring
             your taste and encapsulating your story.
         </h4>
-        <form action="/cart/add-custom" method="POST" enctype="">
-            <p>Design:</p>
-            <div class="customization-option">
-                <input type="radio" name="style" value="Ring" id="ring"><label for="ring">Ring</label>
-                <input type="radio" name="style" value="Necklace" id="necklace"><label for="necklace">Necklace</label>
-                <input type="radio" name="style" value="Bracelet" id="bracelet"><label for="bracelet">Bracelet</label>
-                <input type="radio" name="style" value="Earrings" id="earrings"><label for="earrings">Earrings</label>
-            </div>
+        <form action="/cart/add-custom" method="POST" class="customization-form">
+    <div class="customization-group">
+        <label class="customization-label">Design:</label>
+        <div class="customization-option">
+            <input type="radio" name="style" value="Ring" id="ring"><label for="ring">Ring</label>
+            <input type="radio" name="style" value="Necklace" id="necklace"><label for="necklace">Necklace</label>
+            <input type="radio" name="style" value="Bracelet" id="bracelet"><label for="bracelet">Bracelet</label>
+            <input type="radio" name="style" value="Earrings" id="earrings"><label for="earrings">Earrings</label>
+        </div>
+    </div>
 
-            <p>Gemstone:</p>
-            <div class="customization-option">
-                <input type="radio" name="jewel" value="Diamond" id="diamond"><label for="diamond">Diamond</label>
-                <input type="radio" name="jewel" value="Ruby" id="ruby"><label for="ruby">Ruby</label>
-                <input type="radio" name="jewel" value="Sapphire" id="sapphire"><label for="sapphire">Sapphire</label>
-            </div>
+    <div class="customization-group">
+        <label class="customization-label">Gemstone:</label>
+        <div class="customization-option">
+            <input type="radio" name="jewel" value="Diamond" id="diamond"><label for="diamond">Diamond</label>
+            <input type="radio" name="jewel" value="Ruby" id="ruby"><label for="ruby">Ruby</label>
+            <input type="radio" name="jewel" value="Sapphire" id="sapphire"><label for="sapphire">Sapphire</label>
+        </div>
+    </div>
 
-            <label for="metal">Material:</label>
-            <select name="metal" id="metal">
-                <option value="Gold">Gold</option>
-                <option value="Silver">Silver</option>
-            </select>
+    <div class="customization-group">
+        <label class="customization-label" for="metal">Material:</label>
+        <select name="metal" id="metal" class="customization-field">
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+        </select>
+    </div>
 
-            <label for="size">Size:</label>
-            <select name="size" id="size">
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-            </select>
+    <div class="customization-group">
+        <label class="customization-label" for="size">Size:</label>
+        <select name="size" id="size" class="customization-field">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+    </div>
 
-            <label for="engraving">Engraving:</label>
-            <input type="text" name="engraving" id="engraving" maxlength="10" placeholder="Enter your text">
+    <div class="customization-group">
+        <label class="customization-label" for="engraving">Engraving:</label>
+        <input type="text" name="engraving" id="engraving" class="customization-field" maxlength="10" placeholder="Enter your text">
+    </div>
 
-            <label for="packaging">Packaging:</label>
-            <select name="packaging" id="packaging">
-                <option value="Purple">Purple</option>
-                <option value="Blue">Blue</option>
-                <option value="Black">Black</option>
-            </select>
+    <div class="customization-group">
+        <label class="customization-label" for="packaging">Packaging:</label>
+        <select name="packaging" id="packaging" class="customization-field">
+            <option value="Purple">Purple</option>
+            <option value="Blue">Blue</option>
+            <option value="Black">Black</option>
+        </select>
+    </div>
 
+    <div class="customization-group">
+        <label class="customization-label" for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" class="customization-field" min="1" max="{{currentProduct.quantity}}" required>
+    </div>
 
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="{{currentProduct.quantity}}" required>
-            <button type="submit" class="add-item" style="margin: ;">Add to cart</button>
-        </form>
+    <button type="submit" class="add-item">Add to cart</button>
+</form>
 
 
 

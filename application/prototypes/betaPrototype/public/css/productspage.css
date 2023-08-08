@@ -73,5 +73,32 @@
   color: #333;
 }
 
+#saveButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+#facebookButton{
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#twitterButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #69a7f8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   
