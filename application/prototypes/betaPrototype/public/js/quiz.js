@@ -42,7 +42,17 @@ function nextQuestion() {
         questionCount++;
         displayCurrentQuestion();
     } else { //quiz done
-        document.getElementById("quiz-popup").style.display ="none";
+        const predominantChoice = getPredominantChoice();
+        const searchKeywords = getSearchKeywords(predominantChoice);
+        const searchString = searchKeywords.join('+');
+                //join multiple keyword if seperated
+                // not completely needed since search already does spilitting
+
+        // to search with 'q' query parameter, with key words passed
+        window.location.href = `/search?q=${encodeURIComponent(searchString)}`;
+
+        document.getElementById("quiz-popup").style.display = "none";
+    
         // this code will be changed to redirect the user based on their choices.
         // alert("Your path is "+userChoices.join(", "));
     }
@@ -62,7 +72,11 @@ function displayCurrentQuestion() {
     document.getElementById("quiz-options").innerHTML = choice;
     if(questionCount === quizQuestions.length-1) {
         document.getElementById("next").textContent = "Submit";
-        
+        //final ?
+    } else {
+        // more questions after
+        document.getElementById("next").textContent = "Next";
+     //
     }
 }//questions and options ^^^
 
@@ -71,4 +85,26 @@ function closeQuiz() {
     questionCount = 0;
     userChoices = [];
     document.getElementById("quiz-popup").style.display = "none";
+}
+
+
+function getPredominantChoice() {//set each to 0
+    const tally = { "A": 0, "B": 0, "C": 0, "D": 0 };
+    userChoices.forEach(choice => {
+        tally[choice]++;
+    });//as choices clicked tally count goes up depedning on choice
+
+    return Object.keys(tally).reduce((a, b) => tally[a] > tally[b] ? a : b);
+}
+
+
+function getSearchKeywords(choice) {
+    const keywordsMap = {
+        "A": ["simple, subtle, delicate, minimal"],
+        "B": ["vintage, glamor, cocktail, exquisite, elegant"],
+        "C": ["fashion, unique, bold, statement"],
+        "D": ["comfortable, casual, versatile, meaning"]
+    };//change the above key words if needed or add
+
+    return keywordsMap[choice] || [];
 }
