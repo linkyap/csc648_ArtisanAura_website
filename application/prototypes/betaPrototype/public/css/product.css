@@ -35,6 +35,15 @@
 .description label{
     font-weight: bold;
 }
+.saveButton { 
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .product-details button {
     padding:10px;
     margin-top: 10px;
@@ -90,6 +99,7 @@
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: justify;
   }
   
   .title {
@@ -239,16 +249,6 @@
 
 .fa-star-o {
   color: #333;
-}
-
-#saveButton {
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 #facebookButton{

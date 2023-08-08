@@ -5,8 +5,13 @@
     </div>
     <div class="card-right">
         <a href="/product/{{this.id}}" class="card-title">{{this.title}}</a>
+        {{#if this.customized}}
+        <p class="custom">{{this.type}}, {{this.gemstone}}, {{this.material}}, 
+            Size: {{this.size}}, 
+            Engraving: {{this.engraving}}, 
+            Packaging: {{this.packaging}}</p>
+        {{/if}}
         <p class="card-price">${{this.price}}</p>
-        {{{displayRatingStars this.rating}}}
         <div class="card-quantity">
             <label for="quantity">Quantity: </label>
             <div class="counter">

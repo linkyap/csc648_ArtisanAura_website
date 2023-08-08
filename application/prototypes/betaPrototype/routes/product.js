@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 var sharp = require('sharp');
-var crypto = require('crypto');
 var db = require('../conf/database');
 const Product = require('../db/products');
 const { Storage } = require('@google-cloud/storage');
@@ -217,9 +216,7 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
     const result = await db.execute(sql, [title, type, material, description, price, '', '']);
 
     // Get the product ID from the MySQL insert result
-    // console.log('Result:', result);
     const productId = result[0].insertId;
-    // console.log('ProductId:', productId);
 
 
     // Process the image using Sharp
@@ -231,10 +228,6 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
     const bucket = storage.bucket(bucketName);
 
     // //make image name crypto
-    // const fileExt = req.file.mimetype.split('/')[1];
-    // const randomName = crypto.randomBytes(22).toString('hex');
-    // const gcsFileName = `product/${productId}/images/${randomName}.${fileExt}`;
-
 
     // Uploading the original image to Google Cloud Storage
     const gcsFileName = `product/${productId}/images/${req.file.originalname}`;
@@ -251,9 +244,6 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
 
     // Uploading the thumbnail image to Google Cloud Storage
 
-    //// next line is for file name crypto
-    // const fileAsThumbnail = `thumbnail-${randomName}.${fileExt}`;
-
     const fileAsThumbnail = `thumbnail-${req.file.originalname}`;
     const thumbnailFileName = `product/${productId}/thumbnails/${fileAsThumbnail}`;
     await bucket.file(thumbnailFileName).save(thumbnailBuffer, {
@@ -261,9 +251,6 @@ router.post('/createProduct', uploader.single('uploadImage'), async (req, res, n
         contentType: req.file.mimetype,
       },
     });
-    // document.getElementById("go-forward").addEventListener("click", (e) => {
-    //   window.history.go(2);});//problematic 
-    
 
     //make image public
     const thumbnailfile = bucket.file(thumbnailFileName);
