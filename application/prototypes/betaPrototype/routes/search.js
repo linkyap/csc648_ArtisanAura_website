@@ -13,14 +13,17 @@ function BreakdownSearchTerm(searchTerm) {
 }
 
 router.get('/',
-  [check('q').not().isEmpty().withMessage('Search term is required')
+  [check('q').not().isEmpty().withMessage('Search term is usually required, but since you are already here, here are some random results we are sure you are going to love. Enjoy!')
     .isLength({ max: 60 })
     .withMessage('Search term must be less than 60 characters'),
   ],
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.render('searchresults', { errors: errors.array(), results: [] });
+      const [randomResults, _] = await db.execute("SELECT * FROM product ORDER BY RAND() LIMIT 10");
+      req.flash("warning", "You searched for nothing. Here are some random products for you!");
+
+      return res.render('searchresults', { errors: errors.array(), results: randomResults  });
     }
     
 
@@ -64,9 +67,6 @@ router.get('/',
         res.render('searchresults', { notFound: true, searchTerm: searchTerm, results: results,  description: description});
         //need to add flash that nothing found
         } 
-      }else{
-        // If the processed search term has no keywords, render the searchresults template with an empty results array
-        return res.render('searchresults', { results: [] });
       }
     }catch (err) {
       console.error('Error executing search query:', err);
