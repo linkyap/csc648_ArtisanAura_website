@@ -20,7 +20,7 @@ router.get('/',
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      const [randomResults, _] = await db.execute("SELECT * FROM product ORDER BY RAND() LIMIT 10");
+      const [randomResults, _] = await db.execute("SELECT * FROM product WHERE customized = 0 ORDER BY RAND() LIMIT 10");
       req.flash("warning", "You searched for nothing. Here are some random products for you!");
 
       return res.render('searchresults', { errors: errors.array(), results: randomResults  });
@@ -39,7 +39,7 @@ router.get('/',
         // Loop through each keyword and execute a separate query for each word
         for (const keyword of words) {
           const [results, fields] = await db.execute(
-            "SELECT * FROM product WHERE title LIKE ? OR type LIKE ? OR material LIKE ? OR description LIKE ?",
+            "SELECT * FROM product WHERE customized = 0 AND title LIKE ? OR type LIKE ? OR material LIKE ? OR description LIKE ?",
             [`%${keyword}%`, `%${keyword}%`, `%${keyword}%`, `%${keyword}%`]
           );
 
@@ -63,7 +63,7 @@ router.get('/',
         // Render the searchresults template with the final results
         res.render('searchresults', { results: finalResults, searchTerm: searchTerm,  description: description });
         } else {
-        const [results, fields] = await db.execute("SELECT * FROM product LIMIT 10");
+        const [results, fields] = await db.execute("SELECT * FROM product WHERE customized = 0 LIMIT 10");
         res.render('searchresults', { notFound: true, searchTerm: searchTerm, results: results,  description: description});
         //need to add flash that nothing found
         } 

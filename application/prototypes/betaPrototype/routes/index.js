@@ -208,9 +208,9 @@ router.get('/Shop', async function (req, res, next) {
       min_price: min_price,
       max_price: max_price
     } = req.session.filters;
-
+    const bear =1;
     // all product data
-    let query = "SELECT * FROM product";
+    let query = "SELECT * FROM product WHERE customized = 0";
     let queryParams = [];
     let conditions = [];
 
