@@ -18,10 +18,10 @@ var userChoices = [];
 //^keeps track of choices made
 
 var answerRoutes = {
-    "A": 1,
-    "B": 2,
-    "C": 3,
-    "D": 4
+    "A": "A",
+    "B": "B",
+    "C": "C",
+    "D": "D"
 };
 
 // quiz
@@ -35,6 +35,7 @@ function nextQuestion() {
     var pickedChoice = document.querySelector('input[name="option"]:checked').value ;
     // Map the selected option to its route and add to userChoices
     userChoices.push(answerRoutes[pickedChoice]); 
+    
     //add route akachoice to userpath to where they will eventually be redirected
     //will chnage this code later to allow for check of path to redirect instead of printing results out as 
     //the alert does below
@@ -43,6 +44,7 @@ function nextQuestion() {
         displayCurrentQuestion();
     } else { //quiz done
         const predominantChoice = getPredominantChoice();
+       
         const searchKeywords = getSearchKeywords(predominantChoice);
         const searchString = searchKeywords.join('+');
                 //join multiple keyword if seperated

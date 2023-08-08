@@ -182,6 +182,12 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px; 
+    max-width: 800px;
+    background-color: #fff;
+    padding: 0px 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: justify;
 }
 
 .product-reviews h2 {
@@ -190,6 +196,13 @@
     ;
 }
 
+.review-message {
+  background-color: #daebed;
+  padding: 0px 40px 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0px auto 15px;
+}
 
 .rating-wrap {
     display: inline-block;
