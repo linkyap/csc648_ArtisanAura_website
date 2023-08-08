@@ -119,15 +119,35 @@ router.post('/review', ckreview, async (req, res, next) => {
         });
     }
 });
+
+
 router.post('/place-order', async (req, res, next) => {
+    try{
+    
     let sessionId = req.session.id;
     let orderId = await Product.placeOrder(sessionId);
+
+    await Product.clearCart(sessionId);//new added to remove only cart session
+                //in product.js at bottom of model
+    req.session.save(err => {
+        if (err) {
+            return next(err);
+        }
+
+
     res.render('orderConfirm', {
             title: 'Order Confirmation',
             id: orderId
     });
-    req.session.destroy();
 });
+} catch (error) {
+    next(error);
+}
+});
+
+
+
+
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
     try {

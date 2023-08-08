@@ -102,4 +102,14 @@ Product.placeOrder = (sessionId) => {
     .catch((err) => Promise.reject(err));
 };
 
+Product.clearCart = async function(sessionId) {
+    const delete_cart = 'DELETE FROM cart WHERE sessions_id = ?';
+    try {
+        await db.query(delete_cart, [sessionId]);
+    } catch (error) {
+        console.error("Failed to clear cart: ", error);
+        throw error; 
+    }
+};
+
 module.exports = Product;
