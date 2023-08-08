@@ -6,6 +6,9 @@ var quizQuestions = [
     {question: "Q4. When it comes to jewelry, you", answers: ["A. Prefer simple and subtle pieces", "B. Like items with a story or historical feel", "C.  Love bold, statement pieces", "D. Opt for functional or symbolic pieces"]},
     {question: "Q5. Your favorite gemstone is:", answers: ["A. Diamond", "B. Ruby/Sapphire", "C. Other gems", "D. No Preference"]},
     {question: "Q6. Your preferred jewelry piece is", answers: ["A. A delicate necklace", "B. A cocktail ring", "C. A statement cuff", "D. A charm bracelet"]},
+    {question: "Q7. How do you usually wear your jewelry", answers: ["A. I wear the same pieces every day", "B. I carefully select pieces to match my outfit", "C. I mix and match for a unique look", "D. I rarely wear jewelry"]}
+ 
+
 ];//?s for quiz
 
 var questionCount = 0;
