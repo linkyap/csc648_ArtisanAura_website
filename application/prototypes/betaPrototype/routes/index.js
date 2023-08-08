@@ -114,11 +114,10 @@ router.get('/productsingle', function (req, res, next) {
    // breadcrumbs
    const breadcrumbs = 
    [
-     { name: 'Home', url: '/' }, 
-     { name: 'Shop', url: '/shop' }, 
+     { name: 'Home', url: '/' },  
      { name: 'Product', url: '/productsingle' }
    ];
-  res.render('productsingle', { breadcrumbs: breadcrumbs, title: 'Product' });
+  res.render('productsingle', { breadcrumbs: breadcrumbs, title: 'Customize Your Own Jewelry' });
 });
 
 // custom product page 

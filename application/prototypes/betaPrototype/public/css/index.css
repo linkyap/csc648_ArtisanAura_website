@@ -256,10 +256,11 @@ nav ul li a {
 
 /* breadcrumbs style */
 .breadcrumbs {
-    padding: 5px 20px 0px;
+    padding: 10px 20px 0px;
     margin: 0px 20px;
     color: #9aa8aa;
     font-weight: lighter;
+    font-size: 14px;
 }
 
 .breadcrumbs .active-link {
@@ -274,6 +275,9 @@ nav ul li a {
 .breadcrumbs a {
 color: #9aa8aa;
 text-decoration: none;
+display: unset;
+padding: 0px;
+margin: 0px;
 }
 
 .breadcrumbs a:hover {
