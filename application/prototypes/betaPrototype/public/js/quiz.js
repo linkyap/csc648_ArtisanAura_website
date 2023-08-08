@@ -89,32 +89,14 @@ function closeQuiz() {
 }
 
 
-/* function getPredominantChoice() {//set each to 0
+function getPredominantChoice() {//set each to 0
     const tally = { "A": 0, "B": 0, "C": 0, "D": 0 };
     userChoices.forEach(choice => {
         tally[choice]++;
     });//as choices clicked tally count goes up depedning on choice
 
     return Object.keys(tally).reduce((a, b) => tally[a] > tally[b] ? a : b);
-} */
-
-function getPredominantChoice() {
-    const tally = { "A": 0, "B": 0, "C": 0, "D": 0 };
-    userChoices.forEach(choice => {
-        tally[choice]++;
-    });
-
-    let maxCount = 0;
-    let predominantChoice = null;
-    for (const choice in tally) {
-        if (tally[choice] > maxCount) {
-            maxCount = tally[choice];
-            predominantChoice = choice;
-        }
-    }
-
-    return predominantChoice;
-}
+} 
 
 
 
