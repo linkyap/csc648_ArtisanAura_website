@@ -141,20 +141,25 @@
     </script>
     
     {{#if reviews}}
-    <h2>Product Reviews:</h2>
-    <ul>
-        {{#each reviews}}
-        <li>
-            <h4>Review Title: {{title}}</h4>
-            <p>Rating: {{rating}}</p>
-            <p>{{description}}</p>
-        </li>
-        {{/each}}
-    </ul>
+        <h2>Product Reviews:</h2>
+        <ul>
+            {{#each reviews}}
+                <li>
+                    <h4>Review Title: {{title}}</h4>
+                    <p>Rating: {{rating}}</p>
+                    <p>{{description}}</p>
+                    {{#isReviewByAccountId user_id}}
+                        <form action="/product/delete-review/{{id}}" method="POST">
+                        <input type="hidden" name="productid" value="{{product_id}}">
+                        <button>Delete</button>
+                        </form>
+                    {{/isReviewByAccountId}}
+                </li>
+            {{/each}}
+        </ul>
     {{else}}
-    <p>No reviews available for this product.</p>
+        <p>No reviews available for this product.</p>
     {{/if}}
-
 
 
 

@@ -11,6 +11,8 @@ const flash = require('express-flash');
 const sessions = require('express-session')
 const mysqlStore = require('express-mysql-session')(sessions);
 
+const hbsHelper = require('./helpers/hbs_helper');
+
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const searchRouter = require("./routes/search");
@@ -47,7 +49,7 @@ const hbs = handlebars.create({
   }
 });
 
-
+hbs.handlebars.registerHelper(hbsHelper);
 
 app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');

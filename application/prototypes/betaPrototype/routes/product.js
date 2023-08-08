@@ -101,7 +101,29 @@ router.post('/review', async (req, res, next) => {
   }
 });
 
+router.post('/delete-review/:id', async (req, res, next) => {
+  try {
+      const reviewId = req.params.id;
+      const productId = req.body.productid;
+      // Check if the review with the specified id and accountId exists
+      const [existingReview] = await db.execute('SELECT * FROM review WHERE id = ?', [reviewId]);
 
+      if (existingReview) {
+         // Delete the review from the database
+        await db.execute('DELETE FROM review WHERE id = ?', [reviewId]); 
+        req.flash('successfully deleted!')
+        return res.redirect('/product/' + productId);
+      }else{
+        req.flash('failed to delete')
+        return res.redirect('/product/' + productId);
+      }
+
+      
+  } catch (error) {
+      console.error('Error handling review deletion:', error);
+      return res.status(500).json({ message: 'Internal server error.' });
+  }
+});
 
 router.post('/update/:id', async (req, res, next) => {
   try {
