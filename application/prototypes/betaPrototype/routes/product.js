@@ -38,13 +38,13 @@ router.get('/:id', async (req, res, next) => {
       let productGemstone = results[0].gemstone;
 
       const [relatedProducts] = await db.execute(`
-      (SELECT * FROM product WHERE type = ? AND id != ? LIMIT 3)
+      (SELECT * FROM product WHERE type = ? AND id != ? LIMIT 2)
       UNION
-      (SELECT * FROM product WHERE material LIKE ? AND id != ? LIMIT 3)
+      (SELECT * FROM product WHERE material LIKE ? AND id != ? LIMIT 2)
       UNION
-      (SELECT * FROM product WHERE gemstone LIKE ? AND id != ? LIMIT 3)
+      (SELECT * FROM product WHERE gemstone LIKE ? AND id != ? LIMIT 2)
   `, [productType, productId, '%' + productMaterial + '%', productId, '%' + productGemstone + '%', productId]);
-  
+      const trimmedProducts = relatedProducts.slice(0, 3);
 
       const [reviews] = await db.execute('SELECT * FROM review WHERE product_id = ?', [productId]);
 
@@ -56,7 +56,7 @@ router.get('/:id', async (req, res, next) => {
           reviews: reviews,
           account_type: account_type,
           breadcrumbs: breadcrumbs,
-          relatedProducts: relatedProducts,
+          relatedProducts: trimmedProducts,
         });
       }else{
         res.render('productPage', {
@@ -64,7 +64,7 @@ router.get('/:id', async (req, res, next) => {
           reviews: reviews,
           account_type: account_type,
           breadcrumbs: breadcrumbs,
-          relatedProducts: relatedProducts,
+          relatedProducts: trimmedProducts,
 
         });
       }
