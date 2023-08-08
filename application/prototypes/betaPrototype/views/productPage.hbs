@@ -184,7 +184,7 @@
 </main>
 <div class="similar">
     <h2 class="title">Similar Products:</h2>
-    <div class="carousel">
+    <div class="carousel" style="display: flex;flex-wrap: wrap;justify-content: center;">
         {{#each relatedProducts}}
         <a class="item" href="/product/{{id}}">
             <img src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{thumbnail}}" alt="{{title}}">
