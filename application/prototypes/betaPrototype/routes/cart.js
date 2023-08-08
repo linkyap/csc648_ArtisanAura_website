@@ -258,11 +258,20 @@ router.post('/remove/:id', async (req, res, next) => {
         next(error);
     }
 });
+// Server-Side (Hypothetical Cart Endpoint)
+
 router.post('/add-item/:id', async (req, res, next) => {
     try {
         const productId = req.params.id;
         const sessionId = req.session.id;
-        const quantity = req.body.quantity || 1; // Default quantity is 1
+        const quantity = req.body.quantity || 1;
+
+        const product = await Product.getProductById(productId);
+        if (!product) {
+            res.json({ success: false, message: 'Product not found' });
+            return;
+        }
+
 
         const addedProductId = await Product.addToCart(productId, sessionId, quantity);
         if (addedProductId > 0) {
@@ -276,4 +285,5 @@ router.post('/add-item/:id', async (req, res, next) => {
         next(error);
     }
 });
+
 module.exports = router;
