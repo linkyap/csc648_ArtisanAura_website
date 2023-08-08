@@ -177,6 +177,19 @@
     border-radius: 5px;
   }
 
+  .product-reviews {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+.product-reviews h2 {
+    margin: 0;
+    align-self: flex-start;
+    ;
+}
+
 
 .rating-wrap {
     display: inline-block;
