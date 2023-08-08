@@ -158,36 +158,44 @@ router.post('/add-item/:id', async (req, res, next) => {
         const sessionId = req.session.id;
 
         //validation for quantity and producy
-    //--------------------------------------------
+        //--------------------------------------------
         //chk stock quantiy
         const product = await Product.getProductById(productId);
 
-        if(!product){
+        if (!product) {
             req.flash('error', 'Product not found');
             return res.redirect('back');
         }
 
-        if(product.quantity<=0){
+        if (product.quantity <= 0) {
             req.flash('error', 'Product is out of stock at the moment');
-            return req.session.save(err=> {
+            return req.session.save(err => {
                 res.redirect('back');
             });
         }
-    //--------------------------------------------
+        //--------------------------------------------
+        if (req.body.button == 'save') {
+            req.flash('success', "Feature coming soon!");
+            req.session.save(err => {
+                res.redirect('back');
+            });
+        }
+        else{
+            const addedProductId = await Product.addToCart(productId, sessionId);
+            if (addedProductId > 0) {
+                req.flash('success', "Added to cart");
+                req.session.save(err => {
+                    res.redirect('back');
+                });
+            }
+            else {
+                req.flash("error", "Failed to add to cart");
+                req.session.save(err => {
+                    res.redirect('back');
+                });
+            }
+        }
 
-        const addedProductId = await Product.addToCart(productId, sessionId);
-        if (addedProductId > 0) {
-            req.flash('success', "Added to cart");
-            req.session.save(err => {
-                res.redirect('back');
-            });
-        }
-        else {
-            req.flash("error", "Failed to add to cart");
-            req.session.save(err => {
-                res.redirect('back');
-            });
-        }
     }
     catch (error) {
         next(error);

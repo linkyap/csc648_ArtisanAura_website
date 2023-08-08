@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/public/css/product.css">
 <link rel="stylesheet" href="/public/css/productspage.css">
- {{>breadcrumbs}}
+{{>breadcrumbs}}
 
 <main class="product-page" style="margin: auto; max-width: 1300px; padding: 10px;">
     {{this.id}}
@@ -11,19 +11,19 @@
     </div>
 
     {{#if (isEmployee account_type) }}
-        {{!-- employee controls --}}
-        <form action="/product/update/{{currentProduct.id}}" method="POST">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="{{currentProduct.title}}" required>
+    {{!-- employee controls --}}
+    <form action="/product/update/{{currentProduct.id}}" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{currentProduct.title}}" required>
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description">{{currentProduct.description}}</textarea>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description">{{currentProduct.description}}</textarea>
 
-            <label for="price">Price:</label>
-            <input type="text" id="price" name="price" value="{{currentProduct.price}}" required>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" value="{{currentProduct.price}}" required>
 
-            <input type="submit" value="Update Product">
-        </form>
+        <input type="submit" value="Update Product">
+    </form>
     {{/if}}
 
     <div class="product-details">
@@ -33,7 +33,7 @@
             <label class="desc-header">Description</label>
             <p class="description">{{currentProduct.description}}</p>
         </div>
-         <div class="quantity-dropdown">
+        <div class="quantity-dropdown">
             <label for="quantity">Quantity:</label>
             <select name="quantity" id="quantity">
                 <option value="1">1</option>
@@ -42,63 +42,49 @@
             </select>
         </div>
         <form action="/cart/add-item/{{currentProduct.id}}" method="POST" enctype="application/x-www-form-urlencoded">
-           
-           
-            <button class="add-item">Add to cart</button>
+            <button class="add-item" name="button" value="add">Add to cart</button>
+            <button class="saveButtons" name="button" value="save">Save</button>
         </form>
+
         
-        <button class="saveButtons" onclick="showFlashMessage('saveButtons')">Save</button>
-        <script>
-            function showFlashMessage(buttonClass) {
-             var saveButton = document.querySelector('.' + buttonClass);
-            var flashMessage = document.createElement('div');
-             flashMessage.className = 'flash-message';
-             flashMessage.innerText = 'Feature coming soon!';
-             saveButton.parentNode.insertBefore(flashMessage, saveButton);
-    
-             setTimeout(function() {
-             flashMessage.remove();
-             }, 2500);
-  }
-</script>
 
         <button id="facebookButton">Share on Facebook</button>
-    <button id="twitterButton">Share on Twitter</button>
+        <button id="twitterButton">Share on Twitter</button>
 
-      <script>
-        // Share on Facebook
-        document.getElementById('facebookButton').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            openShareWindow(shareUrl);
-        });
+        <script>
+            // Share on Facebook
+            document.getElementById('facebookButton').addEventListener('click', function () {
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                openShareWindow(shareUrl);
+            });
 
 
-        // Share on Twitter
-        document.getElementById('twitterButton').addEventListener('click', function() {
-            var title = encodeURIComponent('Check out this amazing product!');
-            var url = encodeURIComponent(window.location.href);
-            var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-            openShareWindow(shareUrl);
-        });
+            // Share on Twitter
+            document.getElementById('twitterButton').addEventListener('click', function () {
+                var title = encodeURIComponent('Check out this amazing product!');
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+                openShareWindow(shareUrl);
+            });
 
-        function openShareWindow(url) {
-            var width = 600;
-            var height = 400;
-            var left = (window.innerWidth - width) / 2;
-            var top = (window.innerHeight - height) / 2;
+            function openShareWindow(url) {
+                var width = 600;
+                var height = 400;
+                var left = (window.innerWidth - width) / 2;
+                var top = (window.innerHeight - height) / 2;
 
-            window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
-        }
-    </script>
-        
+                window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
+            }
+        </script>
+
     </div>
-    
 
 
-<!--Product Reviews Form--> 
-<div class="product-reviews">
-{{#if isLoggedIn}}
+
+    <!--Product Reviews Form-->
+    <div class="product-reviews">
+        {{#if isLoggedIn}}
         <div class="review-form">
             <form action="/product/review" method="POST" enctype="application/x-www-form-urlencoded">
                 <input type="hidden" name="productid" value="{{currentProduct.id}}">
@@ -128,59 +114,59 @@
                 <button class="submit-review">Submit Review</button>
             </form>
         </div>
-    {{else}}
-    
-    <a href="/login" class="review-message">
-        <p>Please sign in to write a review.</p>
-    </a>
-        
-{{/if}}
+        {{else}}
 
-    <script>
-    // JavaScript function to set the rating value
-    function setRatingValue(rating) {
-        const ratingValueInput = document.getElementById('rating-value-input');
-        ratingValueInput.value = rating;
-        updateStars(rating);
-    }
+        <a href="/login" class="review-message">
+            <p>Please sign in to write a review.</p>
+        </a>
 
-    // JavaScript function to update the star icons
-    function updateStars(rating) {
-        const labels = document.querySelectorAll('.rating-wrap label');
-        labels.forEach((label, index) => {
-            if (index < rating) {
-                label.classList.add('star-fill');
-            } else {
-                label.classList.remove('star-fill');
+        {{/if}}
+
+        <script>
+            // JavaScript function to set the rating value
+            function setRatingValue(rating) {
+                const ratingValueInput = document.getElementById('rating-value-input');
+                ratingValueInput.value = rating;
+                updateStars(rating);
             }
-        });
-    }
-    </script>
 
-<!--Product Reviews-->
-    {{#if reviews}}
+            // JavaScript function to update the star icons
+            function updateStars(rating) {
+                const labels = document.querySelectorAll('.rating-wrap label');
+                labels.forEach((label, index) => {
+                    if (index < rating) {
+                        label.classList.add('star-fill');
+                    } else {
+                        label.classList.remove('star-fill');
+                    }
+                });
+            }
+        </script>
+
+        <!--Product Reviews-->
+        {{#if reviews}}
         <h2>Product Reviews:</h2>
         <ul>
             {{#each reviews}}
-                <li>
-                    <h4>Review Title: {{title}}</h4>
-                    <p>Rating: {{rating}}</p>
-                    {{{displayRatingStars rating}}}
-                    <p>{{description}}</p>
-                    {{#isReviewByAccountId user_id}}
-                        <form action="/product/delete-review/{{id}}" method="POST">
-                            <input type="hidden" name="productid" value="{{product_id}}">
-                            <button>Delete</button>
-                        </form>
-                    {{/isReviewByAccountId}}
-                </li>
+            <li>
+                <h4>Review Title: {{title}}</h4>
+                <p>Rating: {{rating}}</p>
+                {{{displayRatingStars rating}}}
+                <p>{{description}}</p>
+                {{#isReviewByAccountId user_id}}
+                <form action="/product/delete-review/{{id}}" method="POST">
+                    <input type="hidden" name="productid" value="{{product_id}}">
+                    <button>Delete</button>
+                </form>
+                {{/isReviewByAccountId}}
+            </li>
             {{/each}}
         </ul>
-    
-{{else}}
-    <p>No reviews available for this product.</p>
-{{/if}}
-</div>
+
+        {{else}}
+        <p>No reviews available for this product.</p>
+        {{/if}}
+    </div>
 
 
 </main>
