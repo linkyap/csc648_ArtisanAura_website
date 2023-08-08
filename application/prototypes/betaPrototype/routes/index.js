@@ -290,6 +290,8 @@ router.get('/Shop', async function (req, res, next) {
             filters: req.session.filters,
             breadcrumbs: breadcrumbs,
             error: individualResults.length === 0 ? 'No products available' : combinedFiltersMsg,
+            css: ["newsletter.css", "quiz.css"], 
+            js: ["quiz.js"],
         });
     }
     
