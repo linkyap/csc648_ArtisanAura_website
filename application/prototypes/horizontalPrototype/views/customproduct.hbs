@@ -1,52 +1,80 @@
 <link rel="stylesheet" href="/public/css/product.css">
+<link rel="stylesheet" href="/public/css/custome.css">
 <main class="product-page">
     <div class="product-images">
-        <h3 class="title">Handmade Gold Ring Stack</h3>
-        <img src="/public/images/Artisan_Spotlight.jpg" alt="Artisan Spotlight">
+        <h3 class="title">Customize Your Own Jewelry</h3>
+        <img src="/public/images/jewelryRing.jpg" alt="Custom Jewelry">
         
         <div style="margin: 20px;">
-        <button class="add-item2" style="margin:10px;">Save</button>
-        <button class="add-item2" style="margin:10px;">Share</button>
+            <button class="add-item2" style="margin: 10px;">Save</button>
+            <button class="add-item2" style="margin: 10px;">Share</button>
         </div>
     </div>
 
     <div class="product-details">
         <h3>Create Your Unique Style</h3>
-        <p>Style: Option1-Option2-Option3-Option4</p>
-        <p>Jewel: Option1-Option2-Option3-Option4</p>
-       <!-- <h3 class="price">Style: Option1-Option2-Option3-Option4</h3> 
-        <div class="description">
-            <label class="desc-header">Jewel: Option1-Option2-Option3-Option4 </label>
-            <p class="description">{{currentProduct.description}}</p>
-        </div> -->
-        <div class="quantity-dropdown">
-                <label for="quantity">Length:</label>
-                <select name="quantity" id="quantity">
-                  
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  
-                </select>
-            </div>
+        <h4>Discover the thrill of personalizing your own piece of jewelry with our
+             'Customize Your Own Jewelry' option. Start your unique creation journey 
+             by selecting your preferred precious metal - choose from either 
+             high-quality gold or sterling silver. Add a touch of sparkle with your 
+             choice of gemstone, from dazzling diamonds to vibrant rubies or serene 
+             sapphires. Ensure the perfect fit with our customization sizing options, 
+             and add a truly personal touch with our engraving service, allowing you 
+             to inscribe a name, date, or special message. Your bespoke piece will be 
+             carefully packaged in our custom boxes, perfect for gifting or safekeeping. 
+             Our 'Customize Your Own Jewelry' is more than just a purchase; it's an 
+             interactive experience that results in a one-of-a-kind piece, mirroring 
+             your taste and encapsulating your story.
+</h4>
+        <p>Design:</p>
+        <div class="customization-option">
+            <input type="radio" name="style" value="Ring" id="ring"><label for="ring">Ring</label>
+            <input type="radio" name="style" value="Necklace" id="necklace"><label for="necklace">Necklace</label>
+            <input type="radio" name="style" value="Bracelet" id="bracelet"><label for="bracelet">Bracelet</label>
+            <input type="radio" name="style" value="Earrings" id="earrings"><label for="earrings">Earrings</label>
+        </div>
+
+        <p>Gemstone:</p>
+        <div class="customization-option">
+            <input type="radio" name="jewel" value="Diamond" id="diamond"><label for="diamond">Diamond</label>
+            <input type="radio" name="jewel" value="Ruby" id="ruby"><label for="ruby">Ruby</label>
+            <input type="radio" name="jewel" value="Sapphire" id="sapphire"><label for="sapphire">Sapphire</label>
+        </div>
+
+        <label for="metal">Material:</label>
+        <select name="metal" id="metal">
+            <option value="Gold">Gold</option>
+            <option value="Silver">Silver</option>
+        </select>
+
+        <label for="size">Size:</label>
+        <select name="size" id="size">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+
+        <label for="engraving">Engraving:</label>
+        <input type="text" name="engraving" id="engraving" maxlength="10" placeholder="Enter your text">
+
+        <label for="packaging">Packaging:</label>
+        <select name="packaging" id="packaging">
+            <option value="Purple">Purple</option>
+            <option value="Blue">Blue</option>
+            <option value="Black">Black</option>
+        </select>
 
         <div class="quantity-dropdown">
-                <label for="quantity">Quantity:</label>
-                <select name="quantity" id="quantity">
-                  
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                  
-                </select>
-            </div>
-            <form action="/product/add-custom-item" method="POST" enctype="application/x-www-form-urlencoded">
-                <button class="add-item">Add to cart</button></a>
-            </form>
-        <a href="cart" style="text-decoration: none;">
+            <label for="quantity">Quantity:</label>
+            <select name="quantity" id="quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <form action="/product/add-custom-item" method="POST" enctype="application/x-www-form-urlencoded">
+            <button class="add-item">Add to cart </button>
+        </form>
     </div>
-
-<!-- 
-{{>newsletter}}
-{{>quiz}} -->
 </main>

@@ -5,7 +5,15 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-  
+#saveButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
   /* Styles for item links */
 .item-link {
     display: block;
@@ -21,10 +29,12 @@
   
   /* Styles for item container */
 .item {
-    padding: 10px;
+    
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
+    padding: 20px;
+    margin: 10px;
 }
 
 .item:hover {
@@ -34,8 +44,11 @@
   /* Styles for item name */
 .title {
     font-size: 18px;
-    margin-bottom: 5px;
-    height: 70px;
+    font-weight: 400;
+    color: #333;
+    margin: 0px 10px 10px;
+    padding: 10px;
+    height: 100px;
 }
   
   /* Styles for item image */
@@ -63,4 +76,65 @@
     color: red;
     text-align: center;
 }
+
+
+.star-fill {
+  color: gold; 
+}
+
+.fa-star-o {
+  color: #333;
+}
+
+
+#facebookButton{
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #475b90;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#facebookButton:hover{
+  background-color: #004848
+}
   
+
+#twitterButton {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #475b90;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  
+#twitterButton:hover{
+  background-color: #004848
+}
+
+/* related products on productpage */
+.carousel {
+max-width: 200px;
+border-radius: 5px;
+margin: 10px 5px;
+display: flex;
+justify-content: center;
+
+}
+
+
+.similar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: justify;
+}

@@ -38,6 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-bar a:hover {
     color: teal;
     text-decoration: underline;
+    background-color: transparent;
 }
 
 nav ul li a {
@@ -45,6 +46,8 @@ nav ul li a {
     text-decoration: none;
     font-size: 20px;
     font-weight: lighter;
+    display: unset;
+    padding: 0px;
 }
 
 .search-bar{
@@ -58,18 +61,18 @@ nav ul li a {
     font-size: 18px;
 }
 
-.dropdown-menu-items .profile {
+.dropdown-menu-items .profile, .dropdown-menu-items .addProduct {
     text-decoration: none;
     font-size: 15px;
     font-weight: normal;
     color:black;
 }
 
-.dropdown-menu-items .profile:visited{
+.dropdown-menu-items .profile:visited, .dropdown-menu-items .addProduct:visited {
     color:black
 }
 
-.dropdown-menu-items .profile:hover{
+.dropdown-menu-items .profile:hover, .dropdown-menu-items .addProduct:hover {
     text-decoration: underline;
 }
 .dropdown-menu-items button{
@@ -157,13 +160,15 @@ nav ul li a {
     color: #323232;
     text-decoration: none;
     margin: 0 10px;
-   
+    display: unset;
+    padding: 0px;
 }
 
 .botm-footer a:hover {
     color: teal;
     text-decoration: underline;
     margin: 0 10px;
+    background-color: transparent;
    
 }
 
@@ -180,13 +185,28 @@ nav ul li a {
     justify-content: center;
 }
 
+.my-icon a {
+    padding: 0px;
+    text-decoration: none;
+    display: unset;
+}
+
+.my-icon a:hover {
+    background-color: transparent;
+}
+
+.my-icon-logo a:hover {
+    background-color: transparent;
+}
+
 #responsive-banner {
     width: 100%;
     height: auto;
 }
 
-.fa{
+.fa {
     color: whitesmoke;
+    font-size: 14px;
 }
 
 .fa-facebook, .fa-instagram, .fa-twitter,.fa-user, .fa-sign-in, .fa-shopping-cart{
@@ -200,6 +220,10 @@ nav ul li a {
 .fa-sign-in{
     font-size: 15px;
     /* user logo size */
+}
+
+.fa-search {
+    font-size: 14px;
 }
 
 
@@ -228,4 +252,37 @@ nav ul li a {
 
 .btn:hover {
     background-color: #004848; 
+}
+
+
+/* breadcrumbs style */
+.breadcrumbs {
+    padding: 10px 20px 0px;
+    margin: 0px 20px;
+    color: #9aa8aa;
+    font-weight: lighter;
+    font-size: 14px;
+}
+
+.breadcrumbs .active-link {
+    color: #9aa8aa;
+    text-decoration: none; 
+}
+
+.breadcrumbs .inactive-link {
+    color: #6d7879;
+}
+
+.breadcrumbs a {
+color: #9aa8aa;
+text-decoration: none;
+display: unset;
+padding: 0px;
+margin: 0px;
+}
+
+.breadcrumbs a:hover {
+    color: teal;
+    text-decoration: underline;
+    background-color: transparent;
 }

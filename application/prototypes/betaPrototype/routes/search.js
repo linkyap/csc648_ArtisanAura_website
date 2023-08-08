@@ -13,17 +13,22 @@ function BreakdownSearchTerm(searchTerm) {
 }
 
 router.get('/',
-  [check('q').not().isEmpty().withMessage('Search term is required')
+  [check('q').not().isEmpty().withMessage('Search term is usually required, but since you are already here, here are some random results we are sure you are going to love. Enjoy!')
     .isLength({ max: 60 })
     .withMessage('Search term must be less than 60 characters'),
   ],
   async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.render('searchresults', { errors: errors.array(), results: [] });
+      const [randomResults, _] = await db.execute("SELECT * FROM product WHERE customized = 0 ORDER BY RAND() LIMIT 10");
+      // req.flash("warning", "You searched for nothing. Here are some random products for you!");
+
+      return res.render('searchresults', { errors: errors.array(), results: randomResults  });
     }
+    
 
     const searchTerm = req.query.q; // Get the search query from the request
+    const description = req.query.desc; //description from quiz reults
     const words = BreakdownSearchTerm(searchTerm);
 
     try {
@@ -34,7 +39,7 @@ router.get('/',
         // Loop through each keyword and execute a separate query for each word
         for (const keyword of words) {
           const [results, fields] = await db.execute(
-            "SELECT * FROM product WHERE title LIKE ? OR type LIKE ? OR material LIKE ? OR description LIKE ?",
+            "SELECT * FROM product WHERE customized = 0 AND (title LIKE ? OR type LIKE ? OR material LIKE ? OR description LIKE ?)",
             [`%${keyword}%`, `%${keyword}%`, `%${keyword}%`, `%${keyword}%`]
           );
 
@@ -56,13 +61,14 @@ router.get('/',
         
         if (finalResults.length > 0) {
         // Render the searchresults template with the final results
-        res.render('searchresults', { results: finalResults, searchTerm: searchTerm });
+        req.flash('success', `Results matching "${searchTerm}".`);
+        res.render('searchresults', { results: finalResults, searchTerm: searchTerm,  description: description });
         } else {
-        res.render('searchresults', { notFound: true, searchTerm: searchTerm });
+        const [results, fields] = await db.execute("SELECT * FROM product WHERE customized = 0 ORDER BY RAND() LIMIT 10");
+        req.flash('error', `No results were found matching "${searchTerm}".`);
+        res.render('searchresults', { notFound: true, searchTerm: searchTerm, results: results,  description: description});
+        //need to add flash that nothing found
         } 
-      }else{
-        // If the processed search term has no keywords, render the searchresults template with an empty results array
-        return res.render('searchresults', { results: [] });
       }
     }catch (err) {
       console.error('Error executing search query:', err);

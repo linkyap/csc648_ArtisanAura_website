@@ -5,9 +5,10 @@ var db = require('../conf/database');
 const User = require('../db/users');
 const UserError = require('../helpers/userError');
 const { checkEmail, registerValidator } = require('../helpers/regValidation');
+const { employee } = require('../helpers/loggedandtype');
 
-router.use('/registration', registerValidator);
-router.post('/registration', (req, res, next) => {
+// router.use('/registration', registerValidator);
+router.post('/registration', registerValidator,(req, res, next) => {
   let { name, email, password } = req.body;
   User.emailExists(email)
     .then((emailDoesExist) => {
@@ -59,7 +60,8 @@ router.post('/login', async function (req, res, next) {
       req.session.account = {
         id: loggedUser.id,
         email: email,
-        name: loggedUser.name
+        name: loggedUser.name,
+        account_type: loggedUser.account_type
       };
       req.flash('success', 'You are now logged in!');
       req.session.save(err => {
@@ -86,17 +88,41 @@ router.post('/login', async function (req, res, next) {
     }
   })
 });
+router.get('/addProduct',employee, async function (req, res) {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Add Product', url: '/addProduct' }
+  ];
+  res.render('addProduct', { breadcrumbs: breadcrumbs, title: 'Add Product' });
+});
 
 router.post('/logout', function (req, res, next) {
   req.flash('success', 'You are now logged out');
   req.session.destroy(function (err) {
     if (err) {
-      next(error);
+      next(err);
     }
     return res.redirect('/');
   })
 });
-
+router.post('/delete-acc', async (req, res, next) => {
+  let email = req.session.account.email;
+  let results = await User.deleteUser(email);
+  if (results > 0) {
+    req.flash('success', 'Account has been deleted');
+    req.session.destroy(err => {
+      res.redirect('/');
+    });
+  }
+  else {
+    req.flash('error', 'Failed to delete account');
+    req.session.save(err => {
+      res.redirect('back');
+    });
+  }
+});
 router.post('/req-refund', (req, res, next) => {
   req.flash('success', 'Refund confirmation sent to email');
   req.session.save(err => {
@@ -108,13 +134,6 @@ router.post('/order-status', (req, res, next) => {
   req.flash('success', 'Order pending. Check again in 24 hours.');
   req.session.save(err => {
     res.redirect('/order-status');
-  })
-});
-
-router.post('/cart', (req, res, next) => {
-  req.flash('error', 'Shopping cart is empty');
-  req.session.save(err => {
-    res.redirect('/cart');
   })
 });
 
