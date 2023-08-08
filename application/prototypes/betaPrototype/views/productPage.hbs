@@ -81,10 +81,8 @@
     
 
 
-
-
 <!--Product Reviews Form--> 
-    <div class="product-reviews"></div>
+<div class="product-reviews">
 {{#if isLoggedIn}}
         <div class="review-form">
             <form action="/product/review" method="POST" enctype="application/x-www-form-urlencoded">
@@ -161,11 +159,11 @@
                 </li>
             {{/each}}
         </ul>
-    </div>
+    
 {{else}}
     <p>No reviews available for this product.</p>
 {{/if}}
-
+</div>
 
 
 </main>
