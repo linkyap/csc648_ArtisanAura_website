@@ -83,7 +83,9 @@
 
 
 
-    {{#if isLoggedIn}}
+<!--Product Reviews Form--> 
+    <div class="product-reviews"></div>
+{{#if isLoggedIn}}
         <div class="review-form">
             <form action="/product/review" method="POST" enctype="application/x-www-form-urlencoded">
                 <input type="hidden" name="productid" value="{{currentProduct.id}}">
@@ -115,8 +117,7 @@
         </div>
     {{else}}
     <div class="review-message">
-        <ul>
-        <h2>Please sign in to write a review.</h2>
+        <p>Please sign in to write a review.</p>
     </div>
 {{/if}}
 
@@ -140,9 +141,9 @@
         });
     }
     </script>
-    
+
+<!--Product Reviews-->
     {{#if reviews}}
-    <div class="product-reviews">
         <h2>Product Reviews:</h2>
         <ul>
             {{#each reviews}}
