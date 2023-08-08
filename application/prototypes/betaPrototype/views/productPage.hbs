@@ -168,13 +168,14 @@
 
 
 </main>
-{{!-- <div class="similar">
+<div class="similar">
     <h2>Similar Products:</h2>
     <div class="carousel">
-        {{#each similarProducts}}
+        {{#each relatedProducts}}
         <a href="/product/{{id}}">
-            <img src="{{imagePath}}" alt="{{name}}">
+            <img src="https://storage.googleapis.com/artisan-aura-photo-bucket/{{thumbnail}}" alt="{{title}}">
+            <p>{{title}}</p>
         </a>
         {{/each}}
     </div>
-</div> --}}
+</div>
