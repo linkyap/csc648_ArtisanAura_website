@@ -4,6 +4,7 @@ var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
 const { employee, loggedin } = require('../helpers/loggedandtype');
+const { checkEmail } = require('../helpers/regValidation');
 
 // home page aka index
 router.get('/', async function (req, res, next) {
