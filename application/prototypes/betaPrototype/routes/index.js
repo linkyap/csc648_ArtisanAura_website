@@ -33,7 +33,7 @@ router.get('/users/profile/:id', async function (req, res, next) {
       { name: 'Home', url: '/' },
       { name: 'Profile', url: '/profile' }
     ];
-  let orders = await Product.getOrders(req.session.email);
+  let orders = await Product.getOrders(req.session.account.email);
   res.render('profile', { breadcrumbs: breadcrumbs, title: 'Profile', orders: orders });
 });
 
