@@ -70,7 +70,33 @@
             <input type="number" id="quantity" name="quantity" min="1" max="{{currentProduct.quantity}}" required>
             <button type="submit" class="add-item" style="margin: ;">Add to cart</button>
         </form>
-        <button class="add-item" style="margin: ;">Save</button>
+        
+
+
+ <button id="saveButton">Save</button>
+
+    <script>
+        
+        document.getElementById('saveButton').addEventListener('click', function() {
+            
+            var customizationOptions = {
+                style: document.querySelector('input[name="style"]:checked').value,
+                jewel: document.querySelector('input[name="jewel"]:checked').value,
+                metal: document.getElementById('metal').value,
+                size: document.getElementById('size').value,
+                engraving: document.getElementById('engraving').value,
+                packing: document.getElementById('packing').value,
+                
+            };
+
+            
+            localStorage.setItem('savedDesign', JSON.stringify(customizationOptions));
+
+            alert('Design saved!');
+        });
+   </script>
+
+
             
     <button id="facebookButton">Share on Facebook</button>
     <button id="twitterButton">Share on Twitter</button>
@@ -101,7 +127,19 @@
             window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
         }
     </script>
-
+    
     </div>
-</main>
+    <div class="similar">
+    <h2>Similar Products:</h2>
+<div class="carasouel">
+    <a href="https://artisan-aura-ifjhxbedya-uw.a.run.app/product/36">
+        <img src="/public/images/Necklace_02.jpg"  >
+    </a>
+    <a href="https://artisan-aura-ifjhxbedya-uw.a.run.app/product/50">
+        <img src="/public/images/Earring_08.jpg" >
+    </a>
+    <a href="https://artisanauradevweb-ifjhxbedya-uw.a.run.app/product/48">
+        <img src="/public/images/Earring_03.jpg" >
+    </a>
+</div>
 </main>
