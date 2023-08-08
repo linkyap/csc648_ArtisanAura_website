@@ -1,164 +1,144 @@
-
-    <link rel="stylesheet" href="/public/css/product.css">
+<link rel="stylesheet" href="/public/css/product.css">
 <link rel="stylesheet" href="/public/css/custome.css">
- {{>breadcrumbs}}
+{{>breadcrumbs}}
 
 <main class="product-page">
     <div class="product-images">
         <h3 class="title">Customize Your Own Jewelry</h3>
-        <img src="/public/images/customizeYourOwn_03.jpg" alt="Customize Your Own Jewelry" style="width: 100%; max-width: 400px;height: inherit;max-height: inherit;">
-        
+        <img src="/public/images/customizeYourOwn_03.jpg" alt="Customize Your Own Jewelry"
+            style="width: 100%; max-width: 400px;height: inherit;max-height: inherit;">
+
     </div>
 
     <div class="product-details">
         <h3>Create Your Unique Style</h3>
         <h4>Discover the thrill of personalizing your own piece of jewelry with our
-             'Customize Your Own Jewelry' option. Start your unique creation journey 
-             by selecting your preferred precious metal - choose from either 
-             high-quality gold or sterling silver. Add a touch of sparkle with your 
-             choice of gemstone, from dazzling diamonds to vibrant rubies or serene 
-             sapphires. Ensure the perfect fit with our customization sizing options, 
-             and add a truly personal touch with our engraving service, allowing you 
-             to inscribe a name, date, or special message. Your bespoke piece will be 
-             carefully packaged in our custom boxes, perfect for gifting or safekeeping. 
-             Our 'Customize Your Own Jewelry' is more than just a purchase; it's an 
-             interactive experience that results in a one-of-a-kind piece, mirroring 
-             your taste and encapsulating your story.
-</h4>
-        <p>Design:</p>
-        <div class="customization-option">
-            <input type="radio" name="style" value="Ring" id="ring"><label for="ring">Ring</label>
-            <input type="radio" name="style" value="Necklace" id="necklace"><label for="necklace">Necklace</label>
-            <input type="radio" name="style" value="Bracelet" id="bracelet"><label for="bracelet">Bracelet</label>
-            <input type="radio" name="style" value="Earrings" id="earrings"><label for="earrings">Earrings</label>
-        </div>
+            'Customize Your Own Jewelry' option. Start your unique creation journey
+            by selecting your preferred precious metal - choose from either
+            high-quality gold or sterling silver. Add a touch of sparkle with your
+            choice of gemstone, from dazzling diamonds to vibrant rubies or serene
+            sapphires. Ensure the perfect fit with our customization sizing options,
+            and add a truly personal touch with our engraving service, allowing you
+            to inscribe a name, date, or special message. Your bespoke piece will be
+            carefully packaged in our custom boxes, perfect for gifting or safekeeping.
+            Our 'Customize Your Own Jewelry' is more than just a purchase; it's an
+            interactive experience that results in a one-of-a-kind piece, mirroring
+            your taste and encapsulating your story.
+        </h4>
+        <form action="/cart/add-custom" method="POST" enctype="">
+            <p>Design:</p>
+            <div class="customization-option">
+                <input type="radio" name="style" value="Ring" id="ring"><label for="ring">Ring</label>
+                <input type="radio" name="style" value="Necklace" id="necklace"><label for="necklace">Necklace</label>
+                <input type="radio" name="style" value="Bracelet" id="bracelet"><label for="bracelet">Bracelet</label>
+                <input type="radio" name="style" value="Earrings" id="earrings"><label for="earrings">Earrings</label>
+            </div>
 
-        <p>Gemstone:</p>
-        <div class="customization-option">
-            <input type="radio" name="jewel" value="Diamond" id="diamond"><label for="diamond">Diamond</label>
-            <input type="radio" name="jewel" value="Ruby" id="ruby"><label for="ruby">Ruby</label>
-            <input type="radio" name="jewel" value="Sapphire" id="sapphire"><label for="sapphire">Sapphire</label>
-        </div>
+            <p>Gemstone:</p>
+            <div class="customization-option">
+                <input type="radio" name="jewel" value="Diamond" id="diamond"><label for="diamond">Diamond</label>
+                <input type="radio" name="jewel" value="Ruby" id="ruby"><label for="ruby">Ruby</label>
+                <input type="radio" name="jewel" value="Sapphire" id="sapphire"><label for="sapphire">Sapphire</label>
+            </div>
 
-        <label for="metal">Material:</label>
-        <select name="metal" id="metal">
-            <option value="Gold">Gold</option>
-            <option value="Silver">Silver</option>
-        </select>
+            <label for="metal">Material:</label>
+            <select name="metal" id="metal">
+                <option value="Gold">Gold</option>
+                <option value="Silver">Silver</option>
+            </select>
 
-        <label for="size">Size:</label>
-        <select name="size" id="size">
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-        </select>
+            <label for="size">Size:</label>
+            <select name="size" id="size">
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
 
-        <label for="engraving">Engraving:</label>
-        <input type="text" name="engraving" id="engraving" maxlength="10" placeholder="Enter your text">
+            <label for="engraving">Engraving:</label>
+            <input type="text" name="engraving" id="engraving" maxlength="10" placeholder="Enter your text">
 
-        <label for="packaging">Packaging:</label>
-        <select name="packaging" id="packaging">
-            <option value="Purple">Purple</option>
-            <option value="Blue">Blue</option>
-            <option value="Black">Black</option>
-        </select>
+            <label for="packaging">Packaging:</label>
+            <select name="packaging" id="packaging">
+                <option value="Purple">Purple</option>
+                <option value="Blue">Blue</option>
+                <option value="Black">Black</option>
+            </select>
 
-       
 
-        <form action="/cart/add-item/111{{currentProduct.id}}" method="POST" enctype="">
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="{{currentProduct.quantity}}" required>
             <button type="submit" class="add-item" style="margin: ;">Add to cart</button>
         </form>
-        
 
 
- <button id="saveButton">Save</button>
 
-    <script>
-        
-        document.getElementById('saveButton').addEventListener('click', function() {
-            
-            var customizationOptions = {
-                style: document.querySelector('input[name="style"]:checked').value,
-                jewel: document.querySelector('input[name="jewel"]:checked').value,
-                metal: document.getElementById('metal').value,
-                size: document.getElementById('size').value,
-                engraving: document.getElementById('engraving').value,
-                packing: document.getElementById('packing').value,
-                
-            };
+        <button id="saveButton">Save</button>
 
-            fetch('/save-design', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(customizationOptions)
-            })
+        <script>
 
-            alert('Design saved!');
-        });
+            document.getElementById('saveButton').addEventListener('click', function () {
 
-        document.getElementById('addToCartForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+                var customizationOptions = {
+                    style: document.querySelector('input[name="style"]:checked').value,
+                    jewel: document.querySelector('input[name="jewel"]:checked').value,
+                    metal: document.getElementById('metal').value,
+                    size: document.getElementById('size').value,
+                    engraving: document.getElementById('engraving').value,
+                    packing: document.getElementById('packing').value,
+
+                };
+
+                fetch('/save-design', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(customizationOptions)
+                })
+
+                alert('Design saved!');
+            });
+
+            document.getElementById('addToCartForm').addEventListener('submit', function (event) {
+                event.preventDefault();
 
             var quantity = parseInt(document.getElementById('quantity').value, 10);
-            var productId = '{{currentProduct.id}}'; // Replace with actual product ID
+            var productId = '{{currentProduct.id}}';
 
-            // Send cart item to server (simulated)
-            fetch(`/cart/add-item/${productId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ quantity: quantity })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Item added to cart!');
-                } else {
-                    alert('Failed to add item to cart.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            
         });
    </script>
 
 
-            
-    <button id="facebookButton">Share on Facebook</button>
-    <button id="twitterButton">Share on Twitter</button>
 
-    <script>
-        // Share on Facebook
-        document.getElementById('facebookButton').addEventListener('click', function() {
-            var url = encodeURIComponent(window.location.href);
-            var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-            openShareWindow(shareUrl);
-        });
+        <button id="facebookButton">Share on Facebook</button>
+        <button id="twitterButton">Share on Twitter</button>
+
+        <script>
+            // Share on Facebook
+            document.getElementById('facebookButton').addEventListener('click', function () {
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                openShareWindow(shareUrl);
+            });
 
 
-        // Share on Twitter
-        document.getElementById('twitterButton').addEventListener('click', function() {
-            var title = encodeURIComponent('Check out this amazing product!');
-            var url = encodeURIComponent(window.location.href);
-            var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
-            openShareWindow(shareUrl);
-        });
+            // Share on Twitter
+            document.getElementById('twitterButton').addEventListener('click', function () {
+                var title = encodeURIComponent('Check out this amazing product!');
+                var url = encodeURIComponent(window.location.href);
+                var shareUrl = `https://twitter.com/intent/tweet?text=${title}&url=${url}`;
+                openShareWindow(shareUrl);
+            });
 
-        function openShareWindow(url) {
-            var width = 600;
-            var height = 400;
-            var left = (window.innerWidth - width) / 2;
-            var top = (window.innerHeight - height) / 2;
+            function openShareWindow(url) {
+                var width = 600;
+                var height = 400;
+                var left = (window.innerWidth - width) / 2;
+                var top = (window.innerHeight - height) / 2;
 
-            window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
-        }
-    </script>
-    
+                window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top}`);
+            }
+        </script>
+
     </div>
-   
