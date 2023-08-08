@@ -61,18 +61,18 @@ nav ul li a {
     font-size: 18px;
 }
 
-.dropdown-menu-items .profile {
+.dropdown-menu-items .profile, .addProduct {
     text-decoration: none;
     font-size: 15px;
     font-weight: normal;
     color:black;
 }
 
-.dropdown-menu-items .profile:visited{
+.dropdown-menu-items .profile:visited, .addProduct:visited {
     color:black
 }
 
-.dropdown-menu-items .profile:hover{
+.dropdown-menu-items .profile:hover, .addProduct:hover {
     text-decoration: underline;
 }
 .dropdown-menu-items button{
