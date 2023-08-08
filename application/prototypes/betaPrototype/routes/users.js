@@ -92,12 +92,28 @@ router.post('/logout', function (req, res, next) {
   req.flash('success', 'You are now logged out');
   req.session.destroy(function (err) {
     if (err) {
-      next(error);
+      next(err);
     }
     return res.redirect('/');
   })
 });
-
+router.post('/delete-acc', async (req, res, next) => {
+  let email = req.session.account.email;
+  console.log("EMAIL : " + email);
+  let results = await User.deleteUser(email);
+  if (results > 0) {
+    req.flash('success', 'Account has been deleted');
+    req.session.destroy(err => {
+      res.redirect('/');
+    });
+  }
+  else {
+    req.flash('error', 'Failed to delete account');
+    req.session.save(err => {
+      res.redirect('back');
+    });
+  }
+});
 router.post('/req-refund', (req, res, next) => {
   req.flash('success', 'Refund confirmation sent to email');
   req.session.save(err => {

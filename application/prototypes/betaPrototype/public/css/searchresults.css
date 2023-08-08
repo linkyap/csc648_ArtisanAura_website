@@ -4,6 +4,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: auto;
+  max-width: 1300px;
+  padding: 10px;
 }
 
 /* Styles for item links */
@@ -31,6 +34,7 @@
 .title {
   font-size: 18px;
   margin-bottom: 5px;
+  height: 70px;
 }
 
 /* Styles for item image */
@@ -57,4 +61,10 @@
   font-size: 18px;
   color: red;
   text-align: center;
+}
+
+/* quiz results message */
+.description-message {
+  padding: 20px;
+  margin: 20px;
 }
