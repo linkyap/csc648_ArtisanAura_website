@@ -96,7 +96,8 @@ function getPredominantChoice() {//set each to 0
     });//as choices clicked tally count goes up depedning on choice
 
     return Object.keys(tally).reduce((a, b) => tally[a] > tally[b] ? a : b);
-}
+} 
+
 
 
 function getSearchKeywords(choice) {
