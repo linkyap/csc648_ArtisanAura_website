@@ -47,9 +47,10 @@ function nextQuestion() {
         const searchString = searchKeywords.join('+');
                 //join multiple keyword if seperated
                 // not completely needed since search already does spilitting
-
+        const description = getDescriptionForChoice(predominantChoice);
+        //for description of why you got what results
         // to search with 'q' query parameter, with key words passed
-        window.location.href = `/search?q=${encodeURIComponent(searchString)}`;
+        window.location.href = `/search?q=${encodeURIComponent(searchString)}&desc=${encodeURIComponent(description)}`;
 
         document.getElementById("quiz-popup").style.display = "none";
     
@@ -107,4 +108,14 @@ function getSearchKeywords(choice) {
     };//change the above key words if needed or add
 
     return keywordsMap[choice] || [];
+}
+
+function getDescriptionForChoice(choice) {
+    switch(choice) {
+        case 'A': return "Minimalist: Mostly A's: You have a minimalist style. You appreciate understated, high-quality pieces that are versatile and timeless. Your jewelry often has clean lines and simple shapes.";
+        case 'B': return "Vintage Glamor: Mostly B's: You love vintage glamor. You are drawn to pieces that have an old-world feel or tell a story. Your jewelry is often intricate and ornate.";
+        case 'C': return "Unique Avant-Garde: Mostly C's: You have a unique, avant-garde style. You are not afraid to make a statement and your jewelry is often eye-catching and unconventional.";
+        case 'D': return "Sporty and Casual: Mostly D's: You have a sporty and casual style. You prefer jewelry that can keep up with your active lifestyle. Your pieces are functional and often hold a personal or symbolic meaning.";
+        default: return "";
+    }
 }

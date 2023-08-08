@@ -1,5 +1,12 @@
 <main class="main-content">
 
+   {{! des message from quiz}}
+  {{#if description}}
+  <div class="description-message">
+    <p>{{description}}</p>
+  </div>
+  {{/if}}
+
   {{#if errors}}
   <ul>
     {{#each errors}}

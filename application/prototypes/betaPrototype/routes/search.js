@@ -22,8 +22,10 @@ router.get('/',
     if (!errors.isEmpty()) {
       return res.render('searchresults', { errors: errors.array(), results: [] });
     }
+    
 
     const searchTerm = req.query.q; // Get the search query from the request
+    const description = req.query.desc; //description from quiz reults
     const words = BreakdownSearchTerm(searchTerm);
 
     try {
@@ -56,10 +58,10 @@ router.get('/',
         
         if (finalResults.length > 0) {
         // Render the searchresults template with the final results
-        res.render('searchresults', { results: finalResults, searchTerm: searchTerm });
+        res.render('searchresults', { results: finalResults, searchTerm: searchTerm,  description: description });
         } else {
         const [results, fields] = await db.execute("SELECT * FROM product LIMIT 10");
-        res.render('searchresults', { notFound: true, searchTerm: searchTerm, results: results});
+        res.render('searchresults', { notFound: true, searchTerm: searchTerm, results: results,  description: description});
         //need to add flash that nothing found
         } 
       }else{
