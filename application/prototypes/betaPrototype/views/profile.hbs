@@ -25,7 +25,13 @@
 
     <div id="orderHistory" class="side-content">
         <h3>Order History</h3>
-        <p>No orders have been placed.</p>
+        {{#if orders}}
+        {{#each orders}}
+            <a href="/cart/orders/{{this}}">Order Number #{{this}}</a>
+        {{/each}}
+        {{else}}
+            <p>No orders have been placed</p>
+        {{/if}}
     </div>
 
     <div id="customizations" class="side-content">

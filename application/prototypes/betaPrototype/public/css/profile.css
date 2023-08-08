@@ -48,6 +48,18 @@
 .side-content h4{
     margin-bottom: -10px;
 }
+.side-content a{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 20px;
+    color: black;
+    text-decoration: none;
+}
+.side-content a:hover{
+    text-decoration: underline;
+}
 .delete-acc {
     position: relative;
     float: right;

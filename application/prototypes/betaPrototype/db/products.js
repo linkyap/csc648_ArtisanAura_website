@@ -93,9 +93,27 @@ Product.getCart = (sessionId) => {
     })
     .catch((err) => Promise.reject(err));
 };
-Product.placeOrder = (sessionId) => {
-    let query = `INSERT INTO orders (session_id) VALUES (?);`;
-    return db.execute(query, [sessionId])
+Product.getSession = (email) => {
+    let query = `SELECT * FROM orders WHERE email=?;`;
+    return db.execute(query, [email])
+    .then (([results, fields]) => {
+        return Promise.resolve(results[0].session_id);
+    })
+    .catch ((err) => Promise.reject(err));
+};
+Product.getOrders = (email) => {
+    let query = `SELECT * FROM orders WHERE email=?;`;
+    return db.execute(query, [email])
+    .then (([results, fields]) => {
+        let orders = Promise.all (results.map(order => order.id));
+        return Promise.resolve(orders);
+    })
+    .catch ((err) => Promise.reject(err));
+};
+
+Product.placeOrder = (sessionId, email) => {
+    let query = `INSERT INTO orders (session_id, email) VALUES (?,?);`;
+    return db.execute(query, [sessionId, email])
     .then(([results, fields]) => {
         return Promise.resolve(results.insertId);
     })

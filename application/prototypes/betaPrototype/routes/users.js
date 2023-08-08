@@ -99,7 +99,6 @@ router.post('/logout', function (req, res, next) {
 });
 router.post('/delete-acc', async (req, res, next) => {
   let email = req.session.account.email;
-  console.log("EMAIL : " + email);
   let results = await User.deleteUser(email);
   if (results > 0) {
     req.flash('success', 'Account has been deleted');

@@ -2,6 +2,8 @@ var express = require('express');
 const path = require("path");
 var router = express.Router();
 var db = require('../conf/database');
+const Product = require('../db/products');
+
 // home page aka index
 router.get('/', async function (req, res, next) {
   try {       //vvv
@@ -24,22 +26,15 @@ router.get('/login', function (req, res, next) {
 });
 
 //profile page
-router.get('/users/profile/:id', function (req, res, next) {
+router.get('/users/profile/:id', async function (req, res, next) {
   // breadcrumbs
-  const breadcrumbs = 
-  [
-    { name: 'Home', url: '/' }, 
-    { name: 'Profile', url: '/profile' }
-  ];
-  
-  // if (req.session.userid) {
-  //   //logged in, continue 
-    res.render('profile', { breadcrumbs: breadcrumbs, title: 'Profile' });
-  //   next();
-  // } else {
-  //   // not logged in/timeout
-  //   res.redirect('/login');
-  // }
+  const breadcrumbs =
+    [
+      { name: 'Home', url: '/' },
+      { name: 'Profile', url: '/profile' }
+    ];
+  let orders = await Product.getOrders(req.session.email);
+  res.render('profile', { breadcrumbs: breadcrumbs, title: 'Profile', orders: orders });
 });
 
 // registration page 

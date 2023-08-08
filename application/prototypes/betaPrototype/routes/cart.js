@@ -88,7 +88,6 @@ router.post('/checkout', async (req, res, next) => {
 
 
 router.post('/review', ckreview, async (req, res, next) => {
-    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         req.flash('error', errors.array().map(error => error.msg).join(' '));
@@ -96,9 +95,10 @@ router.post('/review', ckreview, async (req, res, next) => {
             res.redirect('back');
         })
     }
-
     let inputs = req.body;
     let sessionId = req.session.id;
+    req.session.email = inputs.email;
+
     let results = await Product.getCart(sessionId);
     if (results && results.length > 0) {
         let cartList = await Cart.getCartList(results);
@@ -123,17 +123,16 @@ router.post('/review', ckreview, async (req, res, next) => {
 
 router.post('/place-order', async (req, res, next) => {
     try{
-    
+    let email = req.session.email;
     let sessionId = req.session.id;
-    let orderId = await Product.placeOrder(sessionId);
+    let orderId = await Product.placeOrder(sessionId, email);
 
-    await Product.clearCart(sessionId);//new added to remove only cart session
+    // await Product.clearCart(sessionId);//new added to remove only cart session
                 //in product.js at bottom of model
     req.session.save(err => {
         if (err) {
             return next(err);
         }
-
 
     res.render('orderConfirm', {
             title: 'Order Confirmation',
