@@ -215,4 +215,13 @@
     background-image: url("/public/images/star-fill.svg");
 }
 
-  
+.fa {
+  font-size: 20px;
+  margin-right: 2px;
+}
+
+.star-fill {
+  color: gold; 
+}
+
+
