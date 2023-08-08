@@ -3,7 +3,7 @@ const path = require("path");
 var router = express.Router();
 var db = require('../conf/database');
 const Product = require('../db/products');
-const { employee } = require('../helpers/loggedandtype');
+const { employee, loggedin } = require('../helpers/loggedandtype');
 
 // home page aka index
 router.get('/', async function (req, res, next) {
@@ -27,7 +27,7 @@ router.get('/login', function (req, res, next) {
 });
 
 //profile page
-router.get('/users/profile/:id', async function (req, res, next) {
+router.get('/users/profile/:id', loggedin, async function (req, res, next) {
   // breadcrumbs
   const breadcrumbs =
     [

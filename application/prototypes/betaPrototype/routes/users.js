@@ -5,6 +5,7 @@ var db = require('../conf/database');
 const User = require('../db/users');
 const UserError = require('../helpers/userError');
 const { checkEmail, registerValidator } = require('../helpers/regValidation');
+const { employee } = require('../helpers/loggedandtype');
 
 // router.use('/registration', registerValidator);
 router.post('/registration', registerValidator,(req, res, next) => {
@@ -86,6 +87,15 @@ router.post('/login', async function (req, res, next) {
       next(err);
     }
   })
+});
+router.get('/addProduct',employee, async function (req, res) {
+  // breadcrumbs
+  const breadcrumbs = 
+  [
+    { name: 'Home', url: '/' }, 
+    { name: 'Add Product', url: '/addProduct' }
+  ];
+  res.render('addProduct', { breadcrumbs: breadcrumbs, title: 'Add Product' });
 });
 
 router.post('/logout', function (req, res, next) {

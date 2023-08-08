@@ -9,7 +9,7 @@
       },
     
     employee : function(req, res, next) {
-        if (req.session && req.session.account && req.session.account.account_type === 'admin') {
+        if (req.session && req.session.account && req.session.account.account_type === 'employee') {
           return next();
         }
         req.flash('error', 'You do not have permission to access this page');
