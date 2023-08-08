@@ -206,6 +206,7 @@ nav ul li a {
 
 .fa {
     color: whitesmoke;
+    font-size: 14px;
 }
 
 .fa-facebook, .fa-instagram, .fa-twitter,.fa-user, .fa-sign-in, .fa-shopping-cart{
