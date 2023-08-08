@@ -3,6 +3,7 @@
 {{>breadcrumbs}}
 
 <main class="product-page">
+
     <div class="product-images">
         <h3 class="title">Customize Your Own Jewelry</h3>
         <img src="/public/images/customizeYourOwn_03.jpg" alt="Customize Your Own Jewelry"
@@ -82,7 +83,21 @@
     </div>
 
     <button type="submit" class="add-item" name="button" value="add">Add to cart</button>
-    <button id="saveButton" type="submit" class="save-item" name="button" value="save">Save</button>
+    <div class="flash-message" id="flashMessage"></div>
+    <button id="saveButton" type="submit" class="save-item" name="button" value="save" onclick="showFlashMessage()">Save</button>
+    <script>
+  function showFlashMessage() {
+    var flashMessage = document.getElementById('flashMessage');
+    flashMessage.innerText = 'Feature coming soon!';
+    
+    // Show the flash message for 3 seconds (adjust duration as needed)
+    setTimeout(function() {
+      flashMessage.innerText = '';
+    }, 3000);
+  }
+</script>
+
+
 </form>
 
 
@@ -91,28 +106,6 @@
 
         <script>
 
-            document.getElementById('saveButton').addEventListener('click', function () {
-
-                var customizationOptions = {
-                    style: document.querySelector('input[name="style"]:checked').value,
-                    jewel: document.querySelector('input[name="jewel"]:checked').value,
-                    metal: document.getElementById('metal').value,
-                    size: document.getElementById('size').value,
-                    engraving: document.getElementById('engraving').value,
-                    packing: document.getElementById('packing').value,
-
-                };
-
-                fetch('/save-design', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(customizationOptions)
-                })
-
-                alert('Design saved!');
-            });
 
             document.getElementById('addToCartForm').addEventListener('submit', function (event) {
                 event.preventDefault();
