@@ -105,7 +105,7 @@ Product.getOrders = (email) => {
     let query = `SELECT * FROM orders WHERE email=?;`;
     return db.execute(query, [email])
     .then (([results, fields]) => {
-        let orders = Promise.all (results.map(order => order.id));
+        let orders = Promise.all (results.map(order => order));
         return Promise.resolve(orders);
     })
     .catch ((err) => Promise.reject(err));

@@ -85,8 +85,6 @@ router.post('/checkout', async (req, res, next) => {
     }
 });
 
-
-
 router.post('/review', ckreview, async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -120,32 +118,41 @@ router.post('/review', ckreview, async (req, res, next) => {
     }
 });
 
-
 router.post('/place-order', async (req, res, next) => {
-    try{
-    let email = req.session.email;
-    let sessionId = req.session.id;
-    let orderId = await Product.placeOrder(sessionId, email);
+    try {
+        let email = req.session.email;
+        let sessionId = req.session.id;
+        let orderId = await Product.placeOrder(sessionId, email);
 
-    // await Product.clearCart(sessionId);//new added to remove only cart session
-                //in product.js at bottom of model
-    req.session.save(err => {
-        if (err) {
-            return next(err);
+        // Logs approved user back in when new session starts
+        if (req.session.account) {
+            let account = req.session.account;
+            req.session.regenerate(err => {
+                if (err) {
+                    return next(err);
+                }
+                req.session.account = account;
+                res.render('orderConfirm', {
+                    title: 'Order Confirmation',
+                    id: orderId,
+                });
+            });
         }
-
-    res.render('orderConfirm', {
-            title: 'Order Confirmation',
-            id: orderId
-    });
+        else{
+            req.session.regenerate(err => {
+                if (err) {
+                    return next(err);
+                }
+                res.render('orderConfirm', {
+                    title: 'Order Confirmation',
+                    id: orderId,
+                });
+            });
+        }
+    } catch (error) {
+        next(error);
+    }
 });
-} catch (error) {
-    next(error);
-}
-});
-
-
-
 
 // Adds product to cart
 router.post('/add-item/:id', async (req, res, next) => {
