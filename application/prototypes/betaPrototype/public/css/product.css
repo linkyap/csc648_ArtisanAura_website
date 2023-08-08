@@ -152,16 +152,18 @@
     height: 150px;
     width: 150px;
   }
-  .next {
+  .back {
     background-color:   #daebed;
     color: black;
+ 
   }
   
-  .back {
+  .next {
     background-color:  #daebed;
     color: black;
-    margin-right: 240px;
+   
   }
+  
   
    .carasouel {
     display: grid;
