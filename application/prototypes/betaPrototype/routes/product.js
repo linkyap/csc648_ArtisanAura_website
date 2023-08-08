@@ -101,7 +101,7 @@ router.post('/review', async (req, res, next) => {
 
     let total = 0;
     for (let i = 0; i < totalRatings.length; i++) {
-      total += totalRatings[i].rating;
+      total += parseFloat(totalRatings[i].rating);
     }
     const averageRating = total / totalRatings.length;
 
@@ -145,7 +145,7 @@ router.post('/delete-review/:id', async (req, res, next) => {
         
         let total = 0;
         for (let i = 0; i < totalRatings.length; i++) {
-          total += totalRatings[i].rating;
+          total += parseFloat(totalRatings[i].rating);
         }
         const averageRating = total / totalRatings.length;
 
