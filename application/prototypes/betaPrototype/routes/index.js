@@ -209,11 +209,14 @@ router.get('/Shop', async function (req, res, next) {
       min_price: min_price,
       max_price: max_price
     } = req.session.filters;
-    const bear =1;
+    let flashMessage = [];
+    if (filterType) flashMessage.push(`Type: ${filterType}`);
+    if (filterMaterial) flashMessage.push(`Material: ${filterMaterial}`);
+    if (filterGemstone) flashMessage.push(`Gemstone: ${filterGemstone}`);
     // all product data
-    let query = "SELECT * FROM product WHERE customized = 0";
+    let query = "SELECT * FROM product";
     let queryParams = [];
-    let conditions = [];
+    let conditions = ["customized = 0"];
 
     // each filter type below
     if (filterType) {
@@ -262,27 +265,30 @@ router.get('/Shop', async function (req, res, next) {
 
         // type
         if (filterType) {
-            const [typeProducts] = await db.execute("SELECT * FROM product WHERE type = ? GROUP BY id LIMIT 5", [filterType]);
+            const [typeProducts] = await db.execute("SELECT * FROM product WHERE customized = 0 AND type = ? GROUP BY id ORDER BY RAND() LIMIT 5", [filterType]);
             individualResults.push(...typeProducts);
         }
 
         // material
         if (filterMaterial) {
-            const [materialProducts] = await db.execute("SELECT * FROM product WHERE material LIKE ? GROUP BY id LIMIT 5", ['%' + filterMaterial + '%']);
+            const [materialProducts] = await db.execute("SELECT * FROM product WHERE customized = 0 AND material LIKE ? GROUP BY id ORDER BY RAND() LIMIT 5", ['%' + filterMaterial + '%']);
             individualResults.push(...materialProducts);
         }
 
         // gemstones
         if (filterGemstone) {
-            const [gemstoneProducts] = await db.execute("SELECT * FROM product WHERE gemstone LIKE ? GROUP BY id LIMIT 5", ['%' + filterGemstone + '%']);
+            const [gemstoneProducts] = await db.execute("SELECT * FROM product WHERE customized = 0 AND gemstone LIKE ? GROUP BY id ORDER BY RAND() LIMIT 5", ['%' + filterGemstone + '%']);
             individualResults.push(...gemstoneProducts);
         }
 
+
+        let combinedFiltersMsg = `No products match the combined filters: ${flashMessage.join(', ')}`;
+        req.flash('error', combinedFiltersMsg);
         return res.render('Shop', {
             products: individualResults,
             filters: req.session.filters,
             breadcrumbs: breadcrumbs,
-            error: individualResults.length === 0 ? 'No products available' : undefined,
+            error: individualResults.length === 0 ? 'No products available' : combinedFiltersMsg,
         });
     }
     
