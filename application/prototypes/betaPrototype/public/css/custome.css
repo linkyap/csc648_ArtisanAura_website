@@ -80,31 +80,46 @@
 #saveButton {
   margin-top: 10px;
   padding: 8px 15px;
-  background-color: #28a745;
+  background-color: teal;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
+.saveButtons:hover {
+  background-color: #004848;
+}
+
 #facebookButton{
   margin-top: 10px;
   padding: 8px 15px;
-  background-color: #1877f2;
+  background-color: #475b90;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+
+#facebookButton:hover{
+  background-color: #004848
+}
+
 #twitterButton {
   margin-top: 10px;
   padding: 8px 15px;
-  background-color: #69a7f8;
+  background-color: #475b90;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+
+#twitterButton:hover{
+  background-color: #004848
+}
+
+
 /* Style for images */
 .product-images img {
   display: block;

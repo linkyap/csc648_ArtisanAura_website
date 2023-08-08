@@ -39,11 +39,15 @@
 .product-details .saveButtons {
   margin-top: 10px;
   padding: 8px 15px;
-  background-color: #28a745;
+  background-color: teal;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.product-details .saveButtons:hover {
+  background-color: #004848;
 }
 
 .product-details button {
