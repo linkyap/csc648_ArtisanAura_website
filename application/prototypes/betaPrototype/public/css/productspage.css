@@ -44,11 +44,11 @@
   /* Styles for item name */
 .title {
     font-size: 18px;
-    height: 70px;
     font-weight: 400;
     color: #333;
     margin: 0px 10px 10px;
     padding: 10px;
+    height: 100px;
 }
   
   /* Styles for item image */
@@ -120,7 +120,6 @@
 .carousel {
 max-width: 200px;
 border-radius: 5px;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 margin: 10px 5px;
 display: flex;
 justify-content: center;
