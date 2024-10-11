@@ -21,7 +21,7 @@
 |      #4      | Denean Le         | dle@sfsu.edu      |  ledenean       |   nean#7789        |   Front End Lead    |
 |      #5      | Yitian Cai        | ycai10@sfsu.edu   | eddaww          |    eddhi#0370      |       M5 Editor     |
 |      #6      |  James Donnelly   |jdonnelly@sfsu.edu |    linkyap      |   yapubbles#5699   |     Github Master   |
-
+************************************ EMAILS NO LONGER ACTIVE *********************************************************
 
 4. All the team members must sign the team contract found [here](https://forms.gle/PoTXjTmPGGKKZjsT6). Missing signatures from students will result in these students being dropped from the course since this means that they disagree with the policies and terms needed to work in a term environment. 
 
@@ -32,5 +32,5 @@
 |  Jewelry Shopping Site: Artisan Aura          |        https://artisan-aura-ifjhxbedya-uw.a.run.app/                   |
 |  Development Site                             |       https://artisanauradevweb-ifjhxbedya-uw.a.run.app/               | 
  
-
+************************************************* Links No Longer Active **************************************************************************
 ## NO code needs to be stored in the root of your repository. You may rename the application folder if you like to your team's application name. But all source code related to your team's application should be stored inside the application folder.
